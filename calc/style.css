@@ -1,0 +1,109 @@
+@import url('https://fonts.gooleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Qahiri&display=swap'); */
+
+@font-face {
+    font-family: Digital Regular;
+    src: url("fonts/Digital Regular.ttf") format("opentype")
+}
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #021824;
+}
+.Caculator
+{
+    position: relative;
+    display: grid;
+    padding: 15px;
+    border: 3px solid #03b1ff;
+    border-radius: 10px;
+    background: #111;
+    box-shadow: 0 0 15px rgba(26, 17, 17, 1);
+}
+.Caculator .value
+{
+    grid-column: span 4;
+    height: 100px;
+    width: 240px;
+    text-align: right;
+    outline: none;
+    padding: 10px;
+    font-size: 40px;
+    /* font-family: 'Qahiri', sans-serif !important; */
+    font-family: Digital Regular;
+    border: 2px solid rgba(0,0,0,.4);
+    border-radius: 8px;
+    background: rgb(180, 255, 81);
+}
+.Caculator span
+{
+    display: grid;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    background: #0c2835;
+    place-items: center;
+    border: 2px solid rgba(0,0,0,.4);
+    border-radius: 8px;
+    /* prevent select on */
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+        -o-user-select:none;
+    
+}
+.Caculator span:hover{
+    background: #0c2835d0;
+}
+.Caculator span:active
+{
+    background: #74ff3b;
+    color: #111;
+}
+.Caculator span.clear
+{
+    grid-column: span 2;
+    width: 120px;
+    background: #ff3077;
+}
+.Caculator span.clear:active
+{
+    background: #fff565;
+    color: #111;
+}
+.Caculator span.equal
+{
+    background: #03b1ff;
+}
+.Caculator span.equal:active
+{
+    background: #00f2fa;
+    color: #111;
+}
+.Caculator span.plus{
+    grid-row: span 2;
+    height: 120px;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(5, 70, 95);
+    color: white;
+    text-align: center;
+  }
+  a{
+    color: #74ff3b;
+  }
