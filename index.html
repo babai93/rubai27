@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>Welcome to Rubai's Blog</title>
+<style>
+@import "https://fonts.googleapis.com/css?family=Josefin+Sans:400,700";
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: black;
+}
+body a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.tableme {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  z-index: -1;
+}
+
+.card {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  height: 470px;
+  width: 334px;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  perspective: 600px;
+  transition: 0.5s;
+}
+.card:hover .card-front {
+  transform: rotateX(-180deg);
+}
+.card:hover .card-back {
+  transform: rotateX(0deg);
+}
+
+.card-front {
+  height: 100%;
+  width: 100%;
+  background-image: url("images/Logo.png");
+  background-position: 50% 50%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.card-back {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  backface-visibility: hidden;
+  transform: rotateX(180deg);
+  transition: 0.5s;
+  color: #ffffff;
+  text-align: center;
+}
+.card-back h2 {
+  margin: 60% auto 35% auto;
+  font-size: 26px;
+}
+.card-back h2 span {
+  font-size: 20px;
+}
+.invert_effect {
+            filter: invert(50%);
+			transition: 0.5s;
+        }
+.invert_effect:hover {
+            filter: invert(100%);
+        }		
+.GFG{
+    border-radius: 50%;
+	transition: 0.2s;
+}
+.GFG:hover{
+    color: #111; 
+    background: greenyellow; 
+    box-shadow: 0 0 10px greenyellow; 
+}
+
+.spbox{
+  margin: 1px;
+  padding: 5px;
+  border-radius: 50px;
+  transition: 0.2s;
+}
+.spbox:hover{
+    color: #111; 
+    background: green, white; 
+    box-shadow: 0 0 10px greenyellow; 
+}
+.fa{
+  color: aqua;
+}
+</style></head>
+<body>
+<div class="card">
+        <div class="card-front"></div>
+        <div class="card-back">
+            <h2>Soumesh Dutta<br><span>Web Designer & Programmer</span></h2>
+			<div>
+			<input	type="image"
+				src="images/home.png"
+				style="width: 51px; height: 51px;"
+				name="HomePage"
+				class="invert_effect"
+				title="take you to Home Page" 
+				onclick="location.href='https://rubai27.netlify.app/home.html';"/>		
+			</div>
+            <div class="social-icons">
+                <a href="#" class="fa fa-facebook" aria-hidden="true"></a>
+                <a href="#" class="fa fa-twitter" aria-hidden="true"></a>
+                <a href="#" class="fa fa-google-plus" aria-hidden="true"></a>
+                <a href="#" class="fa fa-linkedin" aria-hidden="true"></a>
+                <a href="#" class="fa fa-instagram" aria-hidden="true"></a>
+            </div>
+        </div>
+    </div>
+<div class="tableme">
+<table style="width: 100%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;"><img style="visibility: hidden; width: 334px; height: 470px;" alt="" src="images/Logo.png"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>
+<table style="width: 100%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="text-align: center;">
+<input 	type="image" 
+		src="images/fb.png" 
+		name="Facebook" 
+		class="img-responsive GFG" 
+		title="Floow me on Facebook" 
+		onclick="window.open('https://www.facebook.com/soumesh.dutta.31', '_blank');"/>
+</td>
+<td style="text-align: center;">
+<input	type="image"
+		src="images/tw.png" 
+		name="Twitter" 
+		class="img-responsive GFG" 
+		title="Floow me on Twitter" 
+		onclick="window.open('https://twitter.com/', '_blank');"/>
+</td>
+<td style="text-align: center;">
+<input	type="image"
+		src="images/ig.png" 
+		name="Instagram" 
+		class="img-responsive GFG" 
+		title="Follow me on Instagram" 
+		onclick="window.open('https://www.instagram.com/mayadutta87/', '_blank');"/>
+</td>
+<td style="text-align: center;">
+<input	type="image"
+		src="images/yt.png" 
+		name="YouTube" 
+		class="img-responsive GFG" 
+		title="Follow me on YouTube" 
+		onclick="window.open('https://www.youtube.com/channel/UCgbJI-ruSM4SWEdwwE9rpuQ', '_blank');"/>
+</td>
+<td style="text-align: center;">
+<input	type="image"
+		src="images/tc.png" 
+		name="Twitch"
+		class="img-responsive GFG" 
+		title="Find me on twitch" 
+		onclick="window.open('https://www.twitch.tv/shoumesh27', '_blank');"/>
+</td>
+<td style="text-align: center;">
+<input	type="image"
+		src="images/tt.png"
+		name="TakaTak"
+		class="img-responsive GFG" 
+		title="have a look on TakaTak" 
+		onclick="window.open('https://usr.mxtakatak.com/vQZT/294ffb41', '_blank');"/>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td></td>
+</tr><tr><td></td><td style="text-align: center;"><small><span style="color: rgb(255, 204, 51); font-family: Verdana;"></span></small><small><span class="spbox" onclick="location.href='home.html';" style="cursor: pointer; color: rgb(255, 204, 51); font-family: Verdana;">Click here to visit our home page...</span></small></td><td></td></tr>
+<tr><td></td><td style="text-align: right; font-style: italic;"><small><span style="color: rgb(255, 204, 51); font-family: Verdana;">All rights reserved to the owner only...</span></small></td><td></td></tr></tbody>
+</table>
+</div>
+<br>
+</body></html>
