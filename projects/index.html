@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Directory Contents</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="sorttable.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script>
+    $.ajax({
+    type: 'get',
+    url: 'https://releases.jquery.com/',
+    crossDomain: true, //Very important, ensures you can get data from a domain that isn't your own!
+    success: function(data) {
+        $('#myDiv').html(data);
+
+        //Now I can handle all the HTML from my URL from a <div> tag called #myDiv, the following will alert out the body of http://www.google.com
+        alert($('#myDiv').find('body'));
+        }
+    });
+</script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="stage" style="width: 282px;">
+      <a href="/projects/694623828/" id="featured-project">
+          <img src="//cdn2.scratch.mit.edu/get_image/project/694623828_282x210.png" width="282" height="210" alt="Featured project">  
+      </a>
+    </div>
+    <div class="stage" style="width: 282px;">
+      <a href="/projects/665752206/" id="featured-project">
+          <img src="//cdn2.scratch.mit.edu/get_image/project/665752206_282x210.png" width="282" height="210" alt="Featured project">
+      </a>
+    </div>
+    <div class="stage" style="width: 282px;">
+      <a href="/projects/666971199/" id="featured-project">
+          <img src="//cdn2.scratch.mit.edu/get_image/project/666971199_282x210.png" width="282" height="210" alt="Featured project">
+      </a>
+    </div>
+  </div>  
+</body>
+
+</html>
