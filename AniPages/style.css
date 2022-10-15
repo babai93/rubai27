@@ -5,6 +5,7 @@
 }
 body {
     background-color: #800080;
+    overflow: hidden; /* Hide scrollbars */
 }
 .bg {
     width: 100%;
