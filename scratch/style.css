@@ -3,7 +3,7 @@
     margin:0;
   }
 body{
-    background-image: linear-gradient(to top, #8e2de2, #4a00e0);
+    background-image: linear-gradient(to left, #8e2de2, #4a00e0);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .centerTitle {
@@ -35,7 +35,7 @@ body{
     color: #333;
     font: 14px Sans-Serif;
     padding: 50px;
-    background: #eee;
+    /*background: #eee;*/
   }
   
   h1 {
