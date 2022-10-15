@@ -101,3 +101,86 @@
             .fa{
             color: aqua;
             }
+
+/* Back to home Circle Animetion Start*/
+.cell {
+	width: 10%;
+    position: fixed;
+    top: 30px;
+    left: 5px;
+    text-align: center;
+    animation: fadeIn 2s;
+    opacity: .8;
+    z-index: 100;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: .8; }
+}
+.circle {
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background: whiteSmoke;
+	box-shadow: 4px -40px 60px 5px rgb(18, 21, 24) inset;
+    /*border: 4px solid #800080;*/
+    outline: 2px solid rgb(18, 21, 24);
+}
+.circle img{
+    width: 3.5rem;
+}
+.bounce {
+	animation: bounce 2s ease infinite;
+}
+@keyframes bounce {
+	70% {
+		transform: translateY(0%);
+	}
+	80% {
+		transform: translateY(-15%);
+	}
+	90% {
+		transform: translateY(0%);
+	}
+	95% {
+		transform: translateY(-7%);
+	}
+	97% {
+		transform: translateY(0%);
+	}
+	99% {
+		transform: translateY(-3%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+#HiddenText {
+    display: none;
+}
+.cell:hover #HiddenText {
+    display: block;
+}
+.cell:hover{
+    opacity: 1;
+}
+.cell p{
+    color: #fd9a2c;
+    font-size: .8rem;
+}
+/* Back to home Circle Animetion End*/
+/* footer for source code */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(5, 70, 95);
+    color: white;
+    text-align: center;
+  }
+  .footer a{
+    color: #74ff3b;
+  }
+  /* footer for source code */
