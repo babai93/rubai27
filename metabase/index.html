@@ -7,9 +7,11 @@
     <title>Document</title>
     <script>
         function openurl(){
-            var $report = document.getElementById(rptName).ariaValueText;
-             alert ($report);
-            window.open("/" + $report + ".html");
+            //var $report = document.getElementById(rptName).ariaValueText;
+            // alert ($report);
+            // window.open("/" + $report + ".html");
+            let el = document.getElementById('rptName');
+            console.log(el.ariaValueText); // Sunday
         }
     </script>
 </head>
@@ -21,5 +23,8 @@
       <li><a href="#" onclick="openurl()"><span id="rptName" aria-valuetext="rpt2">Overall Tickets Report</span></a></li>
       <li><a href="#" onclick="openurl()"><span id="rptName" aria-valuetext="rpt3">Notifications Dashboard</span></a></li>
     </ul>
+    <section>
+        update: 1.1
+    </section>
 </body>
 </html>
