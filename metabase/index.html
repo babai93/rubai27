@@ -7,7 +7,8 @@
     <title>Document</title>
     <script>
         function openurl(report){
-            window.open("/metabase/" + report + ".html");
+            //window.open("/metabase/" + report + ".html");
+            window.location.href("/metabase/" + report + ".html");
         }
     </script>
 </head>
@@ -20,7 +21,7 @@
       <li><a href="#" onclick="openurl('rpt3')"><span id="rptName">Notifications Dashboard</span></a></li>
     </ul>
     <section>
-        update: 1.6
+        update: 1.7
     </section>
 </body>
 </html>
