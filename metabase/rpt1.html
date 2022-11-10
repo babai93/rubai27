@@ -30,10 +30,9 @@
         function myFunction() {
           var iframe = document.getElementById("frameID");
           var elmnt = iframe.contentWindow.document.getElementsByClassName("h4")[0];
-          //elmnt.style.display = "none";
+          elmnt.style.display = "none";
           alert("frame content : " + elmnt);
           document.getElementById("demo").innerHTML = elmnt.innerHTML;
-          elmnt.style.display = "none";
         }
     </script>
 </body>
