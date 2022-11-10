@@ -29,17 +29,17 @@
   
     <a href="#" onclick=
         "getIframeContent('frameID');">
-        Get the content of Iframe 11
+        Get the content of Iframe 12
     </a>
   
     <script>
         function getIframeContent(frameID) {
-            var frameObj = 
-                document.getElementById(frameID);
-            var frameContent = frameObj
-                .contentWindow.document.h1.innerHTML;
+            var frameObj        = document.getElementById(frameID);
+            var frameContent    = frameObj.contentWindow.document.h1.innerHTML;
+            var frameContent1   = frameObj.contentWindow.document.body.innerHTML;
   
             alert("frame content : " + frameContent);
+            alert("frame content : " + frameContent1);
         }
     </script>
     <button onclick="myFunction()">Try it</button>
