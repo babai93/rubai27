@@ -35,7 +35,7 @@
     <script>
         function getIframeContent(frameID) {
             var frameObj        = document.getElementById(frameID);
-            alert("frame content : " + frameObj);
+            //alert("frame content : " + frameObj);
             //var frameContent    = frameObj.contentWindow.document.h1.innerHTML;
             var frameContent1   = frameObj.contentWindow.document.body.innerHTML;
   
@@ -49,8 +49,8 @@
           var iframe = document.getElementById("frameID");
           var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
           //elmnt.style.display = "none";
-
-          alert("frame content : " + elmnt);
+          var data = elmnt.contentWindow.document.innerHTML
+          alert("frame content : " + data);
         }
     </script>
 </body>
