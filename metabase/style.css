@@ -14,7 +14,7 @@
     border-radius: 4px;
     background-image: linear-gradient(to right, #509ee3 0%, #234463 51%, #356896 100%);
     box-shadow: 0 0 5px rgba(58, 44, 44, 0.795);
-    transition: 0.5s;
+    transition: 0.8s;
 }
 #backbtn img {
     width: 10px;
