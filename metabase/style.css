@@ -49,6 +49,7 @@
 body h1{
     text-align: center;
     font-family: "QuantumRise";
+    background-image: linear-gradient(to right, #ff806f 0%, #b60303 51%, #d82000 100%);
 }
 body ul{
     font-family: "QuantumRise";
