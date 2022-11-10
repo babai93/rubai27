@@ -12,8 +12,8 @@
     padding: 5px;
     border-radius: 4px;
 }
-#backbtn img{
-    color: white;
+#backbtn svg {
+    fill: red;
 }
 #backbtn:hover {
     background-color: #555;
