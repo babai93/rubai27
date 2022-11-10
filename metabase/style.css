@@ -20,5 +20,5 @@
     filter: invert(1);
 }
 #backbtn:hover {
-    background-position: right center;
+    background-image: linear-gradient(to right, #356896 0%, #234463 51%, #509ee3 100%);
 }
