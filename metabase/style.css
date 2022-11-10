@@ -65,3 +65,15 @@ body p{
     font-style: italic;
     font-size: 1rem;
 }
+
+@media only screen and (max-width: 767px) {
+    body h1{
+        font-size: 0.8rem;
+    }
+    body p{
+        font-size: 0.5rem;
+    }
+    body li{
+        font-size: 0.5rem;
+    }
+}
