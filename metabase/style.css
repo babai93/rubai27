@@ -6,23 +6,16 @@
     font-size: 15px;
     border: none;
     outline: none;
-    background-color: red;
+    background-color: #555;
     color: white;
     cursor: pointer;
     padding: 5px;
     border-radius: 4px;
 }
 #backbtn img {
+    width: 10px;
     filter: invert(1);
 }
 #backbtn:hover {
-    background-color: #555;
+    background-color: red; 
 }
-
-svg {
-    width: 70px;
-    height: 70px;
-  }
-  svg:hover {
-    fill: red;
-  }
