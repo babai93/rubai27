@@ -43,13 +43,13 @@
             alert("frame content : " + frameContent1);
         }
     </script>
-    <button onclick="myFunction()">Try it 2</button>
+    <button onclick="myFunction()">Try it 3</button>
     <script>
         function myFunction() {
           var iframe = document.getElementById("frameID");
           var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
           //elmnt.style.display = "none";
-          var data = elmnt.contentWindow.document.innerHTML;
+          var data = elmnt.contentWindow.document.body.innerHTML;
           alert("frame content : " + data);
         }
     </script>
