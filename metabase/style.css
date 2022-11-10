@@ -1,0 +1,18 @@
+#backbtn {
+position: fixed;
+top: 20px;
+right: 30px;
+z-index: 99;
+font-size: 15px;
+border: none;
+outline: none;
+background-color: red;
+color: white;
+cursor: pointer;
+padding: 5px;
+border-radius: 4px;
+}
+
+#backbtn:hover {
+background-color: #555;
+}
