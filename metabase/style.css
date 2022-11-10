@@ -22,3 +22,6 @@
     width: 10px;
     filter: invert(1);
 }
+body h1{
+    text-align: center;
+}
