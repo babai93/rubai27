@@ -52,8 +52,8 @@ body h1{
 }
 body ul{
     font-family: "QuantumRise";
-    padding: 20px;
+    padding-left: 20px;
 }
 body li{
-    padding: 20px;
+    padding: 10px;
 }
