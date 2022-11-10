@@ -7,7 +7,6 @@
     border: none;
     outline: none;
     text-align: center;
-    /*background-color: #509ee3;*/
     color: white;
     cursor: pointer;
     padding: 5px;
@@ -16,10 +15,10 @@
     box-shadow: 0 0 5px rgba(58, 44, 44, 0.795);
     transition: 0.8s;
 }
+#backbtn:hover {
+    background-image: linear-gradient(to right, #ff806f 0%, #b60303 51%, #d82000 100%);
+}
 #backbtn img {
     width: 10px;
     filter: invert(1);
-}
-#backbtn:hover {
-    background-image: linear-gradient(to right, #ff806f 0%, #b60303 51%, #d82000 100%);
 }
