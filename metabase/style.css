@@ -24,7 +24,7 @@
 
 #backbtn {
     position: fixed;
-    top: 20px;
+    top: 22px;
     right: 30px;
     z-index: 99;
     font-size: 15px;
@@ -48,6 +48,7 @@
 }
 body h1{
     text-align: center;
+    color: aliceblue;
     font-family: "QuantumRise";
     background-image: linear-gradient(to right, #ff806f 0%, #b60303 51%, #d82000 100%);
 }
