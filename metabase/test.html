@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
-  
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         How to get HTML content of 
         an iFrame using javascript?
@@ -13,19 +15,7 @@
     <button onclick="history.back()" id="backbtn" title="Go to back"><img src="back.svg"> Back</button>
     <h1 id="demo">Testing content iFrame using javascript</h1>
     <iframe id="frameID"
-        src="ContentOfFrame.html"
-        style="position:fixed; 
-        top:20%;
-        left:0; 
-        bottom:0; 
-        right:0; 
-        width:100%; 
-        height:80%;
-        border:none; 
-        margin:0; 
-        padding:0; 
-        overflow:hidden; 
-        z-index:98;">
+        src="ContentOfFrame.html">
     </iframe>
   
     <a href="#" onclick=
@@ -64,5 +54,4 @@
     document.getElementById("demo").innerHTML = title;
     </script>
 </body>
-  
 </html>
