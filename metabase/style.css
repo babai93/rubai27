@@ -13,13 +13,13 @@
     padding: 5px;
     border-radius: 4px;
     background-image: linear-gradient(to right, #509ee3 0%, #234463 51%, #356896 100%);
-    transition: 0.5s;
     box-shadow: 0 0 5px rgba(58, 44, 44, 0.795);
+    transition: 0.5s;
 }
 #backbtn img {
     width: 10px;
     filter: invert(1);
 }
 #backbtn:hover {
-    background-image: linear-gradient(to right, #356896 0%, #234463 51%, #509ee3 100%);
+    background-image: linear-gradient(to right, #ff806f 0%, #b60303 51%, #d82000 100%);
 }
