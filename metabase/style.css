@@ -68,12 +68,18 @@ body p{
 
 @media only screen and (max-width: 767px) {
     body h1{
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
     body p{
-        font-size: 0.5rem;
+        font-size: 0.8rem;
     }
     body li{
-        font-size: 0.5rem;
+        font-size: 0.8rem;
+    }
+    #backbtn {
+        position: fixed;
+        top: 16px;
+        right: 20px;
+        font-size: 0.8rem;
     }
 }
