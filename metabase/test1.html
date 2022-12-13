@@ -38,16 +38,20 @@
         } 
 
         function show(data) {
+        let n = 0;
         let tab =
         `<tr>
+        <th>#SL</th>
         <th>FW ID</th>
         <th>Name</th>
         <th>Email ID</th>
         </tr>`;
         // Loop to access all rows 
         for (let r of data.requesters) {
+            n ++
         tab += `<tr>
-        <td>${r.id} </td>
+        <td>${n}</td>
+        <td>${r.id}</td>
         <td>${r.first_name} ${r.last_name}</td>
         <td>${r.email}</td>
         </tr>`;
@@ -117,7 +121,7 @@
         <!-- table for showing data -->
             <table id="employees"></table>
         </div>
-        <br><br><hr>
+        <br><hr>
         <script>
             jQuery(window).scroll(function() {
             var $el = jQuery('.caldera-forms-modal');
