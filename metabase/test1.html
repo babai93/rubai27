@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script>
+        const api_url = "https://mmfss.freshservice.com/api/v2/requester_groups/27000175061/members?per_page=100&page=1";
+        var myHeaders = new Headers();
+        const crid = {Authorization: 'Basic QVRtQ1hMR1FySWVvSk5TM1k1ZDI6IA=='};
+
+        // Defining async function
+        async function getapi(url) {
+            
+            // Storing response
+            const response = await fetch(url, {
+                method: 'get',
+                headers: crid,
+                });
+            
+            // Storing data in form of JSON
+            var data = await response.json();
+            console.log(data);
+            if (response) {
+                hideloader();
+            }
+            show(data);
+        }
+        // Calling that async function
+        getapi(api_url);
+
+        // Function to hide the loader
+        function hideloader() {
+            document.getElementById('loading').style.display = 'none';
+        } 
+
+        function show(data) {
+        let tab =
+        `<tr>
+        <th>FW ID</th>
+        <th>Name</th>
+        <th>Email ID</th>
+        </tr>`;
+        // Loop to access all rows 
+        for (let r of data.requesters) {
+        tab += `<tr>
+        <td>${r.id} </td>
+        <td>${r.first_name} ${r.last_name}</td>
+        <td>${r.email}</td>
+        </tr>`;
+        }
+        // Setting innerHTML as tab variable
+        document.getElementById("employees").innerHTML = tab;
+        }
+    </script>
+    <style>
+        #loading{
+            display: block;
+            position:absolute;
+            background-color: #11130e;
+        color: #fffdfd;
+        width: 70px;
+        height: 20px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        border-radius: 6px;
+        }
+        #loading .sr-only{
+            text-align: center;
+            font-size: large;
+        }
+        #employees{
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        #employees td, #employees th {
+        border: 1px solid #ddd;
+        padding: 6px;
+        }
+        #employees tr:nth-child(even){background-color: #f2f2f2;}
+
+        #employees tr:hover {background-color: #ddd;}
+
+        #employees th {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        text-align: center;
+        background-color: #04AA6D;
+        color: white;
+        }
+        .center{
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="loading">
+        <span class="sr-only">Loading...</span>
+        </div>
+        </div>
+        <div class="center">
+            <h1>Employees in the DFB Requester Groups</h1>
+            <!-- table for showing data -->
+            <table id="employees"></table>
+        </div>
+</body>
+</html>

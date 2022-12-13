@@ -144,10 +144,3 @@ body a{
             padding:18px 0 0 0;
       }
 }
-.btn.btn-primary:hover, .date-picker-dialog .header .power-select-container .btn-primary.power-select-trigger:hover, .date-picker-dialog .header .power-select-container header .power-select-trigger#btn-header-request:hover, header .date-picker-dialog .header .power-select-container .power-select-trigger#btn-header-request:hover, header .btn#btn-header-request:hover {
-  background: #891d34;
-  border-color: #af0c1a;
-  -moz-box-shadow: 0 1px 0 0 rgba(119, 9, 33, 0.05);
-  -webkit-box-shadow: 0 1px 0 0 rgba(77, 11, 33, 0.05);
-  box-shadow: 0 1px 0 0 rgba(71, 24, 26, 0.05);
-}
