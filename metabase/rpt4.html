@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="myFunction()">
+    <button onclick="history.back()" id="backbtn" title="Go to back"><img src="back.svg"> Back</button>
+    <h1 id="demo">Notifications Dashboard</h1>
+    <iframe
+        id="frameID"
+        src="test1.html">
+    </iframe>
+    <script>
+        function myFunction() {
+          var iframe = document.getElementById("frameID");
+          var elmnt = iframe.contentWindow.document.getElementsByClassName("EmbedFrame-footer")[0];
+          elmnt.style.display = "none";
+          alert("frame content : " + elmnt);
+          document.getElementById("demo").innerHTML = elmnt.innerHTML;
+        }
+    </script>
+</body>
+</html>

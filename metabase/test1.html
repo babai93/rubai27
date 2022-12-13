@@ -96,24 +96,31 @@
         color: white;
         }
         .center{
-            margin-left: auto;
-            margin-right: auto;
+            display: flex;
+            justify-content: center;
         }
     </style>
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button onclick="history.back()" id="backbtn" title="Go to back"><img src="back.svg"> Back</button>
     <div class="d-flex justify-content-center">
         <div class="spinner-border" role="status" id="loading">
         <span class="sr-only">Loading...</span>
         </div>
         </div>
+        <h1>Employees in the DFB Requester Groups</h1>
         <div class="center">
-            <h1>Employees in the DFB Requester Groups</h1>
-            <!-- table for showing data -->
+        <!-- table for showing data -->
             <table id="employees"></table>
         </div>
+        <script>
+            jQuery(window).scroll(function() {
+            var $el = jQuery('.caldera-forms-modal');
+            
+            if(jQuery(this).scrollTop() >= 200) $el.addClass('shown');
+            else $el.removeClass('shown');
+            });
+        </script>
 </body>
 </html>
