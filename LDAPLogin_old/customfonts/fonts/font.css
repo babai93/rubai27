@@ -1,0 +1,27 @@
+@font-face {
+	font-family: 'SansationLight';
+	src: url('./SansationLight.eot');
+	src: local('SansationLight'), url('./SansationLight.woff') format('woff'), url('./SansationLight.ttf') format('truetype');
+}
+/* georama-regular - latin */
+@font-face {
+	font-family: 'Georama';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/georama-v8-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local(''),
+		 url('../fonts/georama-v8-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('../fonts/georama-v8-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+		 url('../fonts/georama-v8-latin-regular.woff') format('woff'), /* Modern Browsers */
+		 url('../fonts/georama-v8-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		 url('../fonts/georama-v8-latin-regular.svg#Georama') format('svg'); /* Legacy iOS */
+  }  
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_423">Text with this font applied</p> */
+.fontsforweb_SansationLight {
+	font-family: 'SansationLight' !important;
+}
+.fontsforweb_Georama {
+	font-family: 'Georama', 'calibri', Sans-Serif !important;
+}
+
+/* Font downloaded from FontsForWeb.com */

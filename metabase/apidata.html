@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        var settings = {
+        "url": "https://mmfss.freshservice.com/api/v2/requesters/27002020997",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Authorization": "Basic QVRtQ1hMR1FySWVvSk5TM1k1ZDI6IA=="
+        },
+        };
+
+        $.ajax(settings).done(function (response) {
+        // console.log(response);
+        // inside your AJAX callback:
+        var obj = response;
+        var location_name = obj.requester.location_name;
+        var primary_email = obj.requester.primary_email;
+        document.getElementById("location_name").innerHTML = location_name;
+        document.getElementById("primary_email").innerHTML = primary_email;
+        });
+    </script>
+    <div>Location : <span id="location_name"></span></div>
+    <div>Email ID : <span id="primary_email"></span></div> 
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0;}
+        #display{
+        background:hsla(210,100%,50%,1);
+        height:60px;
+        width:500px;
+        overflow:hidden;
+        position:relative;
+        }
+        #text{
+        background:hsla(90,100%,50%,.5);
+        cursor:pointer;
+        overflow:hidden;
+        position:absolute;
+        left:10px;
+        margin-right:10px;
+        top:10px;
+        }
+    </style>
+<script>
+    function marquee(a, b) {
+    var width = b.width();
+    var start_pos = a.width();
+    var end_pos = -width;
+
+    function scroll() {
+        if (b.position().left <= -width) {
+        b.css('left', start_pos);
+        scroll();
+        } else {
+        time = (parseInt(b.position().left, 10) - end_pos) *
+            (10000 / (start_pos - end_pos)); // Increase or decrease speed by changing value 10000
+        b.animate({
+            'left': -width
+        }, time, 'linear', function() {
+            scroll();
+        });
+        }
+    }
+
+    b.css({
+        'width': width,
+        'left': start_pos
+    });
+    scroll(a, b);
+
+    b.mouseenter(function() { // Remove these lines
+        b.stop(); //
+        b.clearQueue(); // if you don't want
+    }); //
+    b.mouseleave(function() { // marquee to pause
+        scroll(a, b); //
+    }); // on mouse over
+
+    }
+
+    $(document).ready(function() {
+    marquee($('#display'), $('#text')); //Enter name of container element & marquee element
+    });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="display">
+  <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non magna ut orci pretium molestie. ही मार्क्वी खूपच कूल आहे!!!</p>
+</div>
+</body>
+</html>
