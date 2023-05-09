@@ -50,7 +50,7 @@
       }
     echo '<div id="Welcome">Welcome '. $_SESSION['use'] . '</div>';
     echo "<div id='Logout'><a href='../logout.php'>Logout</a> </div>";
-    echo '<iframe src="SOPforSmartService1.3.1.pdf" width="100%" scrolling="yes" frameborder="0"></iframe>'
+    echo '<iframe src="/SOPforSmartService1.3.1.pdf" width="100%" scrolling="yes" frameborder="0"></iframe>'
 ?>
 </body>
 </html>

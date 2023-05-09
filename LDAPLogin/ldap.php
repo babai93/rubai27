@@ -24,7 +24,7 @@
 		$ldap_dn = "cn=".$_POST["txtLoginID"].",dc=mfeka,dc=com";
 		$ldap_password = $_POST["txtPassword"];
 		
-		$ldap_con = ldap_connect("172.30.0.112");
+		$ldap_con = ldap_connect("172.30.0.107");
 		ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
 		ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0);
 
@@ -40,7 +40,7 @@
 				$dName = $displayName;
 			}
 			$_SESSION['use']=$dName;
-			header("Location: /files");
+			header("Location: ./files");
 			exit;
 		}
 		else

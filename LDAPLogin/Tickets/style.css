@@ -1,0 +1,160 @@
+        html, body {
+        height: 100%;
+        width: 100%;
+        }
+        html {
+        display: table;
+        margin: auto;
+        padding: auto;
+        }
+
+        body {
+            display: table-cell;
+            /*vertical-align: middle;*/
+            font-family: "Titillium Web", sans-serif;
+            overflow-x: hidden;
+        }
+        .output {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            }
+        input[type=text], select {
+            width: 100%;
+            padding: 8px 20px;
+            margin: 1px 0 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color : #fff;
+            font-size: 0.8rem;
+            font-family: "Georama", sans-serif;
+            }
+        textarea[type=text], select {
+            width: 100%;
+            padding: 8px 20px;
+            margin: 1px 0 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color : #fff;
+            transition-duration: 0.8s;
+            }
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition-duration: 0.8s;
+            }
+        input:hover[type="submit"] {
+            background-color: #3CDF50;
+            }
+        .flex{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            /*align-content: flex-end;*/
+            }
+        .flexr{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: flex-end;
+            }
+        label{
+            font-family: "Titillium Web", sans-serif;
+            font-size: .70rem;
+            font-weight: bold;
+        }
+        #labelt{
+            font-family: "Titillium Web", sans-serif;
+            font-size: .70rem;
+            font-weight: bold;
+            margin-left: 3px;
+        }
+        .float-child-element { 
+            float: left; 
+            width: 50%;
+        } 
+        .leftb {
+            margin-right: 2%;
+        }
+        .icon {
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAH6SURBVEhLvZXLLgRBFIYbcUl4AbeIYMUSidi4bljgLQghvI8XIARbW2EhNi6JuCxEwkYk2LjE5f+mq5Kema7q7jH8yZeqqe6qM+ecOqcrArc6xYzoFU0sSHfiUGyJKxZ+oy6xIb7EtwOerQv+TEmaFi+Cw47FkugW9QbmrJ0I3nkWUyKTMPIpXsWcqBQuVYl58SbYk9oY4cITjAyzkFIjAmN4liqM5IRQzOZ+ZdOCYC858wpvSC458YXLJcJ4Kjijg4U4cTDx5ZqvCl7OaowcsZczyHOsOLQ/nAa7ZiQMWWX39pmxSBhqDKfBrRkx5CvkON2Y0RZ2kVxhKsUr5Aw7D2grqNWMViQ5rdrMeG/GImGI3oXGzWjDhlc14TRRdu+BGWNFoXHbaCt4EXWfeXU4dYo9Z4LbR6l4RbHhAW0FJR0e1aJg72buV4LwijZCOxllQcKbqHdxGhPvgvbVzkIaUbi4jzHaiu8y8AxPMII3D2JAUJO1IlEYwzM201aWRY9oMDBfEeSEd57Eo5lbyLWtTa8IIznjgkQPiILna4KSGDJrUc5FnjFfB6BB0rv4lLcI3qVO9sWOuBZoUOyF0zxdCD45tk5/rTphv7iFYKxZlE2EiXD9izEaqsvYtiirMIYHhYaORNlFmC6FNfIhJsWfCGOEC08mgiAIfgDbQYxK44uNvAAAAABJRU5ErkJggg==") no-repeat right;
+            background-size: 18px;
+            background-position-x: 99%;
+            transition-duration: 0.8s;
+            cursor: pointer;
+        }
+        .icon:hover, select {
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAQRSURBVEhLrVZdbBRVFL5/szPTnZnttrvdrrWtCRVqEa1iMdhIRZCUEKUKmmD0BZ5M/El8MPqmiU1o8Af8iTESX4xGnuTBaHiACMQHClFiYoLQRGtEo20D7NLtdHdnxu9s75qQ7tKt6Zecnbvn3nPOPffc881wVgdbTTXkcfbUS445khDcjSLGclGUf+f6/FdXwujIqWJwWi/9f3jCUltPpuJ/hbd4UVWijsQNQrrvUvE/N8fkJm22PCDIy7msF5KzC22O/7ilDj5sykfWG7KrT4muXiWGHojJ/d+2NuWKCEZrh031gjZvDBQkgLEPwfgAAmT0VC20pAV/dardjchmW6PB6Ljy2B0F2WWpvVq9JDoE34WsoiuwbRd8QKvr4xRqQsc1YqkxrWoYG2PyTarZR83WBa2qjS2mfKiMhefbnMISx1UTLmetVE86wtuV2KDViyBczncLDF7P+R8fTzn/oOg9C1ONIR+xmeev+R8KztmdSjyr1YtB15R202+IIRyfg939/mBMZvV0Q0hyPkhHD1+XtWoRhMe5Q4O/g+hXPNRqJTrRoP2kaxR+FE3mw4hVfdWCIGog8SOG3mdF+nnDtQ5hhxLDZQG2dZlGXAWt0CApeDcepesRK/cZogc1GyR9I1CcdcUQouqrFsRBcBdHIW9T/DH8D34qBeMzYcRfcc0T7yesfmRWd5dVdEqxI4bnaN7/ckFTA6CXQeoDuqKrJE+PedYaNGH5Mrq+1J0M3/LMpxHM1stroeVsOl6gFkED3691tfF1a9Mk3Ro07AGqzahnDvudzeE1dP00HPyWca+CPV5D0bZg+eoFqwUMGHKUbI+2NE1qVX3gcNaDt8J5OH3UUvtgqD5tttedS8e/n8m6cyDQEDTj7/esz7D8v6a+z5DPELkSfd1t1G/WG9AjxV5Kn4KBkceGYrIdAQ2IDYlDXEjlJmYFT+2w1NsUBLoImYd4Zey5VfJhTKdpzU2BV8BzZETGv2Qcf6elDsHBtnsM0W1z1kGNud1U717KOPO0BtmGGAdzCEibLEF+TDuFLsn7tMv6oMtxPBX/gy4IGZOQUxxPJVsak8MvkvYEAq8DZT1JgWg9Cc1fxEbA5ndolxXUvbrIYiOu7Z4X4+YIeixBzThRDqYOF0pHJ4PwyKVyOE7rQKrbp7PeN0bFirEQQtw5XgrmNk3N3ltk7Oasvgy0vZewpqoZEW9SVnQSnyftHPqrktmSzdgI4GzN2Tbn/F2GtMr4ilEggBBPorOTxaCwc2Z2YEUCEVCTvhOp+A/4rjApwDxEaflgtnhxxQIRkFnv4aR9ZrdtePgkY/iuYAay+xn1WtFABNzEtcdSTed6lbQC/KeMNk/P7qtMrjQygq/9pNmeOJ2K5zYYEh87jP0LE4CPo2ZVEZsAAAAASUVORK5CYII=") no-repeat right;
+            background-size: 18px;
+            background-position-x: 98%;
+            background-color : #fff;
+        }
+        .rightb { 
+            margin-left: 2%;
+        }
+        .hidden>div {
+            display:none;
+        }
+
+        .visible>div {
+            display:block;
+        }
+
+        .text_container div{
+            background-color: #e5e5e5;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table.myFormat tr td { 
+            font-size: .75rem;
+            font-family: Georama;
+        }
+        /* Style the header */
+        header {
+        width: 100% !important;
+        background-color: #666;
+        padding: 2px;
+        text-align: center;
+        color: white;
+        }
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            font-family: 'Georama', Calibri, sans-serif;
+            letter-spacing: 2px;
+            }
+        article {
+            width: auto;
+            /*text-align-last: center;*/
+            display: table;
+            margin: auto;
+            padding: auto;
+        }
+        #subject #spam{
+            width:50px;
+            line-height:25px;
+            background-color:#e5e5e5;
+            color:rgb(245, 6, 6);
+            text-align:center;
+            border-radius: 4px;
+            position:absolute;
+            right:8px;
+            top:22px;
+            font-size: .9rem;
+            font-weight: 600;
+          }
+        #subject{
+            position:relative;
+          }
+          
