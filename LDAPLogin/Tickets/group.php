@@ -48,60 +48,28 @@ function getGroupMember($id)
     $groupName = $obj->group->name;
     $agent_ids = $obj->group->agent_ids;
 
-    //$assoc_array = json_decode($response, true);
+    //$assoc_array = json_decode($response, true); // old mathord
     //$groupName = $assoc_array['group']['name'];
 
     $updatedString = '<span style="font-size: .85rem;">Group Name: '.$groupName.'</span><br><span id="labelt">Members:</span><br><table class="myFormat" style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="0"><tbody>';
 
-        /*foreach ($agent_ids as $agent_id) {
-            $GmemberName = getname($agent_id);
-            $updatedString .= "<tr><td>".$GmemberName['UID']."_".$GmemberName['name']."</td></tr>";
-        }*/
 		foreach ($agent_ids as $agent_id) {
-			$agent_id_link = '<a href="member.php?id='.$agent_id.'" onclick="goclicky(this); return false;" target="_blank">'.$agent_id.'</a>';
+            $memberName = getAgentNameOnly($agent_id);
+			$agent_id_link = '<a href="member.php?id='.$agent_id.'" onclick="goclicky(this); return false;" target="_blank">'.$memberName.'</a>';
             $updatedString .= "<tr><td>".$agent_id_link."</td></tr>";
         }
     $updatedString .="</tbody></table>";
     return $updatedString;
 }
-
-function getname($id)
+function getAgentNameOnly($id)
 {
-    if ($id === null) {
-        $out['name'] = "Blank";
-        $out['UID'] = null;
-        $out['Dept'] = null;
-        $out['grade'] = null;
-        $out['company'] = null;
-        $out['job_title'] = null;
-        $out['branch_name'] = null;
-        $out['mobile_phone_number'] = null;
-        $out['reporting_manager_id'] = null;
-        $out['primary_email'] = null;
-        return $out;
-      } else {
-        $response = callAPI('GET', 'https://mmfss.freshservice.com/api/v2/requesters/'.$id, false);
-        //echo $response;
-        $assoc_array = json_decode($response, true);
-        $fname = $assoc_array['requester']['first_name'];
-        $lname = $assoc_array['requester']['last_name'];
-        $fullname = $fname." ".$lname;
-        //return $name;
-        //-------------------------------//
-        $out['name'] = $fullname;
-        $out['UID'] = $assoc_array['requester']['custom_fields']['user_id'];
-        $out['Dept'] = $assoc_array['requester']['custom_fields']['vertical'];
-        $out['grade'] = $assoc_array['requester']['custom_fields']['grade'];
-        $out['company'] = $assoc_array['requester']['custom_fields']['company'];
-        $out['job_title'] = $assoc_array['requester']['job_title'];
-        $out['branch_name'] = $assoc_array['requester']['custom_fields']['branch_name'];
-        $out['mobile_phone_number'] = $assoc_array['requester']['mobile_phone_number'];
-        $out['reporting_manager_id'] = $assoc_array['requester']['reporting_manager_id'];
-        $out['primary_email'] = $assoc_array['requester']['primary_email'];
-        return $out;
-      }
+    $response = callAPI('GET', 'https://mmfss.freshservice.com/api/v2/requesters/'.$id, false);
+    $obj = json_decode($response);
+    $fname = $obj->requester->first_name;
+    $lname = $obj->requester->last_name;
+    $AgentName = $fname." ".$lname;
+    return $AgentName;
 }
-
 ?>
 </body>
 </html>

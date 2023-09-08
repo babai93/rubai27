@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Georama&display=swap');
+
         html, body {
         height: 100%;
         width: 100%;
@@ -13,6 +15,7 @@
             /*vertical-align: middle;*/
             font-family: "Titillium Web", sans-serif;
             overflow-x: hidden;
+            background-color: #e6e7e8;
         }
         .output {
             border-radius: 5px;
@@ -123,16 +126,29 @@
         /* Style the header */
         header {
         width: 100% !important;
-        background-color: #666;
+        /*background-color: #666;*/
+        background-color: #352d2d;
         padding: 2px;
         text-align: center;
         color: white;
         }
+        #parent {
+            display: table;
+            width: 100%;
+            background: #4d4d4f;
+            text-align: center;
+            color: white;
+            }
+            #parent img{
+                width: 50px;
+            }
         h1 {
-            font-size: 1.5rem;
             text-align: center;
             font-family: 'Georama', Calibri, sans-serif;
-            letter-spacing: 2px;
+                font-size: 1.7rem;
+                letter-spacing: 1.1px;
+                /*background-color: lightgrey;*/
+                text-align: center;
             }
         article {
             width: auto;
@@ -157,4 +173,72 @@
         #subject{
             position:relative;
           }
+        .flex-container {
+	display: flex;
+	width: 100%;
+	background: #4d4d4f;
+	text-align: center;
+	color: white;
+}
+.flex-container a {
+	color: white;
+}
+
+.box1, .box2 {
+	flex: 1; /* This will make both boxes take up equal space */
+	height: 22px;
+	margin: 10px;
+}
+
+.box1 {
+	/*background-color: #ff0000;*/
+	font-size: 18px;
+	text-align: left;
+}
+
+.box2 {
+	/*background-color: #00ff00;*/
+	text-align: right;
+}
+.data {
+	margin: 10px;
+}
+.fixed-bottom-left {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    color: blue;
+  }
+
+/* ---- Ticket php style ---- */
+.flex-container {
+	display: flex;
+	width: 100%;
+	background: #E31837;
+	text-align: center;
+	color: white;
+}
+.flex-container a {
+	color: white;
+}
+
+.box1, .box2 {
+	flex: 1; /* This will make both boxes take up equal space */
+	height: 22px;
+	margin: 10px;
+}
+
+.box1 {
+	/*background-color: #ff0000;*/
+	font-size: 18px;
+	text-align: left;
+}
+
+.box2 {
+	/*background-color: #00ff00;*/
+	text-align: right;
+}
+.data {
+	margin: 10px;
+}
           

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SamrtServe Ticket details</title>
+	<title>SamrtServe Ticket Details</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Georama|Titillium Web">
 	<link rel="stylesheet" href="style.css">
 <script type="text/javascript">
@@ -15,47 +15,13 @@ function goclicky(entity)
     window.open(entity.href, 'sharegplus','height=260,width=500,left='+x+',top='+y);
 }
 </script>
-<style>
-.flex-container {
-	display: flex;
-	width: 100%;
-	background: #4d4d4f;
-	text-align: center;
-	color: white;
-}
-.flex-container a {
-	color: white;
-}
-
-.box1, .box2 {
-	flex: 1; /* This will make both boxes take up equal space */
-	height: 22px;
-	margin: 10px;
-}
-
-.box1 {
-	/*background-color: #ff0000;*/
-	font-size: 18px;
-	text-align: left;
-}
-
-.box2 {
-	/*background-color: #00ff00;*/
-	text-align: right;
-}
-.data {
-	margin: 10px;
-}
-input[type=text], select {
-    width: 30% !important;
-{
-body h1 {
-font-size: 1.7rem;
-letter-spacing: 1.1px;
-}
-</style>
 </head>
 <body>
+<?php
+$title = "SamrtServe Ticket Details";
+include "header.php";
+?>
+
 <?php
 require "cURLsetup.php";
 
@@ -119,43 +85,45 @@ function getTicketDTLS($id)
     }
 	//$updatedString .= 'Requested for: ' .$tRequestedForName. '<br>';
 	$updatedString .= 'Subject: ' .$obj['ticket']['subject']. '<br>';
-	$updatedString .= 'Ticket Type: ' .$obj['ticket']['type']. '<br>';
+	$updatedString .= 'Type: ' .$obj['ticket']['type']. '<br>';
 	$tsource = getsource($obj['ticket']['source']);
-	$updatedString .= 'Ticket Source: ' .$tsource. '<br>';
+	$updatedString .= 'Source: ' .$tsource. '<br>';
 	$tstatus = getstatus($obj['ticket']['status']);
-	$updatedString .= 'Ticket Status: ' .$tstatus. '<br>';
+	$updatedString .= 'Status: ' .$tstatus. '<br>';
 	$tpriority = getpriority($obj['ticket']['priority']);
-	$updatedString .= 'Ticket Priority: ' .$tpriority. '<br>';
+	$updatedString .= 'Priority: ' .$tpriority. '<br>';
 	$tcreatedat = getIST($obj['ticket']['created_at']);
-	$updatedString .= 'Ticket Created on: '.$tcreatedat.'<br>';
+	$updatedString .= 'Created on: '.$tcreatedat.'<br>';
 	$tdue_by = getIST($obj['ticket']['due_by']);
-	$updatedString .= 'Ticket Resolution due: '.$tdue_by.'<br>';
+	$updatedString .= 'Resolution due: '.$tdue_by.'<br>';
 	
 	//--- calling more APIs for get the Group and Agent names
 	
     //---- Group ID ------//
 	if ($obj['ticket']['group_id'] != null){
 		$tAssignedGID = $obj['ticket']['group_id'];
-            $updatedString .= 'Ticket Assigned to Group ID: <a href="group.php?id='.$tAssignedGID.'" onclick="goclicky(this); return false;" target="_blank">'.$tAssignedGID.'</a><br>';
+        $tAssignedGName = getGroupNameOnly($obj['ticket']['group_id']);
+            $updatedString .= 'Assigned to Group: <a href="group.php?id='.$tAssignedGID.'" onclick="goclicky(this); return false;" target="_blank">'.$tAssignedGName.'</a><br>';
 	} else {
 		$tAssignedGName = "Blank";
 		$tAssignedGID = "Blank";
-            $updatedString .= 'Ticket Assigned to Group ID: '.$tAssignedGID.'<br>';
+            $updatedString .= 'Assigned to Group: '.$tAssignedGID.'<br>';
 	}
 	//$updatedString .= 'Ticket Assigned to Group ID: '.$tAssignedGID.'<br>';
 	
     //---- Agent ID ------//
     if ($obj['ticket']['responder_id'] != null){
 		$tAssignedAID = $obj['ticket']['responder_id'];
+        $tAssignedAName = getAgentNameOnly($obj['ticket']['responder_id']);
 			/*$updatedString .= 'Ticket Assigned to Agent ID: <a href="javascript:void(0);"
 					 NAME="Entity Info"  title="Entity Info"
 					 onClick=window.open("entity.php?id='.$tAssignedAID.'","Ratting","width=500,height=270,0,status=0,scrollbars=1,toolbar=0,menubar=0,titlebar=0");>
 					 '.$tAssignedAID.'</a><br>';*/
-            $updatedString .= 'Ticket Assigned to Agent ID: <a href="entity.php?id='.$tAssignedAID.'" onclick="goclicky(this); return false;" target="_blank">'.$tAssignedAID.'</a><br>';
+            $updatedString .= 'Assigned to Agent: <a href="entity.php?id='.$tAssignedAID.'" onclick="goclicky(this); return false;" target="_blank">'.$tAssignedAName.'</a><br>';
 	} else {
 		$tAssignedAName = "Blank";
 		$tAssignedAID = "Blank";
-			$updatedString .= 'Ticket Assigned to Agent ID: '.$tAssignedAID.'<br>';
+			$updatedString .= 'Assigned to Agent: '.$tAssignedAID.'<br>';
 	}	
 	//$updatedString .= 'Ticket Assigned to Agent ID: '.$tAssignedAID.'<br>';
 	
@@ -193,11 +161,11 @@ function getTicketDTLS($id)
 	
 	    if ($obj['ticket']['status'] === 4 || $obj['ticket']['status'] === 5) {
             $tResolvedAt = getIST($obj['ticket']['stats']['resolved_at']);
-			$updatedString .= 'Ticket Resolved on: '.$tResolvedAt.'<br>';
+			$updatedString .= 'Resolved on: '.$tResolvedAt.'<br>';
         }
         if ($obj['ticket']['status'] === 5) {
             $tClosedAt = getIST($obj['ticket']['stats']['closed_at']);
-			$updatedString .= 'Ticket Closed on: '.$tClosedAt.'<br>';
+			$updatedString .= 'Closed on: '.$tClosedAt.'<br>';
         }
 	
 	
@@ -313,6 +281,24 @@ function getAssignedG($id)
         $name = $assoc_array['group']['name'];
         return $name;
     }
+}
+
+function getGroupNameOnly($id)
+{
+    $response = callAPI('GET', 'https://mmfss.freshservice.com/api/v2/groups/'.$id, false);
+    $obj = json_decode($response);
+    $groupName = $obj->group->name;
+    return $groupName;
+}
+
+function getAgentNameOnly($id)
+{
+    $response = callAPI('GET', 'https://mmfss.freshservice.com/api/v2/requesters/'.$id, false);
+    $obj = json_decode($response);
+    $fname = $obj->requester->first_name;
+    $lname = $obj->requester->last_name;
+    $AgentName = $fname." ".$lname;
+    return $AgentName;
 }
 ?>
 </body>

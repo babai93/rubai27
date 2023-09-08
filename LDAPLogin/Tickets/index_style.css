@@ -24,10 +24,6 @@ color: white;
     display:inline-block;
     min-width: 275px;
 }
-body h1 {
-    font-size: 1.7rem;
-    letter-spacing: 1.1px;
-}
 input[type=text], select {
     width: 100%;
     padding: 8px 20px;
@@ -41,7 +37,7 @@ input[type=text], select {
     font-family: "Georama", sans-serif;
     text-align: center;
 }
-input[type=submit] {
+input[type=submit]{
     width: 100%;
     background-color: #B52B39;
     color: white;
@@ -67,3 +63,4 @@ label{
     color: black;
     text-align: left;
 }
+  

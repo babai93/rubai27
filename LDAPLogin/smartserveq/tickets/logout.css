@@ -1,0 +1,62 @@
+    @import url('https://fonts.googleapis.com/css2?family=Georama&display=swap');
+    body{
+        padding: 0;
+        margin: 0;
+        background: #f0f2f5;
+        font-family: "Georama", sans-serif;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box{
+      position: relative;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      transition: 0.3s;
+      background-color: rgba(255, 255, 255, 0.55);
+      border: 1px solid #dde6f5;
+      box-shadow: 6px 6px 5px lightblue;
+      
+    }
+    .imgbox {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30%;
+        height: 50%;
+        transform: translate(50%, -50%);
+        z-index: 1;
+    }
+    img{
+        width: 100%;
+        filter: drop-shadow(6px 6px 5px lightblue);
+    }
+    .modal {
+        line-height: 1.5;
+        padding: 2rem 3rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+    .box1{
+      font-size: 2rem;
+      cursor: default;
+    }
+    .btnx{
+      font-family: "Georama", sans-serif;
+      padding: 3px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 10px;
+      color: #ad0511;
+      background-color: white;
+      border: 1px solid #ad0511;
+      transition-duration: 0.8s;
+    }
+    .btnx:hover {
+        color: white;
+        background-color: #ad0511;
+        border: 1px solid #ad0511;
+    }

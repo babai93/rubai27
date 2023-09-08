@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SamrtServe Entity Info</title>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Georama|Audiowide|Sofia|Titillium Web">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Georama|Titillium Web">
 <script type="text/javascript" src="jquery-1.7.min.js"></script>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="stylepop.css">

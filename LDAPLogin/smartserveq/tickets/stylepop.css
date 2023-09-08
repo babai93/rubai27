@@ -1,0 +1,116 @@
+/* optimize by Merlin */
+.flex-container {
+    display: flex;
+    width: 100%;
+    background: #E31837;
+    text-align: center;
+    color: white;
+}
+
+.flex-container a {
+    color: white;
+}
+
+.box1,
+.box2 {
+    flex: 1;
+    height: 22px;
+    margin: 10px;
+}
+
+.box1 {
+    font-size: 16px;
+    text-align: left;
+    flex-basis: 65%;
+}
+
+.box2 {
+    text-align: right;
+    flex-basis: 35%;
+    margin: 7px 10px 6px 6px;
+}
+
+.data {
+    margin: 10px;
+}
+
+body h1 {
+    font-size: 1.7rem;
+    letter-spacing: 1.1px;
+}
+
+.dataview {
+    text-align: center;
+}
+
+/* Close and Reload button styles */
+
+.btn {
+    padding: 3px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: white;
+    transition-duration: 0.8s;
+    text-align: center;
+    align-items: baseline;
+    display: inline-flex;
+}
+
+.btnx,
+.btnb {
+    color: white;
+    border: 1px solid;
+    transition: color 0.8s ease-in-out, background-color 0.8s ease-in-out, border 0.8s ease-in-out;
+}
+
+.btnx {
+    color: #ad0511;
+    border-color: #ad0511;
+}
+
+.btnb {
+    color: #378b05;
+    border-color: #378b05;
+}
+
+.btn:hover,
+.btn:focus {
+    color: white;
+}
+
+.btn:hover .btn-text,
+.btn:focus .btn-text {
+    max-width: 300px;
+    color: #fff;
+}
+
+.btn:hover {
+    background-color: #ad0511;
+}
+
+.btnb:hover {
+    background-color: #6caf00;
+}
+
+.btn .btn-text {
+    max-width: 0;
+    display: inline-block;
+    transition: max-width 0.5s ease-in-out 0.1s;
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: "Georama", sans-serif;
+}
+
+@media (max-width: 499px) {
+    .box1 {
+        font-size: 15px !important;
+    }
+
+    .btn:hover .btn-text,
+    .btn:focus .btn-text {
+        max-width: 0;
+    }
+}

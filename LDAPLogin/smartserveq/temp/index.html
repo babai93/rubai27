@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Embedded Content</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="embeddedContent"></div>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'embed.php',
+                success: function (data) {
+                    $('#embeddedContent').html(data);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

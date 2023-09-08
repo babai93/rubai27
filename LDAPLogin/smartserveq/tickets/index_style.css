@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Georama&family=Titillium+Web&display=swap');
+body{
+    margin:0;
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+    font-family: "Titillium Web", sans-serif;
+    overflow-x: hidden;
+    background-color: #e6e7e8;
+}
+#parent {
+display: table;
+width: 100%;
+background: #4d4d4f;
+text-align: center;
+color: white;
+}
+#form_div {
+    left      : 50%;
+    top       : 50%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
+    background: #dfcccc;
+    padding   : 20px;
+    border-radius: 5px;
+    display:inline-block;
+    min-width: 275px;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 1px 0 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color : #fff;
+    font-size: 0.8rem;
+    font-family: "Georama", sans-serif;
+    text-align: center;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #B52B39;
+    color: white;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition-duration: 0.8s;
+    font-family: "Georama", sans-serif;
+    }
+input:hover[type="submit"] {
+    background-color: #880009;
+    }
+input, label {
+    display:block;
+}
+label{
+    font-family: "Titillium Web", sans-serif;
+    font-size: .70rem;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+}

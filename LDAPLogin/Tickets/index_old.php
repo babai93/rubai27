@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartServe Ticket Details</title>
 <script>
 function(){
   function id(v){ return document.getElementById(v); }
@@ -64,8 +69,9 @@ function(){
     color:#fff;
     }
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Georama|Audiowide|Sofia|Titillium Web">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Georama|Titillium Web">
 <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
 <!--Start Loading page--
@@ -78,10 +84,11 @@ function(){
   <img src="http://placehold.it/3000x3000/cf5">
 </div>
 <!--End Loading page-->
-<header>
-<h1>SmartServe Ticket details</h1>
-</header>
-
+<?php
+$title = "SamrtServe Ticket Details";
+include "header.php";
+?>
+<div class="fixed-bottom-left"><a href="/index.php">Use lite version</a></div>
 <article>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 <div class="flex">
@@ -123,27 +130,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	});
 </script>
 </article>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCGuAZEg_jCTt0sqoBGVr4NOWkWRf4TX9c",
-    authDomain: "smartserve-ticket-search.firebaseapp.com",
-    projectId: "smartserve-ticket-search",
-    storageBucket: "smartserve-ticket-search.appspot.com",
-    messagingSenderId: "757642614605",
-    appId: "1:757642614605:web:b72d42624c0e4ca1454904",
-    measurementId: "G-HNFZX63CRV"
-  };
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 </body>
 </html>
 
@@ -206,56 +192,59 @@ function getrpt($TicketNo)
 	    </div>';
     echo '</div></div>';
     echo '<div class="float-child-element">';
-    echo '<div class="rightb text_container">';
-    echo '<label for="rfname">Requested for Name:</label>';
-    $rfor = getname($assoc_array['ticket']['requested_for_id']);
-    $rfname = $rfor['name'];
-    echo "<input type='text' name='rfname' value='$rfname' class='icon' readonly>";
-    echo '<div><!--Hidden Div-->
-        <table class="myFormat" style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="0">
-        <tbody>
-            <tr>
-            <td>Entity Code :</td>
-            <td>'.$rfor['UID'].'</td>
-            </tr>
-            <tr>
-            <td>Department : </td>
-            <td>'.$rfor['Dept'].'</td>
-            </tr>
-            <tr>
-            <td>Grade : </td>
-            <td>'.$rfor['grade'].'</td>
-            </tr>
-            <tr>
-            <td>Company :</td>
-            <td>'.$rfor['company'].'</td>
-            </tr>
-            <tr>
-            <td>Designation :</td>
-            <td>'.$rfor['job_title'].'</td>
-            </tr>
-            <tr>
-            <td>Branch Name :</td>
-            <td>'.$rfor['branch_name'].'</td>
-            </tr>
-            <tr>
-            <td>Mobile No. : </td>
-            <td>'.$rfor['mobile_phone_number'].'</td>
-            </tr>
-            <tr>
-            <td>Email ID :</td>
-            <td>'.$rfor['primary_email'].'</td>
-            </tr>
-            <tr>
-            <td>RM Name :</td>';
-            $rmanager = getname($rfor['reporting_manager_id']);
-            echo '<td>'.$rmanager['name'].'</td>
-            </tr>
-        </tbody>
-        </table>
-	    </div>';
+    
+    if ($assoc_array['ticket']['requester_id'] != $assoc_array['ticket']['requested_for_id']){
+        echo '<div class="rightb text_container">';
+        echo '<label for="rfname">Requested for Name:</label>';
+        $rfor = getname($assoc_array['ticket']['requested_for_id']);
+        $rfname = $rfor['name'];
+        echo "<input type='text' name='rfname' value='$rfname' class='icon' readonly>";
+        echo '<div><!--Hidden Div-->
+            <table class="myFormat" style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="0">
+            <tbody>
+                <tr>
+                <td>Entity Code :</td>
+                <td>'.$rfor['UID'].'</td>
+                </tr>
+                <tr>
+                <td>Department : </td>
+                <td>'.$rfor['Dept'].'</td>
+                </tr>
+                <tr>
+                <td>Grade : </td>
+                <td>'.$rfor['grade'].'</td>
+                </tr>
+                <tr>
+                <td>Company :</td>
+                <td>'.$rfor['company'].'</td>
+                </tr>
+                <tr>
+                <td>Designation :</td>
+                <td>'.$rfor['job_title'].'</td>
+                </tr>
+                <tr>
+                <td>Branch Name :</td>
+                <td>'.$rfor['branch_name'].'</td>
+                </tr>
+                <tr>
+                <td>Mobile No. : </td>
+                <td>'.$rfor['mobile_phone_number'].'</td>
+                </tr>
+                <tr>
+                <td>Email ID :</td>
+                <td>'.$rfor['primary_email'].'</td>
+                </tr>
+                <tr>
+                <td>RM Name :</td>';
+                $rmanager = getname($rfor['reporting_manager_id']);
+                echo '<td>'.$rmanager['name'].'</td>
+                </tr>
+            </tbody>
+            </table>
+            </div>';
+        echo '</div>';
+    }
     echo '</div></div>';
-    echo '</div>';
     echo '<div class="flexr">';
     echo '<div class="float-child-element">';
     echo '<div class="leftb">';

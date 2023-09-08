@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" width="486.351" height="116.303" x="0" y="0" style="enable-background:new 0 0 1400 980" version="1.1">
+<path id="ee-background" d="M0 0h486.351v116.303H0z" style="fill:#fff;fill-opacity:0;"/>
+<defs><style id="ee-google-fonts">@import url(https://fonts.googleapis.com/css?family=Happy+Monkey:400);</style></defs>
+<text x="15" y="80" 
+fill="red"
+font-family="Happy Monkey"
+font-size="90px"
+letter-spacing="3px">
+Loading...
+</text>
+</svg>
