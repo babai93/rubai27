@@ -1,3 +1,0 @@
-1fbc4312c7ca56e23550002bba45ff60bc74c7ba
-
-python plate_recognition.py --api-key 1fbc4312c7ca56e23550002bba45ff60bc74c7ba C:\Users\babai\Downloads\P60724-185914.jpg
