@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clock</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
         body {
-            background: url('images/1036.png') ;
+            background: url('/images/1036.png') ;
             background-size: 2%;
         }
         section {
             width: 80vmin;
             height: 80vmin;
             margin: auto;
-            background: #fff url('images/02-heavy-paper.png') center center;
+            background: #fff url('/images/02-heavy-paper.png') center center;
             border: 3vmin solid #2f4f4f;
             border-radius: 50%;
             margin-top: 3vmin;
@@ -56,6 +55,7 @@
             position: absolute;
             top: 19vmin;
             left: 45%;
+            /* font-size: 2.5vmin; */
             width: 10vmin;
         }
 
@@ -73,9 +73,6 @@
             transform-origin: 16%;
             -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
             drop-shadow: (12px 12px 7px rgba(0,0,0,0.5));
-        }
-        .secondhand{
-            background: red;
         }
 
         .hourhand:after,
@@ -136,108 +133,50 @@
         .secondhand:after {
             top: -2.25vmin;
         }
-        .clockss span{
-            position: absolute;
-            transform: rotate(calc(6deg * var(--a)));
-            inset: 0vmin;
-            text-align: center;
-        }
 
-        .clockss span b{
-            transform: rotate(90deg);
-            display: inline-block;
+        .hour12,
+        .hour1,
+        .hour2,
+        .hour3,
+        .hour4,
+        .hour5 {
             height: 1vmin;
-            width: 72vmin;
+            width: 55vmin;
             background: transparent;
-            border-left: 2vmin solid #000;
-            border-right: 2vmin solid #000;
+            border-left: 7vmin solid #000;
+            border-right: 7vmin solid #000;
             transform: translate(-50%, -50%);
+        /*     transform-origin: right bottom; */
             top: 50%;
             left: 50%;
             position: absolute;
         }
-        .clockhs span{
-            position: absolute;
-            transform: rotate(calc(30deg * var(--a)));
-            inset: -1.1vmin;
-            text-align: center;
-        }
 
-        .clockhs span b{
-            transform: rotate(90deg);
-            display: inline-block;
-            height: 1vmin;
-            width: 70vmin;
-            background: transparent;
-            border-left: 3vmin solid #000;
-            border-right: 3vmin solid #000;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            position: absolute;
-        }
-        .clock span{
-            position: absolute;
-            transform: rotate(calc(30deg * var(--i))); 
-            inset: 5vmin;
-            text-align: center;
-        }
+        .hour3 { transform: rotate(90deg) translate(0, 34vmin); }
 
-        .clock span b{
-            transform: rotate(calc(-30deg * var(--i)));
-            display: inline-block;
-            font-size: 8vmin;
-            font-family: 'Archivo Black', sans-serif;
-                    background-color: #000;
-                    -webkit-background-clip: text;
-                    -moz-background-clip: text;
-                    background-clip: text;
-                    color: transparent;
-                    text-shadow: #4e5d5da8 3px 1px 1px;
-        }
+        .hour1 { transform: rotate(120deg) translate(17vmin, 30vmin); }
+
+        .hour2 { transform: rotate(150deg) translate(29vmin, 18vmin); }
+
+        .hour4 { transform: rotate(210deg) translate(30vmin, -17vmin); }
+
+        .hour5 { transform: rotate(240deg) translate(17vmin, -30vmin); }
     </style>
 </head>
 <body>
 <section>
-    <div class="label"><img src="images/ajanta.png" alt="Ajanta"></div>
+    <div class="label"><img src="/images/ajanta.png" alt="Ajanta"></div>
     <div class="hourhand"></div>
     <div class="secondhand"></div>
     <div class="minutehand"></div>
-    <div class="clockss"></div>
-    <div class="clockhs"></div>
-    <div class="clock"></div>
+    <div class="hour12"></div>
+    <div class="hour1"></div>
+    <div class="hour2"></div>
+    <div class="hour3"></div>
+    <div class="hour4"></div>
+    <div class="hour5"></div>
 </section>
 
-<script>
-    // JavaScript
-    const ssContainer = document.querySelector('.clockss');
-
-    for (let i = 1; i <= 60; i++) {
-        const span = document.createElement('span');
-        span.style.setProperty('--a', i);
-        span.innerHTML = '<b></b>';
-        ssContainer.appendChild(span);
-    }
-
-    // JavaScript
-    const hsContainer = document.querySelector('.clockhs');
-
-    for (let i = 1; i <= 12; i++) {
-        const span = document.createElement('span');
-        span.style.setProperty('--a', i);
-        span.innerHTML = '<b></b>';
-        hsContainer.appendChild(span);
-    }
-
-    const clockContainer = document.querySelector('.clock');
-
-    for (let i = 1; i <= 12; i++) {
-        const span = document.createElement('span');
-        span.style.setProperty('--i', i);
-        span.innerHTML = '<b>'+ i +'</b>';
-        clockContainer.appendChild(span);
-    }
-</script>
 <script>
 function updateClock() {
     // Get the current time in UTC
