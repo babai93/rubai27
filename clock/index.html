@@ -5,275 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clock</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono&display=swap');
         body {
-            background: url('/images/1036.png') ;
-            background-size: 2%;
+        width: 98vw;
+        height: 97vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+        transition: all 0.4s;
+        /* font-family: "Roboto Mono", monospace; */
+        /* font-family: 'Archivo Black', sans-serif; */
+        font-family: 'Space Mono', monospace;
+        font-weight: 300;
+        flex-direction: column;
+        color: azure;
         }
-        section {
-            width: 80vmin;
-            height: 80vmin;
-            margin: auto;
-            background: #fff url('/images/02-heavy-paper.png') center center;
-            border: 3vmin solid #2f4f4f;
-            border-radius: 50%;
-            margin-top: 3vmin;
-            box-shadow: 
-                inset 40px 40px 90px rgba(0,0,0,.2),
-                inset 10px 10px 30px rgba(0,0,0,.5), 
-                20px 20px 30px rgba(0,0,0,.4),
-                40px 40px 60px rgba(0,0,0,.4);
+        h1{
+            font-size: 2vmax;
+        }
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            font-size: 30px;
+            text-align: center;
+        }
+        .flex-item-left {
+            padding: 1.3vmax;
+            flex: 50%;
+        }
+
+        .flex-item-right {
+            padding: 1.3vmax;
+            flex: 50%;
+        }
+        .flex-container img{
+            width: 40vmax;
+            border: 0.2vmax solid azure;
+            border-radius: 2vmax;
+            transition: all .4s ease;
+            -webkit-transition: all .4s ease;
+
+            /* -webkit-filter: drop-shadow(1px 1px 0 azure)
+                  drop-shadow(-1px -1px 0 azure);
+            filter: drop-shadow(1px 1px 0 azure) 
+                    drop-shadow(-1px -1px 0 azure); */
+        }
+        .flex-container p{
+            font-size: 1.3vmax;
+        }
+        .flex-container a{
             position: relative;
-            z-index: 1;
+            text-decoration: none;
+            color: azure;
+            cursor: pointer;
         }
-
-        section:before {
-            content: '';
-            width: 95%;
-            height: 95%;
-            border-radius: 50%;
-            display: block;
-            background: transparent;
-            border: 2vmin solid white;
+        .flex-container a:hover > img{
+            filter: drop-shadow(6px 6px 4px #47474785);
         }
-
-        /* highlight at top left of black outline */
-        section:after {
-            content: '';
-            width: 105%;
-            height: 105%;
-            border-radius: 50%;
-            display: block;
-            background: transparent;
-            position: absolute;
-            top: -2.5%;
-            left: -2.5%;
-            box-shadow: -3px -3px 9px rgba(106,106,106,.8);
-        }
-
-        .label img{
-            overflow: hidden;
-            position: absolute;
-            top: 19vmin;
-            left: 45%;
-            width: 10vmin;
-        }
-
-        .hourhand,
-        .secondhand,
-        .minutehand {
-            width: 25vmin;
-            height: 2vmin;
-            background: #000;
-            position: absolute;
-            top: 40vmin;
-            left: calc(50% - 3.5vmin);
-            z-index: 2;
-            transform: rotate(-139deg);
-            transform-origin: 16%;
-            -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
-            drop-shadow: (12px 12px 7px rgba(0,0,0,0.5));
-        }
-        .secondhand{
-            background: red;
-        }
-
-        .hourhand:after,
-        .minutehand:after,
-        .secondhand:after {
-            content: '';
-            background:red;
-            width: 5vmin;
-            height: 5vmin;
-            border-radius: 50%;
-            z-index: 3;
-            position: absolute;
-            top: -1.5vmin;
-            left: 1.5vmin;
-        }
-
-        .hourhand {
-            border-top-right-radius: 20%;
-            border-bottom-right-radius: 20%;
-            box-shadow: -10px 0px 10px rgba(0,0,0,.4);
-        }
-
-        .minutehand {
-            width: 40vmin;
-            height: 1vmin;
-            top: 40.5vmin;
-            transform: rotate(-39deg);
-            transform-origin: 10%;
-            border-top-right-radius: 30%;
-            border-bottom-right-radius: 30%;
-            box-shadow: -10px 10px 10px rgba(0,0,0,.4);
-        }
-
-        .minutehand:before {
-                content: '';
-                width: 4.5vmin;
-                height: 4.5vmin;
-                border-radius: 50%;
-                z-index: 99;
-                position: absolute;
-                top: -1.7vmin;
-                left: 1.7vmin;
-                box-shadow: -2px -2px 7px rgba(255,255,255,.6);
+        /* Responsive layout - makes a one column-layout instead of two-column layout */
+            @media (max-width: 800px) {
+            .flex-container {
+                flex-direction: column;
             }
-
-        .minutehand:after {
-            top: -2vmin;
-        }
-
-        .secondhand {
-            width: 35vmin;
-            height: .5vmin;
-            top: 40.75vmin;
-            transform: rotate(160deg);
-            transform-origin: 11.5%;
-            box-shadow: -10px -10px 10px rgba(0,0,0,.4);
-        }
-        .secondhand:after {
-            top: -2.25vmin;
-        }
-        .clockss span{
-            position: absolute;
-            transform: rotate(calc(6deg * var(--a)));
-            inset: 0vmin;
-            text-align: center;
-        }
-
-        .clockss span b{
-            transform: rotate(90deg);
-            display: inline-block;
-            height: 1vmin;
-            width: 72vmin;
-            background: transparent;
-            border-left: 2vmin solid #000;
-            border-right: 2vmin solid #000;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            position: absolute;
-        }
-        .clockhs span{
-            position: absolute;
-            transform: rotate(calc(30deg * var(--a)));
-            inset: -1.1vmin;
-            text-align: center;
-        }
-
-        .clockhs span b{
-            transform: rotate(90deg);
-            display: inline-block;
-            height: 1vmin;
-            width: 70vmin;
-            background: transparent;
-            border-left: 3vmin solid #000;
-            border-right: 3vmin solid #000;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            position: absolute;
-        }
-        .clock span{
-            position: absolute;
-            transform: rotate(calc(30deg * var(--i))); 
-            inset: 5vmin;
-            text-align: center;
-        }
-
-        .clock span b{
-            transform: rotate(calc(-30deg * var(--i)));
-            display: inline-block;
-            font-size: 8vmin;
-            font-family: 'Archivo Black', sans-serif;
-                    background-color: #000;
-                    -webkit-background-clip: text;
-                    -moz-background-clip: text;
-                    background-clip: text;
-                    color: transparent;
-                    text-shadow: #3d5555ef -3px 1px 1px;
         }
     </style>
 </head>
 <body>
-<section>
-    <div class="label"><img src="/images/ajanta.png" alt="Ajanta"></div>
-    <div class="hourhand"></div>
-    <div class="secondhand"></div>
-    <div class="minutehand"></div>
-    <div class="clockss"></div>
-    <div class="clockhs"></div>
-    <div class="clock"></div>
-</section>
-
-<script>
-    // JavaScript
-    const ssContainer = document.querySelector('.clockss');
-
-    for (let i = 1; i <= 60; i++) {
-        const span = document.createElement('span');
-        span.style.setProperty('--a', i);
-        span.innerHTML = '<b></b>';
-        ssContainer.appendChild(span);
-    }
-
-    // JavaScript
-    const hsContainer = document.querySelector('.clockhs');
-
-    for (let i = 1; i <= 12; i++) {
-        const span = document.createElement('span');
-        span.style.setProperty('--a', i);
-        span.innerHTML = '<b></b>';
-        hsContainer.appendChild(span);
-    }
-
-    const clockContainer = document.querySelector('.clock');
-
-    for (let i = 1; i <= 12; i++) {
-        const span = document.createElement('span');
-        span.style.setProperty('--i', i);
-        span.innerHTML = '<b>'+ i +'</b>';
-        clockContainer.appendChild(span);
-    }
-</script>
-<script>
-function updateClock() {
-    // Get the current time in UTC
-    // const now = new Date();
-    
-    // Convert to Indian Standard Time (IST) by adding 5 hours and 30 minutes
-    // const istTime = new Date(now.getTime() + (5 * 60 + 30) * 60 * 1000);
-
-    const date = new Date();
-    const offset = 525;
-
-    let normalized = new Date(date.getTime() + (offset) * 60000);
-    let istTime = new Date(normalized.toLocaleString("en-US", {timeZone: "Asia/Calcutta"}));
-    
-    const hours = istTime.getHours() % 12;
-    const minutes = istTime.getMinutes();
-    const seconds = istTime.getSeconds();
-
-    const hourRotation = (hours * 360 / 12) + (minutes * 360 / 60 / 12);
-    const minuteRotation = (minutes * 360 / 60) + (seconds * 360 / 60 / 60);
-    const secondRotation = (seconds * 360 / 60);
-
-    const hourhand = document.querySelector(".hourhand");
-    const minutehand = document.querySelector(".minutehand");
-    const secondhand = document.querySelector(".secondhand");
-
-    hourhand.style.transform = `rotate(${hourRotation}deg)`;
-    minutehand.style.transform = `rotate(${minuteRotation}deg)`;
-    secondhand.style.transform = `rotate(${secondRotation}deg)`;
-}
-
-// Update the clock every second
-setInterval(updateClock, 1000);
-
-// Initial call to set the initial time
-updateClock();
-</script>
+    <h1>Checkout this Clocks by Soumesh</h1>
+    <br>
+    <div class="flex-container">
+        <div class="flex-item-left">
+            <a href="analog.html"><img src="images/analog.png" alt="analog">
+            <p>Analog</p></a>
+        </div>
+        <div class="flex-item-right">
+            <a href="digital.html"><img src="images/digital.png" alt="analog">
+            <p>Digital</p></a>
+        </div>
+    </div>
 </body>
 </html>
