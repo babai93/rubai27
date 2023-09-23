@@ -7,9 +7,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono&display=swap');
         body {
-        width: 98vw;
-        height: 97vh;
-        display: flex;
+        width: 100%;
+        height: 100%;
         justify-content: center;
         align-items: center;
         background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
@@ -18,55 +17,70 @@
         /* font-family: 'Archivo Black', sans-serif; */
         font-family: 'Space Mono', monospace;
         font-weight: 300;
-        flex-direction: column;
         color: azure;
         }
         h1{
             font-size: 2vmax;
+            text-align: center;
         }
-        .flex-container {
+        .item {
+            width: 50%
+        }
+        .container {
             display: flex;
+            flex-wrap: wrap;
             flex-direction: row;
             font-size: 30px;
             text-align: center;
         }
-        .flex-item-left {
-            padding: 1.3vmax;
-            flex: 50%;
+        .container > div {
+            /* flex: 50%; or - flex: 0 50% - or - flex-basis: 50% - */
+            /*demo*/
+            flex-basis: 50%;
+            /* box-shadow: 0 0 0 1px black; */
+            margin-bottom: 10px;
         }
-
-        .flex-item-right {
-            padding: 1.3vmax;
-            flex: 50%;
-        }
-        .flex-container img{
+        .container img{
             width: 40vmax;
             border: 0.2vmax solid azure;
             border-radius: 2vmax;
             transition: all .4s ease;
             -webkit-transition: all .4s ease;
-
-            /* -webkit-filter: drop-shadow(1px 1px 0 azure)
-                  drop-shadow(-1px -1px 0 azure);
-            filter: drop-shadow(1px 1px 0 azure) 
-                    drop-shadow(-1px -1px 0 azure); */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
         }
-        .flex-container p{
+        .item p{
             font-size: 1.3vmax;
+            transition: all .4s ease;
+            -webkit-transition: all .4s ease;
         }
-        .flex-container a{
+        .item a{
             position: relative;
             text-decoration: none;
             color: azure;
             cursor: pointer;
         }
-        .flex-container a:hover > img{
+        .item a:hover > img {
             filter: drop-shadow(6px 6px 4px #47474785);
+        }
+        .item a:hover p {
+            filter: drop-shadow(2px 2px 1px #f3e5e585);
+        }
+
+        /* Styles for the <p> element when <a> is focused */
+        .item a:focus p {
+            color: blue; /* Change the color to blue when <a> is focused */
         }
         /* Responsive layout - makes a one column-layout instead of two-column layout */
             @media (max-width: 800px) {
-            .flex-container {
+            .container {
                 flex-direction: column;
+                align-content: center;
+            }
+            .container img{
+                width: 100%;
             }
         }
     </style>
@@ -74,14 +88,22 @@
 <body>
     <h1>Checkout this Clocks by Soumesh</h1>
     <br>
-    <div class="flex-container">
-        <div class="flex-item-left">
+    <div class="container">
+        <div class="item">
             <a href="analog.html"><img src="images/analog.png" alt="analog">
             <p>Analog</p></a>
         </div>
-        <div class="flex-item-right">
-            <a href="digital.html"><img src="images/digital.png" alt="analog">
+        <div class="item">
+            <a href="digital.html"><img src="images/digital.png" alt="digital">
             <p>Digital</p></a>
+        </div>
+        <div class="item">
+            <a href="analog1/index.html"><img src="images/analog1.png" alt="analog">
+            <p>Analog</p></a>
+        </div>
+        <div class="item">
+            <a href="analog2/index.html"><img src="images/analog2.png" alt="analog">
+            <p>Analog</p></a>
         </div>
     </div>
 </body>
