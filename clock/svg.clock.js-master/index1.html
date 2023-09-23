@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>A clock built with the svg.js library, inspired by the Swiss Railway clock</title>
+    <meta name="description" content="Inspired by the Swiss Railway Clock, a plugin for the svg.js library." />
     <link rel="stylesheet" href="../backstyle.css">
     <style type="text/css" media="screen">
       @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono&display=swap');
@@ -12,19 +12,19 @@
       #canvas { position: relative; height: 80%; top: 10%; margin: 0 5% 0 5%; }
       #copyright { width: 600px; margin-left: -300px; left: 50%; bottom: 0px; text-align: center; font-size: 10px; position: absolute; }
       
-    </style>  
-</head>
+    </style>    
+  </head>
   
-<body>
-  <figure id="canvas"></figure>
-  <a class="goback" onclick="history.back()">Go Back</a>
-</body>
-
-<script src="lib/svg.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/svg.easing.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="svg.clock.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" charset="utf-8">
-  SVG('canvas').clock('100%').start()
-</script>
-
+  <body>
+    <figure id="canvas"></figure>
+    <a class="goback" onclick="history.back()">Go Back</a>
+  </body>
+  
+  <script src="lib/svg.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="lib/svg.easing.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="svg.clock.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    SVG('canvas').clock('100%').start()
+  </script>
+  
 </html>
