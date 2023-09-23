@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono&display=swap');
+body{
+    font-family: 'Space Mono', 'Courier New', Courier, monospace;
+}
+.goback {
+    font-family: 'Space Mono', monospace;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: grey;
+    cursor: pointer;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+}
+.goback:hover{
+    color: rgb(2, 14, 14);
+    background-color: rgba(79, 235, 87, 0.808);
+    font-weight: bold;
+    padding: 6px;
+    border-radius: 10px;
+}
