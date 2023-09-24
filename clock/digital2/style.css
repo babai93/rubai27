@@ -123,3 +123,9 @@ body{
     color: #112103b3;
     letter-spacing: 0.1em;
 }
+@media only screen and (max-width: 768px) {
+    .clock{
+        flex-direction: column;
+    }
+    
+}
