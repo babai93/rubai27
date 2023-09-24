@@ -6,7 +6,7 @@ SVG.Clock = function(size, options) {
   settings = {
     plate:    '#FFFFFF'
   , marks:    '#111111'
-  , label:    '#B1B2AF'
+  , label:    '#4d4d4f'
   , hours:    '#222222'
   , minutes:  '#2A2A2A'
   , seconds:  '#D40000'
@@ -58,19 +58,53 @@ SVG.Clock = function(size, options) {
         .rotate(i * 6, 50, 50)
   
   /* add svg.js label */
-  var label = this.label = this.text('Swiss Railway Clock')
-    .move(50, 70)
-    .fill(settings.label)
-    .attr('style', 'cursor:pointer;')
-    .font({
-      anchor: 'middle'
-    , size:   3
-    , family: '"Space Mono", Helvetcia Neue, Helvetcia, Arial' //Source Sans Pro,
-    , weight: '300'
-    })
-    .click(function() {
-      window.location.href = 'https://en.wikipedia.org/wiki/Swiss_railway_clock'
-    })
+  // var label = this.label = this.text('Swiss Railway Clock')
+  //   .move(50, 70)
+  //   .fill(settings.label)
+  //   .attr('style', 'cursor:pointer;')
+  //   .font({
+  //     anchor: 'middle'
+  //   , size:   3
+  //   , family: '"Space Mono", Helvetcia Neue, Helvetcia, Arial' //Source Sans Pro,
+  //   , weight: '300'
+  //   })
+  //   .click(function() {
+  //     window.location.href = 'https://en.wikipedia.org/wiki/Swiss_railway_clock'
+  //   })
+  // var label = this.image('MobaTimeLogo.png') // Replace 'MobaTimeLogo.png' with the actual image file path
+  //   .scale(0.2)
+  //   .move(40, 60)
+  //   .fill(settings.label)
+  //   .attr('style', 'cursor:pointer;')
+  //   .click(function() {
+  //     window.location.href = 'https://en.wikipedia.org/wiki/Swiss_railway_clock'
+  //   });
+
+    // Create the image
+
+  var labelImage = this.image('MobaTimeLogo.png') // Replace 'MobaTimeLogo.png' with the actual image file path
+  .scale(0.2)
+  .move(40, 60)
+  .fill(settings.label)
+  .attr('style', 'cursor:pointer;')
+  .click(function() {
+    window.location.href = 'https://en.wikipedia.org/wiki/Swiss_railway_clock'
+  });
+
+  // Create the text
+  var labelText = this.text('Swiss Railway Clock')
+  .move(50, 79) // Adjust the coordinates as needed to position the text below the image
+  .fill(settings.label)
+  .font({
+    anchor: 'middle',
+    size:   2,
+    family: '"Space Mono", Helvetica Neue, Helvetica, Arial',
+    weight: '300'
+  });
+
+// Group the image and text together
+var labelGroup = this.group(labelImage, labelText);
+
   
   /* draw hour pointer */
   this.hours = this.rect(5,45)

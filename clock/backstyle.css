@@ -8,14 +8,20 @@ body{
     bottom: 40px;
     left: 40px;
     color: grey;
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: 1px solid rgba(79 235 87 / 10%);
     cursor: pointer;
-    transition: all .4s ease;
-    -webkit-transition: all .4s ease;
+    transition: all .9s ease;
+    -webkit-transition: all .9s ease;
 }
-.goback:hover{
+.goback:hover, .goback:focus, .goback:active{
     color: rgb(2, 14, 14);
+    border: 1px solid rgb(2, 14, 14);
     background-color: rgba(79, 235, 87, 0.808);
     font-weight: bold;
-    padding: 6px;
-    border-radius: 10px;
+    box-shadow: 8px 8px 8px -10px rgb(0 0 0 / 67%),
+    inset 5px 5px 10px rgba(103 211 139 / 73%),
+    5px 5px 3px rgb(0 25 1 / 31%),
+    inset -1px -1px 1px rgb(0 0 0 / 62%);
 }
