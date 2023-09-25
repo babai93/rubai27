@@ -1,0 +1,662 @@
+@import url('https://fonts.googleapis.com/css?family=K2D');
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'K2D', sans-serif;
+}
+
+.hand-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    filter: drop-shadow(2px 4px 2px #000);
+}
+
+.watch {
+    position: relative;
+    z-index: 0;
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+    margin-top: 70px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.watch:before {
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 115%;
+    left: 0;
+    text-align: center;
+    color: #000;
+}
+
+.case {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    z-index: 0;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background: radial-gradient(ellipse at center, rgba(161, 161, 161, 1) 0%, rgba(161, 161, 161, 1) 62%, rgba(255, 255, 255, 1) 64%, rgba(255, 255, 255, 1) 66%, rgba(103, 103, 103, 1) 70%);
+}
+
+.dial {
+    box-shadow: inset 3px 3px 20px rgba(0, 0, 0, .24);
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    background: #fff;
+}
+
+.brand {
+    position: absolute;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    top: 53px;
+}
+
+.indiglo {
+    position: absolute;
+    font-size: 9px;
+    text-align: center;
+    width: 100%;
+    bottom: 55px;
+}
+
+.lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(198, 198, 198, 1) 0%, rgba(255, 255, 255, 1) 60%);
+}
+
+.line {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+
+.line:before,
+.line:after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 8px;
+    background: #000;
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.line:after {
+    bottom: 2px;
+    top: auto;
+}
+
+.line:nth-child(1) {
+    transform: rotate(6deg);
+}
+
+.line:nth-child(2) {
+    transform: rotate(12deg);
+}
+
+.line:nth-child(3) {
+    transform: rotate(18deg);
+}
+
+.line:nth-child(4) {
+    transform: rotate(24deg);
+}
+
+.line:nth-child(5) {
+    transform: rotate(30deg);
+}
+
+.line:nth-child(6) {
+    transform: rotate(36deg);
+}
+
+.line:nth-child(7) {
+    transform: rotate(42deg);
+}
+
+.line:nth-child(8) {
+    transform: rotate(48deg);
+}
+
+.line:nth-child(9) {
+    transform: rotate(54deg);
+}
+
+.line:nth-child(10) {
+    transform: rotate(60deg);
+}
+
+.line:nth-child(11) {
+    transform: rotate(66deg);
+}
+
+.line:nth-child(12) {
+    transform: rotate(72deg);
+}
+
+.line:nth-child(13) {
+    transform: rotate(78deg);
+}
+
+.line:nth-child(14) {
+    transform: rotate(84deg);
+}
+
+.line:nth-child(15) {
+    transform: rotate(90deg);
+}
+
+.line:nth-child(16) {
+    transform: rotate(96deg);
+}
+
+.line:nth-child(17) {
+    transform: rotate(102deg);
+}
+
+.line:nth-child(18) {
+    transform: rotate(108deg);
+}
+
+.line:nth-child(19) {
+    transform: rotate(114deg);
+}
+
+.line:nth-child(20) {
+    transform: rotate(120deg);
+}
+
+.line:nth-child(21) {
+    transform: rotate(126deg);
+}
+
+.line:nth-child(22) {
+    transform: rotate(132deg);
+}
+
+.line:nth-child(23) {
+    transform: rotate(138deg);
+}
+
+.line:nth-child(24) {
+    transform: rotate(144deg);
+}
+
+.line:nth-child(25) {
+    transform: rotate(150deg);
+}
+
+.line:nth-child(26) {
+    transform: rotate(156deg);
+}
+
+.line:nth-child(27) {
+    transform: rotate(162deg);
+}
+
+.line:nth-child(28) {
+    transform: rotate(168deg);
+}
+
+.line:nth-child(29) {
+    transform: rotate(174deg);
+}
+
+.line:nth-child(30) {
+    transform: rotate(180deg);
+}
+
+.line:nth-child(5):before,
+.line:nth-child(5):after {
+    width: 4px;
+    height: 5px;
+}
+
+.line:nth-child(10):before,
+.line:nth-child(10):after {
+    width: 4px;
+    height: 5px;
+}
+
+.line:nth-child(15):before,
+.line:nth-child(15):after {
+    width: 4px;
+    height: 5px;
+}
+
+.line:nth-child(20):before,
+.line:nth-child(20):after {
+    width: 4px;
+    height: 5px;
+}
+
+.line:nth-child(25):before,
+.line:nth-child(25):after {
+    width: 4px;
+    height: 5px;
+}
+
+.line:nth-child(30):before,
+.line:nth-child(30):after {
+    width: 4px;
+    height: 5px;
+}
+
+.twelve,
+.twenty {
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+}
+
+.twelve {
+    width: 180px;
+    height: 180px;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    background: #eee;
+    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, .05);
+}
+
+.twenty {
+    width: 130px;
+    height: 130px;
+    top: 35px;
+    left: 35px;
+    font-size: 12px;
+}
+
+.number {
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.number:nth-child(1) {
+    transform: rotate(30deg);
+}
+
+.number:nth-child(1) span {
+    display: inline-block;
+    transform: rotate(-30deg);
+}
+
+.number:nth-child(2) {
+    transform: rotate(60deg);
+}
+
+.number:nth-child(2) span {
+    display: inline-block;
+    transform: rotate(-60deg);
+}
+
+.number:nth-child(3) {
+    transform: rotate(90deg);
+}
+
+.number:nth-child(3) span {
+    display: inline-block;
+    transform: rotate(-90deg);
+}
+
+.number:nth-child(4) {
+    transform: rotate(120deg);
+}
+
+.number:nth-child(4) span {
+    display: inline-block;
+    transform: rotate(-120deg);
+}
+
+.number:nth-child(5) {
+    transform: rotate(150deg);
+}
+
+.number:nth-child(5) span {
+    display: inline-block;
+    transform: rotate(-150deg);
+}
+
+.number:nth-child(6) {
+    transform: rotate(180deg);
+}
+
+.number:nth-child(6) span {
+    display: inline-block;
+    transform: rotate(-180deg);
+}
+
+.number:nth-child(7) {
+    transform: rotate(210deg);
+}
+
+.number:nth-child(7) span {
+    display: inline-block;
+    transform: rotate(-210deg);
+}
+
+.number:nth-child(8) {
+    transform: rotate(240deg);
+}
+
+.number:nth-child(8) span {
+    display: inline-block;
+    transform: rotate(-240deg);
+}
+
+.number:nth-child(9) {
+    transform: rotate(270deg);
+}
+
+.number:nth-child(9) span {
+    display: inline-block;
+    transform: rotate(-270deg);
+}
+
+.number:nth-child(10) {
+    transform: rotate(300deg);
+}
+
+.number:nth-child(10) span {
+    display: inline-block;
+    transform: rotate(-300deg);
+}
+
+.number:nth-child(11) {
+    transform: rotate(330deg);
+}
+
+.number:nth-child(11) span {
+    display: inline-block;
+    transform: rotate(-330deg);
+}
+
+.number:nth-child(12) {
+    transform: rotate(360deg);
+}
+
+.number:nth-child(12) span {
+    display: inline-block;
+    transform: rotate(-360deg);
+}
+
+.hours,
+.minutes,
+.seconds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation-name: time;
+    animation-iteration-count: infinite;
+}
+
+.hours .current,
+.minutes .current,
+.seconds .current {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.5s ease;
+}
+
+.hours {
+    animation-duration: 43200s;
+}
+
+.minutes {
+    animation-duration: 3600s;
+}
+
+.seconds {
+    animation-duration: 60s;
+}
+
+.quartz:before {
+    content: '1 bps, 3600 vph';
+}
+
+.quartz .hours {
+    animation-timing-function: steps(21600, end);
+}
+
+.quartz .minutes {
+    animation-timing-function: steps(3600, end);
+}
+
+.quartz .seconds {
+    animation-timing-function: steps(60, end);
+}
+
+.quartz .seconds .hand {
+    animation: bounce 1s infinite;
+}
+
+.mechanical-18000:before {
+    content: '5 bps, 18000 vph';
+}
+
+.mechanical-18000 .hours {
+    animation-timing-function: steps(1080000, end);
+}
+
+.mechanical-18000 .minutes {
+    animation-timing-function: steps(18000, end);
+}
+
+.mechanical-18000 .seconds {
+    animation-timing-function: steps(300, end);
+}
+
+.mechanical-21600:before {
+    content: '6 bps, 21600 vph';
+}
+
+.mechanical-21600 .hours {
+    animation-timing-function: steps(1296000, end);
+}
+
+.mechanical-21600 .minutes {
+    animation-timing-function: steps(21600, end);
+}
+
+.mechanical-21600 .seconds {
+    animation-timing-function: steps(360, end);
+}
+
+.mechanical-28800:before {
+    content: '8 bps, 28800 vph';
+}
+
+.mechanical-28800 .hours {
+    animation-timing-function: steps(1728000, end);
+}
+
+.mechanical-28800 .minutes {
+    animation-timing-function: steps(28800, end);
+}
+
+.mechanical-28800 .seconds {
+    animation-timing-function: steps(480, end);
+}
+
+.mechanical-36000:before {
+    content: '10 bps, 36000 vph';
+}
+
+.mechanical-36000 .hours {
+    animation-timing-function: steps(216000, end);
+}
+
+.mechanical-36000 .minutes {
+    animation-timing-function: steps(36000, end);
+}
+
+.mechanical-36000 .seconds {
+    animation-timing-function: steps(600, end);
+}
+
+.mechanical-57600:before {
+    content: '16 bps, 57600 vph';
+}
+
+.mechanical-57600 .hours {
+    animation-timing-function: steps(3456000, end);
+}
+
+.mechanical-57600 .minutes {
+    animation-timing-function: steps(57600, end);
+}
+
+.mechanical-57600 .seconds {
+    animation-timing-function: steps(960, end);
+}
+
+.mechanical-spring-drive:before {
+    content: 'Smooth';
+}
+
+.mechanical-spring-drive .hours {
+    animation-timing-function: linear;
+}
+
+.mechanical-spring-drive .minutes {
+    animation-timing-function: linear;
+}
+
+.mechanical-spring-drive .seconds {
+    animation-timing-function: linear;
+}
+
+.hand {
+    width: 4px;
+    height: 60px;
+    border-radius: 100px;
+    background: #000;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: 50% 100%;
+    box-shadow: 1px 0 3px rgba(0, 0, 0, .24);
+}
+
+.hand:before {
+    width: 15px;
+    height: 15px;
+    content: '';
+    background: #000;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .24);
+}
+
+.minutes .hand:after,
+.hours .hand:after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60%;
+    background: #fff;
+    position: absolute;
+    z-index: 10;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.minutes .hand {
+    height: 85px;
+}
+
+.seconds .hand {
+    height: 85px;
+    width: 1px;
+    background: #a41642;
+}
+
+.seconds .hand:before {
+    background: #a41642;
+    width: 8px;
+    height: 8px;
+}
+
+.seconds .hand:after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 1px;
+    border-width: 0 1px 30px;
+    border-style: solid;
+    border-color: transparent transparent #a41642;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes time {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    2% {
+        transform: rotate(1deg);
+    }
+
+    8% {
+        transform: rotate(-0.3deg);
+    }
+
+    15% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}

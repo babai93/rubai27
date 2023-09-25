@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wrist watch beat rates</title>
+    <!-- <info>https://codepen.io/istavros/pen/MZzxaa</info> -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="../backstyle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="watch quartz">
+        <div class="case"></div>
+        <div class="dial">
+            <div class="brand">TIMEX</div>
+            <div class="indiglo">INDIGLO</div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="twelve">
+                <div class="number"><span>1</span></div>
+                <div class="number"><span>2</span></div>
+                <div class="number"><span>3</span></div>
+                <div class="number"><span>4</span></div>
+                <div class="number"><span>5</span></div>
+                <div class="number"><span>6</span></div>
+                <div class="number"><span>7</span></div>
+                <div class="number"><span>8</span></div>
+                <div class="number"><span>9</span></div>
+                <div class="number"><span>10</span></div>
+                <div class="number"><span>11</span></div>
+                <div class="number"><span>12</span></div>
+            </div>
+            <div class="twenty">
+                <div class="number"><span>13</span></div>
+                <div class="number"><span>14</span></div>
+                <div class="number"><span>15</span></div>
+                <div class="number"><span>16</span></div>
+                <div class="number"><span>17</span></div>
+                <div class="number"><span>18</span></div>
+                <div class="number"><span>19</span></div>
+                <div class="number"><span>20</span></div>
+                <div class="number"><span>21</span></div>
+                <div class="number"><span>22</span></div>
+                <div class="number"><span>23</span></div>
+                <div class="number"><span>24</span></div>
+            </div>
+            <div class="hand-wrapper">
+                <div class="hours">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="minutes">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="seconds">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="watch mechanical-18000">
+        <div class="case"></div>
+        <div class="dial">
+            <div class="brand">TIMEX</div>
+            <div class="indiglo">INDIGLO</div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="twelve">
+                <div class="number"><span>1</span></div>
+                <div class="number"><span>2</span></div>
+                <div class="number"><span>3</span></div>
+                <div class="number"><span>4</span></div>
+                <div class="number"><span>5</span></div>
+                <div class="number"><span>6</span></div>
+                <div class="number"><span>7</span></div>
+                <div class="number"><span>8</span></div>
+                <div class="number"><span>9</span></div>
+                <div class="number"><span>10</span></div>
+                <div class="number"><span>11</span></div>
+                <div class="number"><span>12</span></div>
+            </div>
+            <div class="twenty">
+                <div class="number"><span>13</span></div>
+                <div class="number"><span>14</span></div>
+                <div class="number"><span>15</span></div>
+                <div class="number"><span>16</span></div>
+                <div class="number"><span>17</span></div>
+                <div class="number"><span>18</span></div>
+                <div class="number"><span>19</span></div>
+                <div class="number"><span>20</span></div>
+                <div class="number"><span>21</span></div>
+                <div class="number"><span>22</span></div>
+                <div class="number"><span>23</span></div>
+                <div class="number"><span>24</span></div>
+            </div>
+            <div class="hand-wrapper">
+                <div class="hours">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="minutes">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="seconds">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="watch mechanical-21600">
+        <div class="case"></div>
+        <div class="dial">
+            <div class="brand">TIMEX</div>
+            <div class="indiglo">INDIGLO</div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="twelve">
+                <div class="number"><span>1</span></div>
+                <div class="number"><span>2</span></div>
+                <div class="number"><span>3</span></div>
+                <div class="number"><span>4</span></div>
+                <div class="number"><span>5</span></div>
+                <div class="number"><span>6</span></div>
+                <div class="number"><span>7</span></div>
+                <div class="number"><span>8</span></div>
+                <div class="number"><span>9</span></div>
+                <div class="number"><span>10</span></div>
+                <div class="number"><span>11</span></div>
+                <div class="number"><span>12</span></div>
+            </div>
+            <div class="twenty">
+                <div class="number"><span>13</span></div>
+                <div class="number"><span>14</span></div>
+                <div class="number"><span>15</span></div>
+                <div class="number"><span>16</span></div>
+                <div class="number"><span>17</span></div>
+                <div class="number"><span>18</span></div>
+                <div class="number"><span>19</span></div>
+                <div class="number"><span>20</span></div>
+                <div class="number"><span>21</span></div>
+                <div class="number"><span>22</span></div>
+                <div class="number"><span>23</span></div>
+                <div class="number"><span>24</span></div>
+            </div>
+            <div class="hand-wrapper">
+                <div class="hours">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="minutes">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="seconds">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="watch mechanical-28800">
+        <div class="case"></div>
+        <div class="dial">
+            <div class="brand">TIMEX</div>
+            <div class="indiglo">INDIGLO</div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="twelve">
+                <div class="number"><span>1</span></div>
+                <div class="number"><span>2</span></div>
+                <div class="number"><span>3</span></div>
+                <div class="number"><span>4</span></div>
+                <div class="number"><span>5</span></div>
+                <div class="number"><span>6</span></div>
+                <div class="number"><span>7</span></div>
+                <div class="number"><span>8</span></div>
+                <div class="number"><span>9</span></div>
+                <div class="number"><span>10</span></div>
+                <div class="number"><span>11</span></div>
+                <div class="number"><span>12</span></div>
+            </div>
+            <div class="twenty">
+                <div class="number"><span>13</span></div>
+                <div class="number"><span>14</span></div>
+                <div class="number"><span>15</span></div>
+                <div class="number"><span>16</span></div>
+                <div class="number"><span>17</span></div>
+                <div class="number"><span>18</span></div>
+                <div class="number"><span>19</span></div>
+                <div class="number"><span>20</span></div>
+                <div class="number"><span>21</span></div>
+                <div class="number"><span>22</span></div>
+                <div class="number"><span>23</span></div>
+                <div class="number"><span>24</span></div>
+            </div>
+            <div class="hand-wrapper">
+                <div class="hours">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="minutes">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="seconds">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="watch mechanical-36000">
+        <div class="case"></div>
+        <div class="dial">
+            <div class="brand">TIMEX</div>
+            <div class="indiglo">INDIGLO</div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="twelve">
+                <div class="number"><span>1</span></div>
+                <div class="number"><span>2</span></div>
+                <div class="number"><span>3</span></div>
+                <div class="number"><span>4</span></div>
+                <div class="number"><span>5</span></div>
+                <div class="number"><span>6</span></div>
+                <div class="number"><span>7</span></div>
+                <div class="number"><span>8</span></div>
+                <div class="number"><span>9</span></div>
+                <div class="number"><span>10</span></div>
+                <div class="number"><span>11</span></div>
+                <div class="number"><span>12</span></div>
+            </div>
+            <div class="twenty">
+                <div class="number"><span>13</span></div>
+                <div class="number"><span>14</span></div>
+                <div class="number"><span>15</span></div>
+                <div class="number"><span>16</span></div>
+                <div class="number"><span>17</span></div>
+                <div class="number"><span>18</span></div>
+                <div class="number"><span>19</span></div>
+                <div class="number"><span>20</span></div>
+                <div class="number"><span>21</span></div>
+                <div class="number"><span>22</span></div>
+                <div class="number"><span>23</span></div>
+                <div class="number"><span>24</span></div>
+            </div>
+            <div class="hand-wrapper">
+                <div class="hours">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="minutes">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="seconds">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="watch mechanical-57600">
+        <div class="case"></div>
+        <div class="dial">
+            <div class="brand">TIMEX</div>
+            <div class="indiglo">INDIGLO</div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="twelve">
+                <div class="number"><span>1</span></div>
+                <div class="number"><span>2</span></div>
+                <div class="number"><span>3</span></div>
+                <div class="number"><span>4</span></div>
+                <div class="number"><span>5</span></div>
+                <div class="number"><span>6</span></div>
+                <div class="number"><span>7</span></div>
+                <div class="number"><span>8</span></div>
+                <div class="number"><span>9</span></div>
+                <div class="number"><span>10</span></div>
+                <div class="number"><span>11</span></div>
+                <div class="number"><span>12</span></div>
+            </div>
+            <div class="twenty">
+                <div class="number"><span>13</span></div>
+                <div class="number"><span>14</span></div>
+                <div class="number"><span>15</span></div>
+                <div class="number"><span>16</span></div>
+                <div class="number"><span>17</span></div>
+                <div class="number"><span>18</span></div>
+                <div class="number"><span>19</span></div>
+                <div class="number"><span>20</span></div>
+                <div class="number"><span>21</span></div>
+                <div class="number"><span>22</span></div>
+                <div class="number"><span>23</span></div>
+                <div class="number"><span>24</span></div>
+            </div>
+            <div class="hand-wrapper">
+                <div class="hours">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="minutes">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="seconds">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="watch mechanical-spring-drive">
+        <div class="case"></div>
+        <div class="dial">
+            <div class="brand">TIMEX</div>
+            <div class="indiglo">INDIGLO</div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="twelve">
+                <div class="number"><span>1</span></div>
+                <div class="number"><span>2</span></div>
+                <div class="number"><span>3</span></div>
+                <div class="number"><span>4</span></div>
+                <div class="number"><span>5</span></div>
+                <div class="number"><span>6</span></div>
+                <div class="number"><span>7</span></div>
+                <div class="number"><span>8</span></div>
+                <div class="number"><span>9</span></div>
+                <div class="number"><span>10</span></div>
+                <div class="number"><span>11</span></div>
+                <div class="number"><span>12</span></div>
+            </div>
+            <div class="twenty">
+                <div class="number"><span>13</span></div>
+                <div class="number"><span>14</span></div>
+                <div class="number"><span>15</span></div>
+                <div class="number"><span>16</span></div>
+                <div class="number"><span>17</span></div>
+                <div class="number"><span>18</span></div>
+                <div class="number"><span>19</span></div>
+                <div class="number"><span>20</span></div>
+                <div class="number"><span>21</span></div>
+                <div class="number"><span>22</span></div>
+                <div class="number"><span>23</span></div>
+                <div class="number"><span>24</span></div>
+            </div>
+            <div class="hand-wrapper">
+                <div class="hours">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="minutes">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="seconds">
+                    <div class="current">
+                        <div class="hand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="goback" onclick="history.back()">Go Back</a>
+    <script src="script.js"></script>
+</body>
+
+</html>
