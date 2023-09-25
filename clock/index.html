@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,25 +8,28 @@
     <link rel="stylesheet" href="../backstyle.css">
     <style>
         body {
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
-        transition: all 0.4s;
-        /* font-family: "Roboto Mono", monospace; */
-        /* font-family: 'Archivo Black', sans-serif; */
-        font-family: 'Space Mono', monospace;
-        font-weight: 300;
-        color: azure;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+            transition: all 0.4s;
+            /* font-family: "Roboto Mono", monospace; */
+            /* font-family: 'Archivo Black', sans-serif; */
+            font-family: 'Space Mono', monospace;
+            font-weight: 300;
+            color: azure;
         }
-        h1{
+
+        h1 {
             font-size: 2vmax;
             text-align: center;
         }
+
         .item {
             width: 50%
         }
+
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -33,14 +37,16 @@
             font-size: 30px;
             text-align: center;
         }
-        .container > div {
+
+        .container>div {
             /* flex: 50%; or - flex: 0 50% - or - flex-basis: 50% - */
             /*demo*/
             flex-basis: 50%;
             /* box-shadow: 0 0 0 1px black; */
             margin-bottom: 10px;
         }
-        .container img{
+
+        .container img {
             width: 40vmax;
             border: 0.2vmax solid azure;
             border-radius: 2vmax;
@@ -51,72 +57,88 @@
             margin-right: auto;
             width: 90%;
         }
-        .item p{
+
+        .item p {
             font-size: 1.3vmax;
             transition: all .4s ease;
             -webkit-transition: all .4s ease;
         }
-        .item a{
+
+        .item a {
             position: relative;
             text-decoration: none;
             color: azure;
             cursor: pointer;
         }
-        .item a:hover > img {
+
+        .item a:hover>img {
             filter: drop-shadow(6px 6px 4px #47474785);
         }
+
         .item a:hover p {
             filter: drop-shadow(2px 2px 1px #f3e5e585);
         }
 
         /* Styles for the <p> element when <a> is focused */
         .item a:focus p {
-            color: blue; /* Change the color to blue when <a> is focused */
+            color: blue;
+            /* Change the color to blue when <a> is focused */
         }
+
         /* Responsive layout - makes a one column-layout instead of two-column layout */
-            @media (max-width: 800px) {
+        @media (max-width: 800px) {
             .container {
                 flex-direction: column;
                 align-content: center;
             }
-            .container img{
+
+            .container img {
                 width: 100%;
             }
         }
     </style>
 </head>
+
 <body>
     <h1>Checkout this Clocks by Soumesh</h1>
     <br>
     <div class="container">
         <div class="item">
             <a href="analog0/"><img src="images/analog.png" alt="analog">
-            <p>Analog</p></a>
+                <p>Analog</p>
+            </a>
         </div>
         <div class="item">
             <a href="digital1/"><img src="images/digital.png" alt="digital">
-            <p>Digital</p></a>
+                <p>Digital</p>
+            </a>
         </div>
         <div class="item">
             <a href="analog1/"><img src="images/analog1.png" alt="analog">
-            <p>Analog</p></a>
+                <p>Analog</p>
+            </a>
         </div>
         <div class="item">
             <a href="analog2/"><img src="images/analog2.png" alt="analog">
-            <p>Analog</p></a>
+                <p>Analog</p>
+            </a>
         </div>
         <div class="item">
             <a href="analog-master/"><img src="images/analog-master.png" alt="analog">
-            <p>Analog</p></a>
+                <p>Analog</p>
+            </a>
         </div>
         <div class="item">
             <a href="svg.clock.js-master/"><img src="images/svg.clock.js-master.png" alt="analog">
-            <p>Swiss Railway Clock</p></a>
+                <p>Swiss Railway Clock</p>
+            </a>
         </div>
         <div class="item">
             <a href="digital2/"><img src="images/digital2.png" alt="analog">
-            <p>Digital Clock by Muhammad Irshad</p></a>
+                <p>Digital Clock by Muhammad Irshad</p>
+            </a>
         </div>
     </div>
 </body>
+
 </html>
