@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono&display=swap');
-body{
+
+body {
     font-family: 'Space Mono', 'Courier New', Courier, monospace;
 }
+
 .goback {
     font-family: 'Space Mono', monospace;
     position: absolute;
@@ -15,13 +17,16 @@ body{
     transition: all .9s ease;
     -webkit-transition: all .9s ease;
 }
-.goback:hover, .goback:focus, .goback:active{
+
+.goback:hover,
+.goback:focus,
+.goback:active {
     color: rgb(2, 14, 14);
     border: 1px solid rgb(2, 14, 14);
     background-color: rgba(79, 235, 87, 0.808);
-    font-weight: bold;
     box-shadow: 8px 8px 8px -10px rgb(0 0 0 / 67%),
-    inset 5px 5px 10px rgba(103 211 139 / 73%),
-    5px 5px 3px rgb(0 25 1 / 31%),
-    inset -1px -1px 1px rgb(0 0 0 / 62%);
+        inset 5px 5px 10px rgba(103 211 139 / 73%),
+        5px 5px 3px rgb(0 25 1 / 31%),
+        inset -1px -1px 1px rgb(0 0 0 / 62%);
+    /* font-weight: bold; */
 }
