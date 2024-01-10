@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clock</title>
     <link rel="stylesheet" href="../backstyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         body {
             width: 100%;
@@ -103,7 +104,7 @@
     <h1>Checkout this Clocks by Soumesh</h1>
     <br>
     <div class="container">
-        <div class="item">
+        <!--<div class="item">
             <a href="analog0/"><img src="images/analog.png" alt="analog">
                 <p>Analog</p>
             </a>
@@ -167,8 +168,35 @@
             <a href="glassmorphism/"><img src="images/glassmorphism.jpg" alt="digital">
                 <p>Digital Clock Glassmorphism</p>
             </a>
-        </div>
+        </div>-->
     </div>
+
+    <script>
+        $(document).ready(function () {
+            var container = $(".container");
+
+            var items = [
+                { href: "analog0/", imgSrc: "images/analog.png", alt: "analog", text: "Analog" },
+                { href: "digital1/", imgSrc: "images/digital.png", alt: "digital", text: "Digital" },
+                { href: "analog1/", imgSrc: "images/analog1.png", alt: "analog", text: "Analog" },
+                // Add more items as needed
+
+                // Example:
+                // { href: "example/", imgSrc: "images/example.png", alt: "example", text: "Example" },
+            ];
+
+            $.each(items, function (index, item) {
+                var itemHtml = '<div class="item">' +
+                    '<a href="' + item.href + '">' +
+                    '<img src="' + item.imgSrc + '" alt="' + item.alt + '">' +
+                    '<p>' + item.text + '</p>' +
+                    '</a>' +
+                    '</div>';
+
+                container.append(itemHtml);
+            });
+        });
+    </script>
 </body>
 
 </html>
