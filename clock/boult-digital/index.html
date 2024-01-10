@@ -9,14 +9,23 @@
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
         @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
+        :root {
+            --r: 20px;
+            --c: #171717;
+            --light-reflect: inset -5px 20px 2px -20px #fff, inset 5px -20px 2px -20px #fff;
+            --shadow-reflect: inset -19px 1px 2px -20px #000, inset 19px 1px 2px -20px #000, inset 19px 1px 2px -20px #000, inset -15px -26px 3px -30px #000;
+            --hh: 8rem;
+        }
+
         body {
             display: flex;
+            padding: 0 2rem;
+            color: var(--c);
+            font-family: sans-serif;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Black Han Sans', sans-serif;
-            background-color: #111;
+            min-height: 100svh;
+            background: radial-gradient(#ffffff54 2px, transparent 0) 0 0/40px 40px, radial-gradient(#00000026 2px, transparent 0) -1px 1px/40px 40px, radial-gradient(ellipse at 150% -50%, #6d788f, #fff);
         }
 
         .goback {
@@ -47,6 +56,7 @@
         }
 
         #hour {
+            font-family: 'Black Han Sans', sans-serif;
             color: #fff;
             font-size: 1.9em;
             position: absolute;
@@ -59,6 +69,7 @@
         }
 
         #minutes {
+            font-family: 'Black Han Sans', sans-serif;
             font-size: 1.9em;
             color: #846e6e;
             position: absolute;
@@ -89,7 +100,7 @@
             left: 77%;
             top: -8%;
             color: white;
-            font-family: arial;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .icon-yellow {
