@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@800&display=swap');
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Oxanium', Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg width=%222000%22 height=%221000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3ClinearGradient id=%22a%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%23352c22%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%23676059%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22b%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%233a3129%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%236b645e%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22c%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%233f372f%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%236f6963%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22d%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%233e3e38%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%236e6e69%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22e%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%233b4741%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%236c7570%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22f%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%2338504a%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%23697b77%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22g%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%23325652%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%2365807d%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22h%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%232b5957%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%23608281%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22i%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%23245c5d%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%235a8485%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22j%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%231d6264%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%2355898a%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22k%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%23176c6f%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%23519093%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22l%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%2311777a%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%234c999b%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient id=%22m%22 gradientTransform=%22rotate(90)%22%3E%3Cstop offset=%225%25%22 stop-color=%22%230b8185%22%2F%3E%3Cstop offset=%2295%25%22 stop-color=%22%2348a0a3%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath fill=%22%2330261c%22 d=%22M0 0h2000v1000H0z%22%2F%3E%3Cpath d=%22M0 71c96.785-5.44 193.57-10.88 272-7 78.43 3.88 138.508 17.077 216 22 77.492 4.923 172.398 1.57 255 0s152.899-1.357 232-5 167.007-11.141 261-13 194.075 1.923 283 0c88.925-1.923 166.693-9.55 245-10 78.307-.45 157.154 6.275 276 13l-40 929H0Z%22 fill=%22url(%23a)%22%2F%3E%3Cpath d=%22M0 142c92.09 1.403 184.18 2.806 275 0s180.372-9.82 249-10c68.628-.18 116.334 6.478 198 6 81.666-.478 197.292-8.09 296-7 98.708 1.09 180.5 10.88 255 12 74.5 1.12 141.712-6.43 221-11 79.288-4.57 170.654-6.163 257-4 86.346 2.163 167.673 8.082 289 14l-40 858H0Z%22 fill=%22url(%23b)%22%2F%3E%3Cpath d=%22M0 214c89.272 5.164 178.545 10.328 266 13 87.455 2.672 173.093 2.852 258-2 84.907-4.852 169.082-14.735 241-12 71.918 2.735 131.577 18.09 213 16s184.608-21.622 276-26 170.99 6.398 253 14c82.01 7.602 166.431 12.03 249 11 82.569-1.03 163.284-7.515 284-14l-40 786H0Z%22 fill=%22url(%23c)%22%2F%3E%3Cpath d=%22M0 285c77.376-9.81 154.753-19.62 244-14 89.247 5.62 190.365 26.67 279 28 88.635 1.33 164.787-17.06 245-18 80.213-.94 164.488 15.571 251 15 86.512-.571 175.26-18.225 257-20 81.74-1.775 156.468 12.33 234 17 77.532 4.67 157.866-.094 240-3 82.134-2.906 166.067-3.953 290-5l-40 715H0Z%22 fill=%22url(%23d)%22%2F%3E%3Cpath d=%22M0 357c77.79-.27 155.582-.539 235 0s160.464 1.885 251 0 190.561-7.003 269-10 135.292-3.875 223 0 206.272 12.503 294 15c87.728 2.497 144.619-1.135 219 0s166.252 7.039 254 7c87.748-.039 171.374-6.02 295-12l-40 643H0Z%22 fill=%22url(%23e)%22%2F%3E%3Cpath d=%22M0 428c76.723 7.654 153.446 15.309 244 13 90.554-2.309 194.94-14.581 275-22 80.06-7.419 135.795-9.984 220-3 84.205 6.984 196.881 23.518 284 24 87.119.482 148.681-15.087 231-16 82.319-.913 185.393 12.831 265 17 79.607 4.169 135.745-1.237 212-5s172.628-5.881 309-8l-40 572H0Z%22 fill=%22url(%23f)%22%2F%3E%3Cpath d=%22M0 500c83.07-4.684 166.14-9.367 255-6 88.86 3.367 183.51 14.785 270 13 86.49-1.785 164.822-16.772 240-18 75.178-1.228 147.202 11.304 233 16s185.368 1.558 264 2c78.632.442 136.324 4.465 218 1 81.676-3.465 187.336-14.419 278-17 90.664-2.581 166.332 3.21 282 9l-40 500H0Z%22 fill=%22url(%23g)%22%2F%3E%3Cpath d=%22M0 571c94.124-6.483 188.248-12.966 272-11 83.752 1.966 157.133 12.381 226 19 68.867 6.619 133.22 9.44 224 4 90.78-5.44 207.988-19.143 295-19 87.012.143 143.828 14.131 221 13 77.172-1.131 174.7-17.381 264-21 89.3-3.619 170.371 5.395 252 10 81.629 4.605 163.814 4.803 286 5l-40 429H0Z%22 fill=%22url(%23h)%22%2F%3E%3Cpath d=%22M0 642c83.99-7.566 167.98-15.131 257-11 89.02 4.131 183.067 19.96 264 26 80.933 6.04 148.75 2.291 232-2s181.935-9.125 271-16 168.512-15.791 245-11 150.016 23.29 234 27c83.984 3.71 178.424-7.369 263-12s159.288-2.816 274-1l-40 358H0Z%22 fill=%22url(%23i)%22%2F%3E%3Cpath d=%22M0 714c80.905-9.4 161.81-18.799 245-15 83.19 3.799 168.663 20.796 252 25 83.337 4.204 164.538-4.387 254-8 89.462-3.613 187.185-2.25 275-1s165.724 2.387 244-3c78.276-5.387 156.92-17.296 235-13 78.08 4.296 155.594 24.799 238 30 82.406 5.201 169.703-4.9 297-15l-40 286H0Z%22 fill=%22url(%23j)%22%2F%3E%3Cpath d=%22M0 785c71.566 5.276 143.133 10.552 227 11 83.867.448 180.035-3.932 271-3 90.965.932 176.726 7.175 264 6 87.274-1.175 176.06-9.768 261-10 84.94-.232 166.036 7.897 240 11 73.964 3.103 140.798 1.182 228-3s194.772-10.623 283-13c88.228-2.377 157.114-.688 266 1l-40 215H0Z%22 fill=%22url(%23k)%22%2F%3E%3Cpath d=%22M0 857c89.055-7.634 178.11-15.269 261-11 82.89 4.269 159.613 20.44 235 22 75.387 1.56 149.44-11.494 237-13 87.56-1.506 188.631 8.536 276 13s161.037 3.351 237 1 154.22-5.94 246-11 197.08-11.588 284-12c86.92-.412 155.46 5.294 264 11l-40 143H0Z%22 fill=%22url(%23l)%22%2F%3E%3Cpath d=%22M0 928c88.36-3.39 176.719-6.78 259-10 82.281-3.22 158.485-6.267 239 1 80.515 7.267 165.342 24.848 245 24 79.658-.848 154.149-20.125 241-21s186.063 16.652 274 20c87.937 3.348 164.598-7.483 248-8 83.402-.517 173.543 9.28 257 10 83.457.72 160.228-7.64 277-16l-40 72H0Z%22 fill=%22url(%23m)%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.container {
+    /* background-color: #fff; */
+    margin: 0 auto;
+    padding: 0 80px;
+    position: relative;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen {
+    background-color: #5ea5fb;
+    text-align: center;
+    width: 250px;
+    height: 300px;
+    border-radius: 25px;
+    box-shadow: 0 8px 32px 0 rgba(87, 87, 87, 0.20);
+    border: 9px solid #355a64;
+}
+
+.img-container {
+    overflow: hidden;
+    height: 280px;
+    max-height: 300px;
+    position: relative;
+}
+
+.img-container>.img {
+    width: 232px;
+    margin-top: -57px;
+    transform: rotate(-20deg);
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.img-brand {
+    position: fixed;
+    height: 34px;
+    margin-top: -164px;
+    margin-left: 78px;
+    animation: blink 2s linear infinite;
+    /* Adjust the duration (2s) as needed */
+}
+
+.text {
+    font-size: 80px;
+    font-weight: bolder;
+    color: #fff;
+    margin-top: 35px;
+    margin-left: 9px;
+}
+
+#minutes {
+    color: #355a64;
+}
+
+.small {
+    font-size: 15px;
+    display: none;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../backstyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="screen">
+            <div class="text">
+                <span id="hours">00</span>
+                <span></span>
+                <span id="minutes">00</span>
+                <span id="seconds" class="small">00</span>
+            </div>
+            <div class="img-container">
+                <img class="img" src="Astro--e2ab2a04.gif" />
+            </div>
+            <img class="img-brand" src="boat.svg" />
+        </div>
+    </div>
+    <a class="goback" onclick="history.back()">Go Back</a>
+    <script>
+        function updateTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            hours = hours.toString().padStart(2, '0'); // Fixed typo here
+            minutes = minutes.toString().padStart(2, '0'); // Fixed typo here
+            seconds = seconds.toString().padStart(2, '0'); // Fixed typo here
+            document.getElementById('hours').innerHTML = hours;
+            document.getElementById('minutes').innerHTML = minutes;
+            document.getElementById('seconds').innerHTML = seconds;
+        }
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+
+</html>
