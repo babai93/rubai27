@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock Glassmorphism</title>
+    <link rel="stylesheet" href="../backstyle.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        *,
+        *:before,
+        *:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.308), rgba(0, 0, 0, 0.257)), linear-gradient(45deg, #2e0352, #230472, #042a82);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .square,
+        .circle {
+            position: absolute;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .square {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: -40px;
+            left: -90px;
+            background-color: #0095ff;
+            border-radius: 50% 4px 50% 50%;
+        }
+
+        .circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            bottom: -60px;
+            right: -70px;
+            background-color: #b21a8c;
+            border-radius: 50% 50% 50% 4px;
+        }
+
+        .middle {
+            position: absolute;
+            width: 40%;
+            height: 20%;
+            background: linear-gradient(45deg, #0095ff6b, #b21a8c52);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+
+        }
+
+        .wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            text-align: center;
+            padding: 2rem 5rem;
+            box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.028),
+                -3px -3px 6px rgba(0, 0, 0, 0.028);
+            border-radius: 10px;
+            backdrop-filter: blur(17px);
+            -webkit-backdrop-filter: blur(17px);
+        }
+
+        .wrapper>p {
+            font-size: 70px;
+            position: relative;
+            bottom: 15px;
+        }
+
+        h1 {
+            font-size: 100px;
+        }
+
+        .h-box,
+        .m-box,
+        .s-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 130px;
+        }
+
+        .h-box>p,
+        .m-box>p,
+        .s-box>p {
+            font-size: 18px;
+        }
+
+        @media screen and (max-width: 940px) {
+            .container {
+                overflow: hidden;
+            }
+
+            .wrapper {
+                width: 100%;
+                gap: 2rem;
+            }
+
+            h1 {
+                font-size: 50px;
+            }
+
+            .h-box,
+            .m-box,
+            .s-box {
+                width: 70px;
+            }
+
+            .h-box>p,
+            .m-box>p,
+            .s-box>p {
+                font-size: 17px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .wrapper {
+                gap: 2rem;
+            }
+
+            .square {
+                z-index: -1;
+            }
+
+            .circle {
+                z-index: -1;
+            }
+
+            .middle {
+                display: none;
+            }
+
+            .h-box,
+            .m-box,
+            .s-box {
+                width: 31px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="square"></div>
+        <div class="circle"></div>
+        <div class="middle"></div>
+        <div class="wrapper">
+            <div class="h-box">
+                <h1 class="hours">00</h1>
+                <p>HOURS</p>
+            </div>
+            <p>:</p>
+            <div class="m-box">
+                <h1 class="minutes">00</h1>
+                <p>MINS</p>
+            </div>
+            <p>:</p>
+            <div class="s-box">
+                <h1 class="seconds">00</h1>
+                <p>SEC</p>
+            </div>
+        </div>
+    </div>
+
+    <a class="goback" onclick="history.back()">Go Back</a>
+    <script>
+
+
+        const hours = document.querySelector(".hours");
+        const minutes = document.querySelector(".minutes");
+        const seconds = document.querySelector(".seconds");
+
+
+        setInterval(() => {
+            const currentTime = new Date();
+            hours.innerHTML = currentTime.getHours();
+            if (hours.innerHTML < 10) {
+                hours.innerHTML = "0" + currentTime.getHours();
+            }
+            minutes.innerHTML = currentTime.getMinutes();
+            if (minutes.innerHTML < 10) {
+                minutes.innerHTML = "0" + currentTime.getMinutes();
+            }
+            seconds.innerHTML = currentTime.getSeconds();
+            if (seconds.innerHTML < 10) {
+                seconds.innerHTML = "0" + currentTime.getSeconds();
+            }
+        }, 1000)
+    </script>
+</body>
+
+</html>
