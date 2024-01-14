@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer-div {
+            padding: 9px;
+            /* spacing inside the outer div to create the border effect */
+            background: linear-gradient(to bottom, #f3e2c7 0%, #c19e67 50%, #b68d4c 51%, #e9d4b3 100%);
+            /* color of the "border" */
+            border-radius: 35px;
+            /* rounded corners for the outer div */
+            width: 200px;
+            height: 220px;
+        }
+
+        .inner-div {
+            background-color: #fff;
+            /* color inside the "border" */
+            padding: 10px;
+            /* spacing inside the inner div */
+            border-radius: 35px;
+            /* rounded corners for the inner div */
+            width: 180px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer-div">
+        <div class="inner-div">
+            Content goes here
+        </div>
+    </div>
+</body>
+
+</html>

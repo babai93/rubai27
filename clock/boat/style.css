@@ -39,7 +39,8 @@ body {
     height: 300px;
     border-radius: 25px;
     box-shadow: 0 8px 32px 0 rgba(87, 87, 87, 0.20);
-    border: 9px solid #355a64;
+    /* border: 9px solid #355a64; */
+    box-shadow: inset 0px 0px 23px 0px white, 0px 0px 0px 12px #1d4c59;
 }
 
 .img-container {
@@ -72,8 +73,26 @@ body {
     height: 34px;
     margin-top: -164px;
     margin-left: 78px;
-    animation: blink 2s linear infinite;
+    /* animation: blink 2s linear infinite; */
     /* Adjust the duration (2s) as needed */
+}
+
+@keyframes blink {
+
+    0%,
+    50%,
+    100% {
+        opacity: 0;
+    }
+
+    25%,
+    75% {
+        opacity: 1;
+    }
+}
+
+.blink {
+    animation: blink 2s linear infinite;
 }
 
 .text {
