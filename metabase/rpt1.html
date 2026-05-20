@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="myFunction()">
@@ -15,13 +16,16 @@
         src="https://smartservice.mahindrafs.com/metabase/public/question/dfc64246-5afd-4be1-ba78-8e73bde26174#refresh=60&theme=night">
     </iframe>
     <script>
-        function myFunction() {
-          var iframe = document.getElementById("frameID");
-          var elmnt = iframe.contentWindow.document.getElementsByClassName("EmbedFrame-footer")[0];
-          elmnt.style.display = "none";
-          alert("frame content : " + elmnt);
-          document.getElementById("demo").innerHTML = elmnt.innerHTML;
-        }
+        $('#frameID').on('load', function () {
+            let iframe = document.getElementById("frameID");
+            try {
+                let innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+                $(innerDoc).find('header').hide();
+                $(innerDoc).find('footer').hide();
+            } catch (e) {
+                console.log("Cross-origin blocked or error:", e);
+            }
+        });
     </script>
 </body>
 </html>
