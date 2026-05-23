@@ -1,464 +1,603 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soumesh Dutta – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soumesh Dutta – Portfolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #0d0f14;
+            --surface: #161920;
+            --border: #252832;
+            --accent: #7fffd4;
+            --accent2: #ff6b6b;
+            --accent3: #ffd166;
+            --text: #e8eaf0;
+            --muted: #7a7f95;
+            --mono: 'Space Mono', monospace;
+            --sans: 'DM Sans', sans-serif;
+        }
 
-    :root {
-      --bg: #0d0f14;
-      --surface: #161920;
-      --border: #252832;
-      --accent: #7fffd4;
-      --accent2: #ff6b6b;
-      --accent3: #ffd166;
-      --text: #e8eaf0;
-      --muted: #7a7f95;
-      --mono: 'Space Mono', monospace;
-      --sans: 'DM Sans', sans-serif;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(13, 15, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
 
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(13,15,20,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
-    nav .ti{color:#fff;}
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 1rem;
-      color: var(--accent);
-      letter-spacing: 0.05em;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
+        .nav-logo {
+            font-family: var(--mono);
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+        }
 
-    /* HERO */
-    .hero {
-      padding: 6rem 2rem 4rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .hero-tag {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-family: var(--mono);
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1.2rem;
-    }
-    h1 span { color: var(--accent); }
-    .hero p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 540px;
-      margin-bottom: 2rem;
-    }
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.65rem 1.4rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #0d0f14;
-    }
-    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
-    .btn-outline {
-      border: 1px solid var(--border);
-      color: var(--text);
-      background: transparent;
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-    /* SECTION */
-    section {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 3.5rem 2rem;
-    }
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    h2 {
-      font-family: var(--mono);
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .section-divider {
-      height: 1px;
-      background: var(--border);
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .section-sub {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-    }
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
 
-    /* PROJECT CARDS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.2rem;
-    }
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-    .card-badge {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      margin-bottom: 0.9rem;
-    }
-    .badge-qbasic { background: rgba(127,255,212,0.12); color: var(--accent); }
-    .badge-html   { background: rgba(255,107,107,0.12); color: var(--accent2); }
-    .badge-scratch{ background: rgba(255,209,102,0.12); color: var(--accent3); }
+        /* HERO */
+        .hero {
+            padding: 6rem 2rem 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .card h3 {
-      font-family: var(--mono);
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-    .card p {
-      color: var(--muted);
-      font-size: 0.875rem;
-      line-height: 1.55;
-      margin-bottom: 1.1rem;
-    }
+        .hero-tag {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
 
-    /* Bullet-point links */
-    .card-links {
-      list-style: disc;
-      padding-left: 1.1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-    .card-links li { color: var(--muted); font-size: 0.85rem; }
-    .card-links a {
-      color: var(--accent);
-      text-decoration: none;
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      transition: opacity 0.15s;
-    }
-    .card-links a:hover { opacity: 0.75; text-decoration: underline; }
-    .card-links .link-label { color: var(--muted); margin-right: 0.3rem; }
+        h1 {
+            font-family: var(--mono);
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-family: var(--mono);
-    }
-    footer a { color: var(--accent); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+        h1 span {
+            color: var(--accent);
+        }
 
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero, .card { animation: fadeUp 0.5s ease both; }
-    .card:nth-child(1) { animation-delay: 0.05s; }
-    .card:nth-child(2) { animation-delay: 0.10s; }
-    .card:nth-child(3) { animation-delay: 0.15s; }
-    .card:nth-child(4) { animation-delay: 0.20s; }
-    .card:nth-child(5) { animation-delay: 0.25s; }
-    .card:nth-child(6) { animation-delay: 0.30s; }
-    .card:nth-child(7) { animation-delay: 0.35s; }
-    .card:nth-child(8) { animation-delay: 0.40s; }
+        .hero p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 540px;
+            margin-bottom: 2rem;
+        }
 
-    @media (max-width: 600px) {
-      nav { padding: 0 1rem; }
-      .nav-links { gap: 1.2rem; }
-      .hero { padding: 4rem 1.2rem 2.5rem; }
-      section { padding: 2.5rem 1.2rem; }
-    }
-  </style>
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.65rem 1.4rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0d0f14;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* SECTION */
+        section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: var(--mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: var(--border);
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .section-sub {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        /* PROJECT CARDS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.4rem 1.5rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .card-badge {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.9rem;
+        }
+
+        .badge-qbasic {
+            background: rgba(127, 255, 212, 0.12);
+            color: var(--accent);
+        }
+
+        .badge-html {
+            background: rgba(255, 107, 107, 0.12);
+            color: var(--accent2);
+        }
+
+        .badge-scratch {
+            background: rgba(255, 209, 102, 0.12);
+            color: var(--accent3);
+        }
+
+        .card h3 {
+            font-family: var(--mono);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.875rem;
+            line-height: 1.55;
+            margin-bottom: 1.1rem;
+        }
+
+        /* Bullet-point links */
+        .card-links {
+            list-style: disc;
+            padding-left: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .card-links li {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .card-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            transition: opacity 0.15s;
+        }
+
+        .card-links a:hover {
+            opacity: 0.75;
+            text-decoration: underline;
+        }
+
+        .card-links .link-label {
+            color: var(--muted);
+            margin-right: 0.3rem;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-family: var(--mono);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero,
+        .card {
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.10s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.20s;
+        }
+
+        .card:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .card:nth-child(6) {
+            animation-delay: 0.30s;
+        }
+
+        .card:nth-child(7) {
+            animation-delay: 0.35s;
+        }
+
+        .card:nth-child(8) {
+            animation-delay: 0.40s;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+            }
+
+            .hero {
+                padding: 4rem 1.2rem 2.5rem;
+            }
+
+            section {
+                padding: 2.5rem 1.2rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-logo">rubai27.netlify.app</span>
-    <ul class="nav-links">
-        <li><a href="/"><i class="ti ti-home"></i>Home</a></li>
-      <li><a href="#qbasic"><i class="devicon-html5-plain"></i>QBasic</a></li>
-      <li><a href="#html"><i class="ti ti-code"></i>HTML</a></li>
-      <li><a href="#scratch"><i class="devicon-html5-plain"></i>Scratch</a></li>
-    </ul>
-  </nav>
+    <!-- NAV -->
+    <nav>
+        <span class="nav-logo">rubai27.netlify.app</span>
+        <ul class="nav-links">
+            <li><a href="/"><i class="ti ti-home"></i> Home</a></li>
+            <li><a href="#qbasic"><i class="ti ti-terminal-2"></i> QBasic</a></li>
+            <li><a href="#html"><i class="ti ti-code"></i> HTML</a></li>
+            <li><a href="#scratch"><i class="ti ti-device-gamepad-2"></i> Scratch</a></li>
+        </ul>
+    </nav>
 
-  <!-- HERO -->
-  <div class="hero">
-    <p class="hero-tag">// Portfolio</p>
-    <h1>Hi, I'm <span>Soumesh</span><br>Dutta.</h1>
-    <p>I build games and programs using QBasic, HTML/CSS, and Scratch. Here's a collection of my projects.</p>
-    <div class="hero-cta">
-      <a href="#qbasic" class="btn btn-primary">View Projects</a>
-      <a href="https://scratch.mit.edu/users/Rubai27/" target="_blank" class="btn btn-outline">Scratch Profile ↗</a>
+    <!-- HERO -->
+    <div class="hero">
+        <p class="hero-tag">// Portfolio</p>
+        <h1>Hi, I'm <span>Soumesh</span><br>Dutta.</h1>
+        <p>I build games and programs using QBasic, HTML/CSS, and Scratch. Here's a collection of my projects.</p>
+        <div class="hero-cta">
+            <a href="#qbasic" class="btn btn-primary">View Projects</a>
+            <a href="https://scratch.mit.edu/users/Rubai27/" target="_blank" class="btn btn-outline">Scratch Profile
+                ↗</a>
+        </div>
     </div>
-  </div>
 
-  <div class="section-divider"></div>
+    <div class="section-divider"></div>
 
-  <!-- QBASIC SECTION -->
-  <section id="qbasic">
-    <p class="section-label">01 — QBasic Programs</p>
-    <h2>QBasic Projects</h2>
-    <p class="section-sub">Games and utilities written in QBasic / QB64</p>
+    <!-- QBASIC SECTION -->
+    <section id="qbasic">
+        <p class="section-label">01 — QBasic Programs</p>
+        <h2>QBasic Projects</h2>
+        <p class="section-sub">Games and utilities written in QBasic / QB64</p>
 
-    <div class="projects-grid">
+        <div class="projects-grid">
 
-      <!-- Math Questions -->
-      <div class="card">
-        <span class="card-badge badge-qbasic">QBasic</span>
-        <h3>Math Questions Game</h3>
-        <p>A quiz game with 10 easy questions and 7 hard questions. Win the game and hunt for hidden Easter eggs if you're lucky!</p>
-        <ul class="card-links">
-          <li><a href="https://drive.google.com/file/d/1yzrOvMVVXhQtjf9ZSMlmUlJu3RzUNI_6/view?usp=sharing" target="_blank">⬇ Download Game</a></li>
-          <li><a href="#pf2">📄 View Source Code</a></li>
-        </ul>
-      </div>
+            <!-- Math Questions -->
+            <div class="card">
+                <span class="card-badge badge-qbasic">QBasic</span>
+                <h3>Math Questions Game</h3>
+                <p>A quiz game with 10 easy questions and 7 hard questions. Win the game and hunt for hidden Easter eggs
+                    if you're lucky!</p>
+                <ul class="card-links">
+                    <li><a href="https://drive.google.com/file/d/1yzrOvMVVXhQtjf9ZSMlmUlJu3RzUNI_6/view?usp=sharing"
+                            target="_blank">⬇ Download Game</a></li>
+                    <li><a href="#pf2">📄 View Source Code</a></li>
+                </ul>
+            </div>
 
-      <!-- Rock Paper Scissors -->
-      <div class="card">
-        <span class="card-badge badge-qbasic">QBasic</span>
-        <h3>Rock, Paper &amp; Scissors</h3>
-        <p>A fun Rock, Paper and Scissors game. Play as many times as you want — it's simple and enjoyable!</p>
-        <ul class="card-links">
-          <li><a href="https://drive.google.com/file/d/16h2TVhD-jizM3kxqbYfqioM1dN_xNG0a/view?usp=sharing" target="_blank">⬇ Download Game</a></li>
-          <li><a href="#pf4">📄 View Source Code</a></li>
-        </ul>
-      </div>
+            <!-- Rock Paper Scissors -->
+            <div class="card">
+                <span class="card-badge badge-qbasic">QBasic</span>
+                <h3>Rock, Paper &amp; Scissors</h3>
+                <p>A fun Rock, Paper and Scissors game. Play as many times as you want — it's simple and enjoyable!</p>
+                <ul class="card-links">
+                    <li><a href="https://drive.google.com/file/d/16h2TVhD-jizM3kxqbYfqioM1dN_xNG0a/view?usp=sharing"
+                            target="_blank">⬇ Download Game</a></li>
+                    <li><a href="#pf4">📄 View Source Code</a></li>
+                </ul>
+            </div>
 
-      <!-- Calculator -->
-      <div class="card">
-        <span class="card-badge badge-qbasic">QBasic</span>
-        <h3>QB64 Calculator</h3>
-        <p>A calculator program that handles circular and other math problems using QBasic / QB64.</p>
-        <ul class="card-links">
-          <li><a href="https://drive.google.com/file/d/16h2TVhD-jizM3kxqbYfqioM1dN_xNG0a/view?usp=sharing" target="_blank">⬇ Download</a></li>
-          <li><a href="#pf5">📄 View Source Code</a></li>
-        </ul>
-      </div>
+            <!-- Calculator -->
+            <div class="card">
+                <span class="card-badge badge-qbasic">QBasic</span>
+                <h3>QB64 Calculator</h3>
+                <p>A calculator program that handles circular and other math problems using QBasic / QB64.</p>
+                <ul class="card-links">
+                    <li><a href="https://drive.google.com/file/d/16h2TVhD-jizM3kxqbYfqioM1dN_xNG0a/view?usp=sharing"
+                            target="_blank">⬇ Download</a></li>
+                    <li><a href="#pf5">📄 View Source Code</a></li>
+                </ul>
+            </div>
 
-      <!-- Input Statement -->
-      <div class="card">
-        <span class="card-badge badge-qbasic">QBasic</span>
-        <h3>Input Statement Program</h3>
-        <p>A basic QBasic program that demonstrates the use of the <code style="color:var(--accent);font-family:var(--mono);font-size:0.8em">INPUT</code> statement interactively.</p>
-        <ul class="card-links">
-          <li><a href="#pfa">📄 View Source Code</a></li>
-        </ul>
-      </div>
+            <!-- Input Statement -->
+            <div class="card">
+                <span class="card-badge badge-qbasic">QBasic</span>
+                <h3>Input Statement Program</h3>
+                <p>A basic QBasic program that demonstrates the use of the <code
+                        style="color:var(--accent);font-family:var(--mono);font-size:0.8em">INPUT</code> statement
+                    interactively.</p>
+                <ul class="card-links">
+                    <li><a href="#pfa">📄 View Source Code</a></li>
+                </ul>
+            </div>
 
-      <!-- Gorillas -->
-      <div class="card">
-        <span class="card-badge badge-qbasic">QBasic</span>
-        <h3>Gorillas Game</h3>
-        <p>The classic Gorillas game — throw exploding bananas at your opponent by adjusting angle and power. Includes wind effects!</p>
-        <ul class="card-links">
-          <li><a href="https://drive.google.com/file/d/1jPXlnRQzqYPeM-x49JX-CkldOn67Racm/view?usp=sharing" target="_blank">⬇ Download Game</a></li>
-          <li><a href="#pfe">📄 View Source Code</a></li>
-        </ul>
-      </div>
+            <!-- Gorillas -->
+            <div class="card">
+                <span class="card-badge badge-qbasic">QBasic</span>
+                <h3>Gorillas Game</h3>
+                <p>The classic Gorillas game — throw exploding bananas at your opponent by adjusting angle and power.
+                    Includes wind effects!</p>
+                <ul class="card-links">
+                    <li><a href="https://drive.google.com/file/d/1jPXlnRQzqYPeM-x49JX-CkldOn67Racm/view?usp=sharing"
+                            target="_blank">⬇ Download Game</a></li>
+                    <li><a href="#pfe">📄 View Source Code</a></li>
+                </ul>
+            </div>
 
-      <!-- Try Your Luck -->
-      <div class="card">
-        <span class="card-badge badge-qbasic">QBasic</span>
-        <h3>Try Your Luck</h3>
-        <p>A luck-based game — do you feel lucky? Give it a shot and see what happens!</p>
-        <ul class="card-links">
-          <li><a href="https://drive.google.com/file/d/1w-ufAHPw5anGP_oIaC4aMMkbhN-ajG3o/view?usp=sharing" target="_blank">⬇ Download Game</a></li>
-          <li><a href="#pff">📄 View Source Code</a></li>
-        </ul>
-      </div>
+            <!-- Try Your Luck -->
+            <div class="card">
+                <span class="card-badge badge-qbasic">QBasic</span>
+                <h3>Try Your Luck</h3>
+                <p>A luck-based game — do you feel lucky? Give it a shot and see what happens!</p>
+                <ul class="card-links">
+                    <li><a href="https://drive.google.com/file/d/1w-ufAHPw5anGP_oIaC4aMMkbhN-ajG3o/view?usp=sharing"
+                            target="_blank">⬇ Download Game</a></li>
+                    <li><a href="#pff">📄 View Source Code</a></li>
+                </ul>
+            </div>
 
-      <!-- Write program -->
-      <div class="card">
-        <span class="card-badge badge-qbasic">QBasic</span>
-        <h3>Simple Write Program</h3>
-        <p>A beginner QBasic program demonstrating basic print and output statements.</p>
-        <ul class="card-links">
-          <li><a href="#pfb">📄 View Source Code</a></li>
-        </ul>
-      </div>
+            <!-- Write program -->
+            <div class="card">
+                <span class="card-badge badge-qbasic">QBasic</span>
+                <h3>Simple Write Program</h3>
+                <p>A beginner QBasic program demonstrating basic print and output statements.</p>
+                <ul class="card-links">
+                    <li><a href="#pfb">📄 View Source Code</a></li>
+                </ul>
+            </div>
 
-      <!-- Multiplication Table -->
-      <div class="card">
-        <span class="card-badge badge-qbasic">QBasic</span>
-        <h3>Multiplication Table</h3>
-        <p>Enter a number and generate its multiplication table. Supports looping to generate more tables.</p>
-        <ul class="card-links">
-          <li><a href="#pfc">📄 View Source Code</a></li>
-        </ul>
-      </div>
+            <!-- Multiplication Table -->
+            <div class="card">
+                <span class="card-badge badge-qbasic">QBasic</span>
+                <h3>Multiplication Table</h3>
+                <p>Enter a number and generate its multiplication table. Supports looping to generate more tables.</p>
+                <ul class="card-links">
+                    <li><a href="#pfc">📄 View Source Code</a></li>
+                </ul>
+            </div>
 
-    </div>
-  </section>
+        </div>
+    </section>
 
-  <div class="section-divider"></div>
+    <div class="section-divider"></div>
 
-  <!-- HTML SECTION -->
-  <section id="html">
-    <p class="section-label">02 — HTML / CSS</p>
-    <h2>HTML Projects</h2>
-    <p class="section-sub">Web-based projects built with HTML, CSS, and JavaScript</p>
+    <!-- HTML SECTION -->
+    <section id="html">
+        <p class="section-label">02 — HTML / CSS</p>
+        <h2>HTML Projects</h2>
+        <p class="section-sub">Web-based projects built with HTML, CSS, and JavaScript</p>
 
-    <div class="projects-grid">
-
-      <div class="card">
-        <span class="card-badge badge-html">HTML / CSS</span>
-        <h3>Calculator</h3>
-        <p>A fully working calculator built with HTML and CSS, usable right in the browser.</p>
-        <ul class="card-links">
-          <li><a href="calc/index.html">🌐 Open Calculator</a></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <span class="card-badge badge-html">HTML / CSS</span>
-        <h3>Portfolio Website</h3>
-        <p>A personal portfolio website built with HTML and CSS showcasing my projects.</p>
-        <ul class="card-links">
-          <li><a href="https://rubai27n.netlify.app/" target="_blank">🌐 View Live Site ↗</a></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <span class="card-badge badge-html">CSS</span>
-        <h3>CSS Glass Animation</h3>
-        <p>A visual CSS animation experiment featuring a glassmorphism effect.</p>
-        <ul class="card-links">
-          <li><a href="/AniPages/index.html">🌐 View Animation</a></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <span class="card-badge badge-html">HTML / JS</span>
-        <h3>Analog &amp; Digital Clock</h3>
-        <p>A live clock showing both analog and digital time displays using JavaScript.</p>
-        <ul class="card-links">
-          <li><a href="/clock/">🌐 Open Clock</a></li>
-        </ul>
-      </div>
+        <div class="projects-grid">
 
             <div class="card">
-        <span class="card-badge badge-html">HTML / CSS</span>
-        <h3>Spa & Retreat</h3>
-        <p>Spa & Retreat website showcasing services and booking options.</p>
-        <ul class="card-links">
-          <li><a href="/spa/">🌐 View Site</a></li>
-        </ul>
-      </div>
+                <span class="card-badge badge-html">HTML / CSS</span>
+                <h3>Calculator</h3>
+                <p>A fully working calculator built with HTML and CSS, usable right in the browser.</p>
+                <ul class="card-links">
+                    <li><a href="calc/index.html">🌐 Open Calculator</a></li>
+                </ul>
+            </div>
 
-    </div>
-  </section>
+            <div class="card">
+                <span class="card-badge badge-html">HTML / CSS</span>
+                <h3>Portfolio Website</h3>
+                <p>A personal portfolio website built with HTML and CSS showcasing my projects.</p>
+                <ul class="card-links">
+                    <li><a href="https://rubai27n.netlify.app/" target="_blank">🌐 View Live Site ↗</a></li>
+                </ul>
+            </div>
 
-  <div class="section-divider"></div>
+            <div class="card">
+                <span class="card-badge badge-html">CSS</span>
+                <h3>CSS Glass Animation</h3>
+                <p>A visual CSS animation experiment featuring a glassmorphism effect.</p>
+                <ul class="card-links">
+                    <li><a href="/AniPages/index.html">🌐 View Animation</a></li>
+                </ul>
+            </div>
 
-  <!-- SCRATCH SECTION -->
-  <section id="scratch">
-    <p class="section-label">03 — Scratch</p>
-    <h2>Scratch Games</h2>
-    <p class="section-sub">Games made on MIT Scratch — playable in the browser</p>
+            <div class="card">
+                <span class="card-badge badge-html">HTML / JS</span>
+                <h3>Analog &amp; Digital Clock</h3>
+                <p>A live clock showing both analog and digital time displays using JavaScript.</p>
+                <ul class="card-links">
+                    <li><a href="/clock/">🌐 Open Clock</a></li>
+                </ul>
+            </div>
 
-    <div class="projects-grid">
-      <div class="card">
-        <span class="card-badge badge-scratch">Scratch</span>
-        <h3>Scratch Games Collection</h3>
-        <p>A variety of fun games created on MIT Scratch. Visit my profile to browse and play all of them!</p>
-        <ul class="card-links">
-          <li><a href="https://scratch.mit.edu/users/Rubai27/" target="_blank">🎮 Open Scratch Profile ↗</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
+            <div class="card">
+                <span class="card-badge badge-html">HTML / CSS</span>
+                <h3>Spa & Retreat</h3>
+                <p>Spa & Retreat website showcasing services and booking options.</p>
+                <ul class="card-links">
+                    <li><a href="/spa/">🌐 View Site</a></li>
+                </ul>
+            </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Made by <strong>Soumesh Dutta</strong> &nbsp;·&nbsp; <a href="https://scratch.mit.edu/users/Rubai27/" target="_blank">Scratch</a> &nbsp;·&nbsp; <a href="https://rubai27n.netlify.app/" target="_blank">Portfolio ↗</a></p>
-  </footer>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SCRATCH SECTION -->
+    <section id="scratch">
+        <p class="section-label">03 — Scratch</p>
+        <h2>Scratch Games</h2>
+        <p class="section-sub">Games made on MIT Scratch — playable in the browser</p>
+
+        <div class="projects-grid">
+            <div class="card">
+                <span class="card-badge badge-scratch">Scratch</span>
+                <h3>Scratch Games Collection</h3>
+                <p>A variety of fun games created on MIT Scratch. Visit my profile to browse and play all of them!</p>
+                <ul class="card-links">
+                    <li><a href="https://scratch.mit.edu/users/Rubai27/" target="_blank">🎮 Open Scratch Profile ↗</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Made by <strong>Soumesh Dutta</strong> &nbsp;·&nbsp; <a href="https://scratch.mit.edu/users/Rubai27/"
+                target="_blank">Scratch</a> &nbsp;·&nbsp; <a href="https://rubai27n.netlify.app/"
+                target="_blank">Portfolio ↗</a></p>
+    </footer>
 
 </body>
+
 </html>
