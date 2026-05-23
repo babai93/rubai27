@@ -5,11 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mayarani · Spa & Retreat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Finlandica+Headline:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <style>
         @font-face {
             font-family: 'SymphonieCalligraphy';
             src: url('SymphonieCalligraphyDEMO-Regular.otf') format('opentype');
             font-weight: normal;
+            font-style: normal;
+        }
+
+        .saira-subtitle {
+            font-family: "Saira", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+        }
+
+        .finlandica-headline-circle {
+            font-family: "Finlandica Headline", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
             font-style: normal;
         }
 
@@ -53,16 +76,15 @@
             z-index: 10;
         }
 
-        .nav-links {
+        .nav-left {
             display: flex;
             gap: 48px;
             list-style: none;
             flex: 1;
         }
 
-        .nav-links a {
+        .nav-left a {
             color: var(--cream);
-            font-family: Arial, Helvetica, sans-serif, serif;
             text-decoration: none;
             font-size: 11px;
             letter-spacing: 0.22em;
@@ -71,7 +93,7 @@
             transition: opacity 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-left a:hover {
             opacity: 1;
         }
 
@@ -95,7 +117,6 @@
 
         .nav-right a {
             color: var(--cream);
-            font-family: Arial, Helvetica, sans-serif, serif;
             text-decoration: none;
             font-size: 11px;
             letter-spacing: 0.22em;
@@ -208,6 +229,7 @@
 
         .welcome-title {
             font-size: 14px;
+            font-family: "Finlandica Headline", sans-serif;
             letter-spacing: 0.48em;
             text-transform: uppercase;
             color: var(--navy-mid);
@@ -216,6 +238,7 @@
 
         .welcome-body {
             font-size: 9px;
+            font-family: "Finlandica Headline", sans-serif;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--navy-mid);
@@ -280,9 +303,9 @@
 
         .badge-ring text {
             font-size: 20px;
-            letter-spacing: 0.55em;
+            letter-spacing: 0.62em;
             fill: var(--navy-mid);
-            font-family: 'Georgia', serif;
+            font-family: "Finlandica Headline", sans-serif;
             text-transform: uppercase;
         }
 
@@ -320,7 +343,7 @@
                 order: -1;
             }
 
-            .nav-links,
+            .nav-left,
             .nav-right {
                 flex: unset;
                 justify-content: center;
@@ -328,7 +351,7 @@
                 flex-wrap: wrap;
             }
 
-            .nav-links a,
+            .nav-left a,
             .nav-right a {
                 font-size: 9px;
                 letter-spacing: 0.18em;
@@ -421,19 +444,20 @@
                     margin-top: 32px;
                 }
             }
+        }
     </style>
 </head>
 
 <body>
 
     <nav>
-        <ul class="nav-links">
+        <ul class="nav-left saira-subtitle">
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Gallery</a></li>
         </ul>
         <!-- <div class="nav-logo">Maharani</div> -->
-        <ul class="nav-right">
+        <ul class="nav-right saira-subtitle">
             <li><a href="#">Contact</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Search</a></li>
@@ -442,7 +466,7 @@
 
     <section class="hero">
         <h1 class="hero-wordmark">Mayarani</h1>
-        <p class="hero-subtitle">Spa &amp; Retreat</p>
+        <p class="hero-subtitle saira-subtitle">Spa &amp; Retreat</p>
     </section>
 
     <div class="circles-row">
@@ -480,7 +504,7 @@
                     </defs>
                     <text>
                         <textPath href="#textCircle" startOffset="0%">
-                            YOUR DESTINATION FOR PURE &nbsp;✳&nbsp;
+                            YOUR DESTINATION FOR PURE
                         </textPath>
                     </text>
                 </svg>
