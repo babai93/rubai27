@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clock</title>
     <link rel="stylesheet" href="../backstyle.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
     <style>
         body {
             width: 100%;
@@ -21,11 +23,45 @@
             color: azure;
         }
 
-        h1 {
-            font-size: 2vmax;
-            text-align: center;
-        }
+ .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 1.25rem 1rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
 
+    .header-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: #111;
+      margin: 0;
+    }
+
+    .home-btn {
+      position: absolute;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: #555;
+      font-size: 13px;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .home-btn:hover {
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    .home-btn i {
+      font-size: 18px;
+    }
         .item {
             width: 50%
         }
@@ -100,7 +136,13 @@
 </head>
 
 <body>
-    <h1>Checkout this Clocks by Soumesh</h1>
+      <header class="header-bar">
+    <h1 class="header-title">Clocks by Soumesh</h1>
+    <a href="/home.html" class="home-btn" aria-label="Back to home">
+      <i class="ti ti-home"></i>
+      Home
+    </a>
+  </header>
     <br>
     <div class="container"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
