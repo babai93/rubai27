@@ -6,6 +6,6 @@
     "node-sass": "^9.0.0"
   },
   "devDependencies": {
-    "netlify-plugin-subfont": "^7.0.0"
+    "netlify-plugin-subfont": "^6.0.0"
   }
 }
