@@ -8,7 +8,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />-->
     <style>
         *,
         *::before,
@@ -597,7 +597,12 @@
                 target="_blank">Scratch</a> &nbsp;·&nbsp; <a href="https://rubai27n.netlify.app/"
                 target="_blank">Portfolio ↗</a></p>
     </footer>
-
+<script>
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css';
+  document.head.appendChild(link);
+</script>
 </body>
 
 </html>
