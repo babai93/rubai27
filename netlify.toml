@@ -1,0 +1,11 @@
+[build]
+  command = "npm install"
+
+[[plugins]]
+  package = "netlify-plugin-subfont"
+
+  [plugins.inputs]
+    entryPoints = ["spa/index.html"]
+    recursive   = true
+    fontDisplay = "swap"
+    inlineCss   = true
