@@ -12,3 +12,4 @@
     recursive   = true
     fontDisplay = "swap"
     inlineCss   = true
+    excludeSources = ["**/jsdelivr.net/**tabler*"]
