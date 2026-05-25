@@ -154,6 +154,19 @@ span {
 .day {
     top: 200px;
 }
+        .goback {
+    font-family: 'Space Mono', monospace;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: grey;
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: 1px solid rgba(79 235 87 / 10%);
+    cursor: pointer;
+    transition: all .9s ease;
+    -webkit-transition: all .9s ease;
+}
     </style>
   <script>
     var dialLines = document.getElementsByClassName('diallines');
@@ -226,5 +239,6 @@ setInterval("clock()", 100);
     <span class="h12">12</span>
   </div>
   <div class="diallines"></div>
+    <a class="goback" onclick="history.back()">Go Back</a>
 </div>
 <body>
