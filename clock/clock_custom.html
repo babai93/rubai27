@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClockCanvas – Custom Photo Wall Clock Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@400;700&family=Oswald:wght@400;600&family=Dancing+Script:wght@600&family=Cinzel:wght@400;700&family=Rajdhani:wght@500;600&family=Special+Elite&family=Bebas+Neue&family=Satisfy&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── Theme tokens ── */
+    [data-theme="light"] {
+      --bg: #faf8f5;
+      --surface: #ffffff;
+      --border: rgba(0, 0, 0, 0.07);
+      --border2: #e0dbd3;
+      --mist: #f0ece6;
+      --ink: #1a1a1a;
+      --ink2: #555;
+      --ink3: #999;
+      --header-bg: #faf8f5;
+      --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      --placeholder-bg: linear-gradient(135deg, #e8e4de, #d8d2c8);
+      --placeholder-color: #aaa;
+    }
+
+    [data-theme="dark"] {
+      --bg: #141414;
+      --surface: #1f1f1f;
+      --border: rgba(255, 255, 255, 0.07);
+      --border2: #3a3530;
+      --mist: #2a2620;
+      --ink: #f0ede8;
+      --ink2: #a8a39a;
+      --ink3: #5a5650;
+      --header-bg: #141414;
+      --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --placeholder-bg: linear-gradient(135deg, #2a2520, #222018);
+      --placeholder-color: #4a4640;
+    }
+
+    :root {
+      --gold: #b8965a;
+      --gold-lt: #d4b07a;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--header-bg);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      transition: background 0.3s;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 0.28rem 0.7rem;
+      border-radius: 2px;
+    }
+
+    /* Theme toggle */
+    .theme-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border2);
+      background: var(--mist);
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      color: var(--ink);
+    }
+
+    .theme-btn:hover {
+      border-color: var(--gold);
+      transform: rotate(20deg);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem 1.8rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      max-width: 600px;
+      margin: 0 auto 0.8rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero p {
+      color: var(--ink2);
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-size: 0.9rem;
+    }
+
+    /* ── Layout ── */
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 2rem;
+      max-width: 1120px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    @media (max-width: 860px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    /* ── Preview panel ── */
+    .preview-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 80px;
+      align-self: start;
+    }
+
+    .preview-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink3);
+    }
+
+    .clock-wrap {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      filter: drop-shadow(0 16px 44px rgba(0, 0, 0, 0.22));
+      transition: transform 0.4s;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    .clock-wrap:hover {
+      transform: scale(1.015);
+    }
+
+    .clock-wrap.grabbing {
+      cursor: grabbing;
+    }
+
+    .clock-face {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #ccc;
+      transition: border-radius 0.4s, clip-path 0.4s;
+    }
+
+    .clock-face.shape-circle {
+      border-radius: 50%;
+    }
+
+    .clock-face.shape-square {
+      border-radius: 10px;
+    }
+
+    .clock-face.shape-oval {
+      border-radius: 50% / 40%;
+    }
+
+    .clock-face.shape-heart {
+      clip-path: path('M160,288 C160,288 20,200 20,110 C20,60 60,30 110,30 C135,30 155,45 160,60 C165,45 185,30 210,30 C260,30 300,60 300,110 C300,200 160,288 160,288Z');
+      border-radius: 0;
+    }
+
+    .clock-face.shape-star {
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      border-radius: 0;
+    }
+
+    .clock-face.shape-hexagon {
+      clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+      border-radius: 0;
+    }
+
+    /* Photo inside face — pan/zoom via transform */
+    .clock-photo-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .clock-photo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: center center;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .clock-photo.hidden {
+      display: none;
+    }
+
+    .clock-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: var(--placeholder-color);
+      background: var(--placeholder-bg);
+      font-size: 0.82rem;
+    }
+
+    .clock-placeholder svg {
+      opacity: 0.35;
+    }
+
+    /* Hands */
+    .clock-hands {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .clock-hands svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Title on clock */
+    .clock-title-text {
+      position: absolute;
+      bottom: 14%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      pointer-events: none;
+      white-space: nowrap;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+      letter-spacing: 0.08em;
+      text-align: center;
+      max-width: 80%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Sheen */
+    .clock-sheen {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      background: linear-gradient(135deg,
+          rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.04) 45%,
+          rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.07) 100%);
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: border-radius 0.4s, clip-path 0.4s;
+    }
+
+    .clock-sheen.shape-circle {
+      border-radius: 50%;
+    }
+
+    .clock-sheen.shape-square {
+      border-radius: 10px;
+    }
+
+    .clock-sheen.shape-oval {
+      border-radius: 50% / 40%;
+    }
+
+    .clock-sheen.shape-heart {
+      clip-path: path('M160,288 C160,288 20,200 20,110 C20,60 60,30 110,30 C135,30 155,45 160,60 C165,45 185,30 210,30 C260,30 300,60 300,110 C300,200 160,288 160,288Z');
+    }
+
+    .clock-sheen.shape-star {
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .clock-sheen.shape-hexagon {
+      clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    }
+
+    /* Center pin */
+    .center-pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 15px;
+      height: 15px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 2px 6px rgba(0, 0, 0, 0.45);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Pan/zoom hint */
+    .pan-hint {
+      font-size: 0.72rem;
+      color: var(--ink3);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Size hint */
+    .size-hint {
+      font-size: 0.76rem;
+      color: var(--ink3);
+    }
+
+    .size-hint strong {
+      color: var(--gold);
+    }
+
+    /* ── Controls ── */
+    .controls-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .section-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(184, 150, 90, 0.35), transparent);
+    }
+
+    /* Upload */
+    .upload-zone {
+      border: 2px dashed var(--border2);
+      border-radius: 10px;
+      padding: 2rem 1.2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .upload-zone:hover,
+    .upload-zone.dragging {
+      border-color: var(--gold);
+      background: rgba(184, 150, 90, 0.05);
+    }
+
+    .upload-zone input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .upload-icon {
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .upload-zone p {
+      font-size: 0.85rem;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+
+    .upload-zone small {
+      color: var(--ink3);
+      font-size: 0.76rem;
+    }
+
+    /* Thumbnails */
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .thumb {
+      aspect-ratio: 1;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.15s, transform 0.15s;
+      position: relative;
+    }
+
+    .thumb:hover {
+      transform: scale(1.05);
+    }
+
+    .thumb.active {
+      border-color: var(--gold);
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-remove {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 17px;
+      height: 17px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 9px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .thumb:hover .thumb-remove {
+      display: flex;
+    }
+
+    /* Photo controls */
+    .photo-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .ctrl-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .ctrl-label {
+      font-size: 0.75rem;
+      color: var(--ink3);
+      min-width: 56px;
+    }
+
+    .ctrl-slider {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      border-radius: 2px;
+      outline: none;
+      background: linear-gradient(to right, var(--gold) 0%, var(--gold) var(--val, 50%), var(--border2) var(--val, 50%));
+      cursor: pointer;
+    }
+
+    .ctrl-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    .ctrl-val {
+      font-size: 0.75rem;
+      color: var(--gold);
+      min-width: 32px;
+      text-align: right;
+    }
+
+    .ctrl-reset {
+      font-size: 0.72rem;
+      color: var(--ink3);
+      background: none;
+      border: 1px solid var(--border2);
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .ctrl-reset:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    /* Shape grid */
+    .shape-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .shape-btn {
+      aspect-ratio: 1.6;
+      border: 2px solid var(--border2);
+      background: var(--mist);
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      font-size: 0.68rem;
+      color: var(--ink3);
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+
+    .shape-btn:hover,
+    .shape-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(184, 150, 90, 0.07);
+    }
+
+    .shape-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* Dial style */
+    .dial-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .dial-btn {
+      padding: 0.5rem 0.3rem;
+      border: 2px solid var(--border2);
+      background: var(--mist);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      color: var(--ink3);
+      text-align: center;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .dial-btn:hover,
+    .dial-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(184, 150, 90, 0.07);
+    }
+
+    /* Font picker */
+    .font-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .font-btn {
+      padding: 0.6rem 0.8rem;
+      border: 2px solid var(--border2);
+      background: var(--mist);
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.15s, background 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .font-btn:hover,
+    .font-btn.active {
+      border-color: var(--gold);
+      background: rgba(184, 150, 90, 0.07);
+    }
+
+    .font-preview {
+      font-size: 1.2rem;
+      color: var(--ink);
+    }
+
+    .font-name {
+      font-size: 0.62rem;
+      color: var(--ink3);
+      letter-spacing: 0.04em;
+    }
+
+    /* Number color swatches */
+    .color-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .color-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2.5px solid transparent;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .color-swatch:hover {
+      transform: scale(1.15);
+    }
+
+    .color-swatch.active {
+      border-color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    .color-custom-wrap {
+      position: relative;
+    }
+
+    .color-custom-wrap input[type=color] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      border: none;
+    }
+
+    .color-custom-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px dashed var(--border2);
+      background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Clock title input */
+    .title-input-wrap {
+      position: relative;
+    }
+
+    .title-input {
+      width: 100%;
+      padding: 0.6rem 0.9rem;
+      border: 2px solid var(--border2);
+      border-radius: 8px;
+      background: var(--mist);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .title-input:focus {
+      border-color: var(--gold);
+    }
+
+    .title-input::placeholder {
+      color: var(--ink3);
+    }
+
+    .title-options {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .title-label {
+      font-size: 0.72rem;
+      color: var(--ink3);
+    }
+
+    /* Hand color row */
+    .hand-color-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Size chips */
+    .size-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .size-chip {
+      padding: 0.42rem 0.9rem;
+      border: 2px solid var(--border2);
+      background: var(--mist);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      color: var(--ink3);
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .size-chip:hover,
+    .size-chip.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(184, 150, 90, 0.07);
+    }
+
+    /* CTA */
+    .cta-card {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 1.5rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--gold-lt);
+    }
+
+    .price-note {
+      font-size: 0.76rem;
+      color: #777;
+    }
+
+    .cta-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .cta-features li {
+      font-size: 0.78rem;
+      color: #999;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cta-features li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.55rem;
+    }
+
+    .btn-order {
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      color: #fff;
+      border: none;
+      padding: 0.95rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .btn-order:hover:not(:disabled) {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn-order:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a1a;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.83rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 100;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    /* Range fill update helper */
+    input[type=range] {
+      background-size: 100% 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Clock<span>Canvas</span></div>
+    <div class="header-right">
+      <div class="badge">Acrylic · UV Print</div>
+      <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Custom Photo Wall Clock</p>
+    <h1>Your memory, <em>ticking</em> on the wall</h1>
+    <p>Upload a photo, personalize every detail — we'll print it on premium acrylic glass with silent quartz movement.
+    </p>
+  </section>
+
+  <div class="workspace">
+
+    <!-- ── LEFT: Preview ── -->
+    <div class="preview-panel">
+      <span class="preview-label">Live Preview</span>
+
+      <div class="clock-wrap" id="clockWrap">
+        <!-- Face (mask) -->
+        <div class="clock-face shape-circle" id="clockFace">
+          <!-- Photo layer -->
+          <div class="clock-photo-wrap" id="photoWrap">
+            <div class="clock-placeholder" id="clockPlaceholder">
+              <svg width="44" height="44" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span>Upload a photo</span>
+            </div>
+            <img class="clock-photo hidden" id="clockPhoto" alt="Your photo" draggable="false">
+          </div>
+          <!-- Title -->
+          <div class="clock-title-text" id="clockTitleText"></div>
+        </div>
+
+        <!-- SVG hands + dial -->
+        <div class="clock-hands">
+          <svg viewBox="0 0 320 320" id="clockSVG">
+            <g id="dialMarkers"></g>
+            <line id="hourHand" x1="160" y1="160" x2="160" y2="105" stroke="white" stroke-width="5"
+              stroke-linecap="round" />
+            <line id="minuteHand" x1="160" y1="160" x2="160" y2="78" stroke="white" stroke-width="3.5"
+              stroke-linecap="round" />
+            <line id="secondHand" x1="160" y1="178" x2="160" y2="65" stroke="#e8a030" stroke-width="1.5"
+              stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <div class="clock-sheen shape-circle" id="clockSheen"></div>
+        <div class="center-pin"></div>
+      </div>
+
+      <div class="pan-hint" id="panHint" style="display:none">
+        ✥ Drag to pan · scroll to zoom
+      </div>
+      <div class="size-hint">Size: <strong id="selectedSize">30 × 30 cm</strong> · Acrylic Glass</div>
+    </div>
+
+    <!-- ── RIGHT: Controls ── -->
+    <div class="controls-panel">
+
+      <!-- 1. Upload -->
+      <div class="section-card">
+        <div class="section-title">Upload Photo</div>
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="fileInput" accept="image/*" multiple>
+          <div class="upload-icon">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.3">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+          </div>
+          <p>Drag &amp; drop or <strong>browse</strong></p>
+          <small>JPG · PNG · WEBP · Recommended 3000×3000px</small>
+        </div>
+        <div class="thumb-grid" id="thumbGrid"></div>
+
+        <!-- Photo resize/pan controls -->
+        <div class="photo-controls" id="photoControls" style="display:none; margin-top:1rem;">
+          <div class="ctrl-row">
+            <span class="ctrl-label">Zoom</span>
+            <input type="range" class="ctrl-slider" id="zoomSlider" min="80" max="300" value="100" step="1">
+            <span class="ctrl-val" id="zoomVal">100%</span>
+          </div>
+          <div class="ctrl-row">
+            <span class="ctrl-label">Pan X</span>
+            <input type="range" class="ctrl-slider" id="panXSlider" min="-100" max="100" value="0" step="1">
+            <span class="ctrl-val" id="panXVal">0</span>
+          </div>
+          <div class="ctrl-row">
+            <span class="ctrl-label">Pan Y</span>
+            <input type="range" class="ctrl-slider" id="panYSlider" min="-100" max="100" value="0" step="1">
+            <span class="ctrl-val" id="panYVal">0</span>
+          </div>
+          <div class="ctrl-row">
+            <button class="ctrl-reset" id="resetPhoto">Reset position</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Clock Title -->
+      <div class="section-card">
+        <div class="section-title">Clock Title</div>
+        <div class="title-input-wrap">
+          <input type="text" class="title-input" id="titleInput" placeholder="e.g. Family · 2024 or Leave blank"
+            maxlength="40">
+        </div>
+        <div class="title-options">
+          <span class="title-label">Position:</span>
+          <button class="dial-btn" data-tpos="bottom" style="padding:0.3rem 0.7rem;font-size:0.7rem">Bottom</button>
+          <button class="dial-btn" data-tpos="top" style="padding:0.3rem 0.7rem;font-size:0.7rem">Top</button>
+        </div>
+      </div>
+
+      <!-- 3. Shape -->
+      <div class="section-card">
+        <div class="section-title">Shape</div>
+        <div class="shape-grid">
+          <button class="shape-btn active" data-shape="circle"><span class="shape-icon">⬤</span>Circle</button>
+          <button class="shape-btn" data-shape="square"><span class="shape-icon">■</span>Square</button>
+          <button class="shape-btn" data-shape="oval"><span class="shape-icon">⬬</span>Oval</button>
+          <button class="shape-btn" data-shape="heart"><span class="shape-icon">♥</span>Heart</button>
+          <button class="shape-btn" data-shape="star"><span class="shape-icon">★</span>Star</button>
+          <button class="shape-btn" data-shape="hexagon"><span class="shape-icon">⬡</span>Hexagon</button>
+        </div>
+      </div>
+
+      <!-- 4. Dial Style -->
+      <div class="section-card">
+        <div class="section-title">Dial Style</div>
+        <div class="dial-row">
+          <button class="dial-btn active" data-dial="numbers">Numbers</button>
+          <button class="dial-btn" data-dial="roman">Roman</button>
+          <button class="dial-btn" data-dial="dots">Dots</button>
+          <button class="dial-btn" data-dial="lines">Lines</button>
+          <button class="dial-btn" data-dial="minimal">Minimal</button>
+          <button class="dial-btn" data-dial="none">None</button>
+        </div>
+      </div>
+
+      <!-- 5. Number Font -->
+      <div class="section-card" id="fontCard">
+        <div class="section-title">Number Font</div>
+        <div class="font-grid" id="fontGrid">
+          <button class="font-btn active" data-font="Cormorant Garamond, serif">
+            <span class="font-preview" style="font-family:'Cormorant Garamond',serif">12</span>
+            <span class="font-name">Cormorant</span>
+          </button>
+          <button class="font-btn" data-font="Playfair Display, serif">
+            <span class="font-preview" style="font-family:'Playfair Display',serif">12</span>
+            <span class="font-name">Playfair</span>
+          </button>
+          <button class="font-btn" data-font="Cinzel, serif">
+            <span class="font-preview" style="font-family:'Cinzel',serif">12</span>
+            <span class="font-name">Cinzel</span>
+          </button>
+          <button class="font-btn" data-font="Oswald, sans-serif">
+            <span class="font-preview" style="font-family:'Oswald',sans-serif">12</span>
+            <span class="font-name">Oswald</span>
+          </button>
+          <button class="font-btn" data-font="Bebas Neue, sans-serif">
+            <span class="font-preview" style="font-family:'Bebas Neue',sans-serif">12</span>
+            <span class="font-name">Bebas Neue</span>
+          </button>
+          <button class="font-btn" data-font="Rajdhani, sans-serif">
+            <span class="font-preview" style="font-family:'Rajdhani',sans-serif">12</span>
+            <span class="font-name">Rajdhani</span>
+          </button>
+          <button class="font-btn" data-font="Dancing Script, cursive">
+            <span class="font-preview" style="font-family:'Dancing Script',cursive">12</span>
+            <span class="font-name">Dancing Script</span>
+          </button>
+          <button class="font-btn" data-font="Satisfy, cursive">
+            <span class="font-preview" style="font-family:'Satisfy',cursive">12</span>
+            <span class="font-name">Satisfy</span>
+          </button>
+          <button class="font-btn" data-font="Special Elite, cursive">
+            <span class="font-preview" style="font-family:'Special Elite',cursive">12</span>
+            <span class="font-name">Special Elite</span>
+          </button>
+          <button class="font-btn" data-font="Arial, sans-serif">
+            <span class="font-preview" style="font-family:Arial,sans-serif">12</span>
+            <span class="font-name">Classic</span>
+          </button>
+        </div>
+
+        <!-- Number size -->
+        <div style="margin-top:1rem;">
+          <div class="ctrl-row">
+            <span class="ctrl-label">Size</span>
+            <input type="range" class="ctrl-slider" id="numSizeSlider" min="10" max="30" value="17" step="1">
+            <span class="ctrl-val" id="numSizeVal">17px</span>
+          </div>
+        </div>
+
+        <!-- Number color -->
+        <div style="margin-top:0.9rem;">
+          <div class="section-title" style="margin-bottom:0.6rem;font-size:0.65rem">Number Color</div>
+          <div class="color-row" id="numColorRow">
+            <div class="color-swatch active" data-color="rgba(255,255,255,0.92)"
+              style="background:rgba(255,255,255,0.92);box-shadow:inset 0 0 0 1px #ccc" title="White"></div>
+            <div class="color-swatch" data-color="rgba(0,0,0,0.85)" style="background:#111" title="Black"></div>
+            <div class="color-swatch" data-color="#b8965a" style="background:#b8965a" title="Gold"></div>
+            <div class="color-swatch" data-color="#e63946" style="background:#e63946" title="Red"></div>
+            <div class="color-swatch" data-color="#2196f3" style="background:#2196f3" title="Blue"></div>
+            <div class="color-swatch" data-color="#4caf50" style="background:#4caf50" title="Green"></div>
+            <div class="color-swatch" data-color="#ff9800" style="background:#ff9800" title="Orange"></div>
+            <div class="color-swatch" data-color="#9c27b0" style="background:#9c27b0" title="Purple"></div>
+            <div class="color-custom-wrap">
+              <div class="color-custom-btn" title="Custom color">+</div>
+              <input type="color" id="numColorCustom" value="#ffffff">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Hand Color -->
+      <div class="section-card">
+        <div class="section-title">Hand Color</div>
+        <div class="hand-color-row" id="handColorRow">
+          <div class="color-swatch active" data-hcolor="white" style="background:#fff;box-shadow:inset 0 0 0 1px #ccc"
+            title="White"></div>
+          <div class="color-swatch" data-hcolor="#1a1a1a" style="background:#1a1a1a" title="Black"></div>
+          <div class="color-swatch" data-hcolor="#b8965a" style="background:#b8965a" title="Gold"></div>
+          <div class="color-swatch" data-hcolor="#e63946" style="background:#e63946" title="Red"></div>
+          <div class="color-swatch" data-hcolor="#2196f3" style="background:#2196f3" title="Blue"></div>
+          <div class="color-swatch" data-hcolor="#c0c0c0" style="background:#c0c0c0;box-shadow:inset 0 0 0 1px #aaa"
+            title="Silver"></div>
+          <div class="color-custom-wrap">
+            <div class="color-custom-btn" title="Custom">+</div>
+            <input type="color" id="handColorCustom" value="#ffffff">
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Size -->
+      <div class="section-card">
+        <div class="section-title">Product Size</div>
+        <div class="size-row">
+          <button class="size-chip" data-size="20 × 20 cm" data-price="799">20 cm</button>
+          <button class="size-chip active" data-size="30 × 30 cm" data-price="1199">30 cm</button>
+          <button class="size-chip" data-size="40 × 40 cm" data-price="1599">40 cm</button>
+          <button class="size-chip" data-size="50 × 50 cm" data-price="1999">50 cm</button>
+        </div>
+      </div>
+
+      <!-- 8. Order -->
+      <div class="cta-card">
+        <div class="price-row">
+          <div class="price" id="priceDisplay">₹1,199</div>
+          <div class="price-note">Free delivery · 5–7 days</div>
+        </div>
+        <ul class="cta-features">
+          <li>Premium 5mm acrylic glass print</li>
+          <li>Silent quartz AA-battery movement</li>
+          <li>High-res UV direct printing</li>
+          <li>Ready-to-hang wall mount included</li>
+        </ul>
+        <button class="btn-order" id="orderBtn" disabled>Upload a photo to order</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ══════════════════════════════════════════════════════
+    // STATE
+    // ══════════════════════════════════════════════════════
+    const S = {
+      photos: [], activeIdx: null,
+      shape: 'circle', dial: 'numbers',
+      font: 'Cormorant Garamond, serif',
+      numSize: 17, numColor: 'rgba(255,255,255,0.92)',
+      handColor: 'white',
+      size: '30 × 30 cm', price: 1199,
+      zoom: 100, panX: 0, panY: 0,
+      title: '', titlePos: 'bottom',
+      theme: 'light',
+    };
+
+    // ══════════════════════════════════════════════════════
+    // DOM
+    // ══════════════════════════════════════════════════════
+    const $ = id => document.getElementById(id);
+    const clockFace = $('clockFace');
+    const clockSheen = $('clockSheen');
+    const clockPhoto = $('clockPhoto');
+    const clockPlaceholder = $('clockPlaceholder');
+    const dialMarkers = $('dialMarkers');
+    const photoControls = $('photoControls');
+    const panHint = $('panHint');
+
+    // ══════════════════════════════════════════════════════
+    // THEME
+    // ══════════════════════════════════════════════════════
+    $('themeBtn').addEventListener('click', () => {
+      S.theme = S.theme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', S.theme);
+      $('themeBtn').textContent = S.theme === 'dark' ? '☀️' : '🌙';
+    });
+
+    // ══════════════════════════════════════════════════════
+    // CLOCK HANDS — live ticking
+    // ══════════════════════════════════════════════════════
+    function updateHands() {
+      const now = new Date();
+      const s = now.getSeconds() + now.getMilliseconds() / 1000;
+      const m = now.getMinutes() + s / 60;
+      const h = (now.getHours() % 12) + m / 60;
+      const cx = 160, cy = 160;
+      const coord = (angle, len) => {
+        const r = (angle * Math.PI / 180) - Math.PI / 2;
+        return { x: cx + len * Math.cos(r), y: cy + len * Math.sin(r) };
+      };
+      const hp = coord(h * 30, 62);
+      const mp = coord(m * 6, 84);
+      const sp = coord(s * 6, 88);
+      const sb = coord(s * 6 + 180, 18);
+      setHand('hourHand', hp.x, hp.y);
+      setHand('minuteHand', mp.x, mp.y);
+      setHand('secondHand', sp.x, sp.y, sb.x, sb.y);
+    }
+    function setHand(id, x2, y2, x1, y1) {
+      const el = $(id);
+      el.setAttribute('x2', x2); el.setAttribute('y2', y2);
+      if (x1 !== undefined) { el.setAttribute('x1', x1); el.setAttribute('y1', y1); }
+    }
+    setInterval(updateHands, 40);
+    updateHands();
+
+    // ══════════════════════════════════════════════════════
+    // HAND COLOR
+    // ══════════════════════════════════════════════════════
+    function applyHandColor(color) {
+      S.handColor = color;
+      $('hourHand').setAttribute('stroke', color);
+      $('minuteHand').setAttribute('stroke', color);
+    }
+
+    $('handColorRow').querySelectorAll('.color-swatch').forEach(sw => {
+      sw.addEventListener('click', () => {
+        $('handColorRow').querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+        applyHandColor(sw.dataset.hcolor);
+      });
+    });
+    $('handColorCustom').addEventListener('input', e => {
+      $('handColorRow').querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+      applyHandColor(e.target.value);
+    });
+
+    // ══════════════════════════════════════════════════════
+    // DIAL MARKERS
+    // ══════════════════════════════════════════════════════
+    const ROMAN = ['XII', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
+
+    function renderDial() {
+      dialMarkers.innerHTML = '';
+      if (S.dial === 'none') return;
+      const cx = 160, cy = 160, r = 126;
+      for (let i = 0; i < 12; i++) {
+        const num = i === 0 ? 12 : i;
+        const angle = (num * 30 - 90) * Math.PI / 180;
+        const x = cx + r * Math.cos(angle);
+        const y = cy + r * Math.sin(angle);
+
+        if (S.dial === 'numbers' || S.dial === 'roman') {
+          const label = S.dial === 'roman' ? ROMAN[i] : String(num);
+          const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          t.setAttribute('x', x);
+          t.setAttribute('y', y + S.numSize * 0.36);
+          t.setAttribute('text-anchor', 'middle');
+          t.setAttribute('font-family', S.font);
+          t.setAttribute('font-size', S.numSize);
+          t.setAttribute('font-weight', '600');
+          t.setAttribute('fill', S.numColor);
+          t.setAttribute('filter', 'drop-shadow(0 1px 3px rgba(0,0,0,0.6))');
+          t.textContent = label;
+          dialMarkers.appendChild(t);
+
+        } else if (S.dial === 'dots') {
+          const big = num % 3 === 0 || num === 12;
+          const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          c.setAttribute('cx', x); c.setAttribute('cy', y);
+          c.setAttribute('r', big ? 5.5 : 3.5);
+          c.setAttribute('fill', S.numColor);
+          c.setAttribute('filter', 'drop-shadow(0 1px 2px rgba(0,0,0,0.5))');
+          dialMarkers.appendChild(c);
+
+        } else if (S.dial === 'lines') {
+          const big = num % 3 === 0 || num === 12;
+          const inner = big ? r - 14 : r - 9;
+          const ix = cx + inner * Math.cos(angle);
+          const iy = cy + inner * Math.sin(angle);
+          const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          l.setAttribute('x1', x); l.setAttribute('y1', y);
+          l.setAttribute('x2', ix); l.setAttribute('y2', iy);
+          l.setAttribute('stroke', S.numColor);
+          l.setAttribute('stroke-width', big ? 3 : 1.5);
+          l.setAttribute('stroke-linecap', 'round');
+          dialMarkers.appendChild(l);
+
+        } else if (S.dial === 'minimal') {
+          if (num === 12 || num === 3 || num === 6 || num === 9) {
+            const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            t.setAttribute('x', x); t.setAttribute('y', y + S.numSize * 0.36);
+            t.setAttribute('text-anchor', 'middle');
+            t.setAttribute('font-family', S.font);
+            t.setAttribute('font-size', S.numSize);
+            t.setAttribute('font-weight', '600');
+            t.setAttribute('fill', S.numColor);
+            t.setAttribute('filter', 'drop-shadow(0 1px 3px rgba(0,0,0,0.6))');
+            t.textContent = num;
+            dialMarkers.appendChild(t);
+          }
+        }
+      }
+    }
+
+    // Font buttons
+    $('fontGrid').querySelectorAll('.font-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        $('fontGrid').querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        S.font = btn.dataset.font;
+        renderDial();
+      });
+    });
+
+    // Number size slider
+    updateSliderFill($('numSizeSlider'));
+    $('numSizeSlider').addEventListener('input', e => {
+      S.numSize = +e.target.value;
+      $('numSizeVal').textContent = S.numSize + 'px';
+      updateSliderFill(e.target);
+      renderDial();
+    });
+
+    // Number color swatches
+    $('numColorRow').querySelectorAll('.color-swatch').forEach(sw => {
+      sw.addEventListener('click', () => {
+        $('numColorRow').querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+        S.numColor = sw.dataset.color;
+        renderDial();
+      });
+    });
+    $('numColorCustom').addEventListener('input', e => {
+      $('numColorRow').querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+      S.numColor = e.target.value;
+      renderDial();
+    });
+
+    // Dial style
+    document.querySelectorAll('[data-dial]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-dial]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        S.dial = btn.dataset.dial;
+        // show/hide font card
+        $('fontCard').style.display = ['numbers', 'roman', 'minimal'].includes(S.dial) ? '' : '';
+        renderDial();
+      });
+    });
+
+    // ══════════════════════════════════════════════════════
+    // SHAPE
+    // ══════════════════════════════════════════════════════
+    const SHAPES = ['circle', 'square', 'oval', 'heart', 'star', 'hexagon'];
+    function applyShape(shape) {
+      SHAPES.forEach(s => {
+        clockFace.classList.remove('shape-' + s);
+        clockSheen.classList.remove('shape-' + s);
+      });
+      clockFace.classList.add('shape-' + shape);
+      clockSheen.classList.add('shape-' + shape);
+    }
+    document.querySelectorAll('[data-shape]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-shape]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        S.shape = btn.dataset.shape;
+        applyShape(S.shape);
+      });
+    });
+
+    // ══════════════════════════════════════════════════════
+    // TITLE
+    // ══════════════════════════════════════════════════════
+    const titleEl = $('clockTitleText');
+    $('titleInput').addEventListener('input', e => {
+      S.title = e.target.value.trim();
+      titleEl.textContent = S.title;
+    });
+    document.querySelectorAll('[data-tpos]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-tpos]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        S.titlePos = btn.dataset.tpos;
+        if (S.titlePos === 'top') {
+          titleEl.style.bottom = 'auto'; titleEl.style.top = '12%';
+        } else {
+          titleEl.style.top = 'auto'; titleEl.style.bottom = '12%';
+        }
+      });
+    });
+
+    // ══════════════════════════════════════════════════════
+    // PHOTO — transform (zoom/pan via sliders)
+    // ══════════════════════════════════════════════════════
+    function applyPhotoTransform() {
+      const z = S.zoom / 100;
+      clockPhoto.style.transform = `scale(${z}) translate(${S.panX}px, ${S.panY}px)`;
+    }
+
+    function updateSliderFill(slider) {
+      const min = +slider.min, max = +slider.max, val = +slider.value;
+      const pct = ((val - min) / (max - min) * 100).toFixed(1) + '%';
+      slider.style.setProperty('--val', pct);
+      // background via style
+      slider.style.background = `linear-gradient(to right, var(--gold) 0%, var(--gold) ${pct}, var(--border2) ${pct})`;
+    }
+
+    // Zoom slider
+    $('zoomSlider').addEventListener('input', e => {
+      S.zoom = +e.target.value;
+      $('zoomVal').textContent = S.zoom + '%';
+      updateSliderFill(e.target);
+      applyPhotoTransform();
+    });
+
+    // Pan X
+    $('panXSlider').addEventListener('input', e => {
+      S.panX = +e.target.value;
+      $('panXVal').textContent = S.panX;
+      updateSliderFill(e.target);
+      applyPhotoTransform();
+    });
+
+    // Pan Y
+    $('panYSlider').addEventListener('input', e => {
+      S.panY = +e.target.value;
+      $('panYVal').textContent = S.panY;
+      updateSliderFill(e.target);
+      applyPhotoTransform();
+    });
+
+    $('resetPhoto').addEventListener('click', () => {
+      S.zoom = 100; S.panX = 0; S.panY = 0;
+      $('zoomSlider').value = 100; $('panXSlider').value = 0; $('panYSlider').value = 0;
+      [$('zoomSlider'), $('panXSlider'), $('panYSlider')].forEach(s => updateSliderFill(s));
+      $('zoomVal').textContent = '100%'; $('panXVal').textContent = '0'; $('panYVal').textContent = '0';
+      applyPhotoTransform();
+    });
+
+    // Mouse drag-to-pan on clock
+    let dragging = false, dragStartX = 0, dragStartY = 0, startPanX = 0, startPanY = 0;
+    const cw = $('clockWrap');
+    cw.addEventListener('mousedown', e => {
+      if (!S.activeIdx && S.activeIdx !== 0) return;
+      dragging = true; dragStartX = e.clientX; dragStartY = e.clientY;
+      startPanX = S.panX; startPanY = S.panY;
+      cw.classList.add('grabbing');
+    });
+    window.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      const dx = (e.clientX - dragStartX) * 0.4;
+      const dy = (e.clientY - dragStartY) * 0.4;
+      S.panX = Math.max(-100, Math.min(100, startPanX + dx));
+      S.panY = Math.max(-100, Math.min(100, startPanY + dy));
+      $('panXSlider').value = S.panX; $('panYSlider').value = S.panY;
+      $('panXVal').textContent = Math.round(S.panX);
+      $('panYVal').textContent = Math.round(S.panY);
+      updateSliderFill($('panXSlider')); updateSliderFill($('panYSlider'));
+      applyPhotoTransform();
+    });
+    window.addEventListener('mouseup', () => { dragging = false; cw.classList.remove('grabbing'); });
+
+    // Scroll to zoom on clock
+    cw.addEventListener('wheel', e => {
+      if (!S.activeIdx && S.activeIdx !== 0) return;
+      e.preventDefault();
+      S.zoom = Math.max(80, Math.min(300, S.zoom - e.deltaY * 0.15));
+      $('zoomSlider').value = S.zoom;
+      $('zoomVal').textContent = Math.round(S.zoom) + '%';
+      updateSliderFill($('zoomSlider'));
+      applyPhotoTransform();
+    }, { passive: false });
+
+    // ══════════════════════════════════════════════════════
+    // UPLOAD + THUMBNAILS
+    // ══════════════════════════════════════════════════════
+    function handleFiles(files) {
+      [...files].forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const url = URL.createObjectURL(file);
+        S.photos.push({ url });
+        addThumb(S.photos.length - 1);
+        if (S.activeIdx === null) selectPhoto(0);
+      });
+    }
+
+    function addThumb(idx) {
+      const div = document.createElement('div');
+      div.className = 'thumb' + (idx === S.activeIdx ? ' active' : '');
+      div.dataset.idx = idx;
+      const img = document.createElement('img');
+      img.src = S.photos[idx].url;
+      const rm = document.createElement('button');
+      rm.className = 'thumb-remove'; rm.innerHTML = '✕';
+      rm.addEventListener('click', e => { e.stopPropagation(); removePhoto(idx); });
+      div.appendChild(img); div.appendChild(rm);
+      div.addEventListener('click', () => selectPhoto(idx));
+      $('thumbGrid').appendChild(div);
+    }
+
+    function selectPhoto(idx) {
+      S.activeIdx = idx;
+      clockPhoto.src = S.photos[idx].url;
+      clockPhoto.classList.remove('hidden');
+      clockPlaceholder.style.display = 'none';
+      photoControls.style.display = '';
+      panHint.style.display = 'flex';
+      $('orderBtn').disabled = false;
+      $('orderBtn').textContent = 'Add to Cart — ₹' + S.price.toLocaleString('en-IN');
+      document.querySelectorAll('.thumb').forEach(t => t.classList.toggle('active', +t.dataset.idx === idx));
+    }
+
+    function removePhoto(idx) {
+      URL.revokeObjectURL(S.photos[idx].url);
+      S.photos.splice(idx, 1);
+      rebuildThumbs();
+      if (!S.photos.length) {
+        S.activeIdx = null;
+        clockPhoto.classList.add('hidden');
+        clockPlaceholder.style.display = '';
+        photoControls.style.display = 'none';
+        panHint.style.display = 'none';
+        $('orderBtn').disabled = true;
+        $('orderBtn').textContent = 'Upload a photo to order';
+      } else {
+        selectPhoto(Math.min(idx, S.photos.length - 1));
+      }
+    }
+
+    function rebuildThumbs() {
+      $('thumbGrid').innerHTML = '';
+      S.photos.forEach((_, i) => addThumb(i));
+    }
+
+    const uploadZone = $('uploadZone');
+    uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragging'); });
+    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragging'));
+    uploadZone.addEventListener('drop', e => {
+      e.preventDefault(); uploadZone.classList.remove('dragging');
+      handleFiles(e.dataTransfer.files);
+    });
+    $('fileInput').addEventListener('change', () => handleFiles($('fileInput').files));
+
+    // ══════════════════════════════════════════════════════
+    // SIZE
+    // ══════════════════════════════════════════════════════
+    document.querySelectorAll('.size-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.size-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        S.size = chip.dataset.size; S.price = +chip.dataset.price;
+        $('selectedSize').textContent = S.size;
+        $('priceDisplay').textContent = '₹' + S.price.toLocaleString('en-IN');
+        if (S.activeIdx !== null)
+          $('orderBtn').textContent = 'Add to Cart — ₹' + S.price.toLocaleString('en-IN');
+      });
+    });
+
+    // ══════════════════════════════════════════════════════
+    // ORDER
+    // ══════════════════════════════════════════════════════
+    $('orderBtn').addEventListener('click', () => {
+      if (S.activeIdx === null) return;
+      showToast('🎉 Added to cart! Redirecting to checkout…');
+    });
+
+    function showToast(msg) {
+      const t = $('toast'); t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ══════════════════════════════════════════════════════
+    // INIT
+    // ══════════════════════════════════════════════════════
+    applyShape('circle');
+    renderDial();
+    // init slider fills
+    [$('zoomSlider'), $('panXSlider'), $('panYSlider'), $('numSizeSlider')].forEach(updateSliderFill);
+    // init panX slider center
+    const pxs = $('panXSlider');
+    pxs.style.background = `linear-gradient(to right, var(--gold) 50%, var(--gold) 50%, var(--border2) 50%)`;
+  </script>
+</body>
+
+</html>
