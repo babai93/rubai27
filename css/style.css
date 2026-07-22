@@ -74,7 +74,7 @@ a {
 
 .card-front {
   background: var(--bg);
-  background-image: url("../images/Logo.png");
+  background-image: url("../images/Logo.svg");
   background-position: center;
   background-size: cover;
   transform: rotateX(0deg);
