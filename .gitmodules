@@ -1,0 +1,3 @@
+[submodule "empdb"]
+	path = empdb
+	url = https://github.com/babai93/employee-analytics-dashboard.git
