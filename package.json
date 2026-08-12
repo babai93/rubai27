@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "watch:scss": "node-sass -w style.scss style.css"
   },
