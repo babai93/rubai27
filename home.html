@@ -574,6 +574,35 @@
                     <li><a href="/spa/">🌐 View Site</a></li>
                 </ul>
             </div>
+             <div class="card">
+                <span class="card-badge badge-html">HTML / CSS / Node.js</span>
+                <h3>NIPTV Player</h3>
+                <p>Simple IPTV Web Player, A single-file Node.js app using Express and the public iptv-org M3U playlist.</p>
+                <ul class="card-links">
+                    <li><a class="niptv-url">🌐 View Site</a></li>
+                    <script>
+                      // Get the full hostname (e.g. "niptv.vercel.app")
+                      const host = window.location.hostname; 
+                      const parts = host.split(".");
+                    
+                      // First part is the subdomain (e.g. "niptv")
+                      const subdomain = parts[0];
+                    
+                      // Middle part is the parent domain (e.g. "vercel" or "netlify")
+                      const parent = parts[1];
+                    
+                      // Last part is the TLD (e.g. "app")
+                      const tld = parts[2];
+                    
+                      // Build href like "niptv.vercel.app/home"
+                      const hrefValue = `${subdomain}.${parent}.${tld}/`;
+                    
+                      const navLogo = document.getElementById("navLogo");
+                      navLogo.textContent = `${subdomain}.${parent}.${tld}`;
+                      navLogo.href = hrefValue;
+                    </script>
+                </ul>
+            </div>
 
         </div>
     </section>
