@@ -385,16 +385,13 @@
     <!-- NAV -->
     <nav>
         <!--<span class="nav-logo">rubai27.netlify.app</span>-->
-        <span class="nav-logo">
-          <a href="/" id="navLogoLink"></a>
-        </span>
-        
+        <a href="/home" id="navLogo" style="text-decoration:none; color:inherit;"></a>
+
         <script>
-          const currentOrigin = window.location.origin;
-          const link = document.getElementById("navLogoLink");
-          link.textContent = currentOrigin;
-          link.href = currentOrigin;
+          const currentHost = window.location.hostname;
+          document.getElementById("navLogo").textContent = currentHost;
         </script>
+
 
         <ul class="nav-links">
             <li><a href="/"><i class="ti ti-home"></i> Home</a></li>
