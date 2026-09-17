@@ -17,7 +17,7 @@ body{
     transform: translate(-50%, -50%);
     animation: fadeIn 2s;
   }
-  .centerTitle h1, .page-title h1 {
+  .centerTitle h1 {
     background-image: url(/images/ShiningLeather.png);
     background-repeat: repeat;
     -webkit-background-clip: text;
@@ -28,6 +28,17 @@ body{
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
 }
+.page-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  background-image: url(/images/ShiningLeather.png);
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 
 /* back button start */
 .back {
