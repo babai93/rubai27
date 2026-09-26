@@ -1,44 +1,155 @@
 <!DOCTYPE html>
-<head>
-    <title>Caculator UI degine</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/css/style_bak.css">
-</head>
-<body>
-    <div class="cell"> <!-- Back to home Circle Animetion -->
-        <div class="circle bounce">
-            <a href="../home.html"><img src="/images/Logo.png"></a>
-        </div>
-        <p id="HiddenText">Back to Home</p>
-    </div>
-    <form class= "Caculator" name= "calu">
-        <input class="value" type="text" name="txt" readonly="">
-        <span class="num clear" onclick="document.calu.txt.value =''">Clear</span>
-        <span class="num" onclick="document.calu.txt.value +='/'">/</span>
-        <span class="num" onclick="document.calu.txt.value +='*'">x</span>
-        <span class="num" onclick="document.calu.txt.value +='7'">7</span>
-        <span class="num" onclick="document.calu.txt.value +='8'">8</span>
-        <span class="num" onclick="document.calu.txt.value +='9'">9</span>
-        <span class="num" onclick="document.calu.txt.value +='-'">-</span>
-        <span class="num" onclick="document.calu.txt.value +='4'">4</span>
-        <span class="num" onclick="document.calu.txt.value +='5'">5</span>
-        <span class="num" onclick="document.calu.txt.value +='6'">6</span>
-        <span class="num plus" onclick="document.calu.txt.value +='+'">+</span>
-        <span class="num" onclick="document.calu.txt.value +='3'">3</span>
-        <span class="num" onclick="document.calu.txt.value +='2'">2</span>
-        <span class="num" onclick="document.calu.txt.value +='1'">1</span>
-        <span class="num" onclick="document.calu.txt.value +='0'">0</span>
-        <span class="num" onclick="document.calu.txt.value +='00'">00</span>
-        <span class="num" onclick="document.calu.txt.value +='.'">.</span>
-        <span class="num equal" onclick="document.calu.txt.value = eval(calu.txt.value)">=</span></form>
-        <div class="footer">
-            <div clss="schtml">
-                view the Source Code of 
-                <a href="https://www.internetmarketingninjas.com/tools/html-source-viewer/?go=1&url=https%3A%2F%2Frubai27.netlify.app%2Fcalc%2Findex.html" target="_blank">index.html</a> 
-                and 
-                <a href="https://www.internetmarketingninjas.com/tools/html-source-viewer/?go=1&url=https%3A%2F%2Frubai27.netlify.app%2Fcalc%2Fstyle.css" target="_blank">style.css</a> 
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#0b1020">
+        <title>Calculator</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/css/style_bak.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <main class="calculator-shell">
+            <a class="home-link" href="../home.html" aria-label="Back to home">
+                <img src="/images/Logo.png" alt="Home">
+                <span>Back to home</span>
+            </a>
+
+            <section class="calculator-card" aria-label="Calculator">
+                <header class="calculator-header">
+                    <div>
+                        <p class="eyebrow">Quick tools</p>
+                        <h1>Calculator</h1>
+                    </div>
+                    <span class="status-dot" aria-hidden="true"></span>
+                </header>
+
+                <div class="display-wrap">
+                    <span class="display-label">Result</span>
+                    <input class="value" id="display" type="text"
+                        inputmode="decimal" readonly value="0"
+                        aria-label="Calculator display">
                 </div>
-          </div>
-</body>
+
+                <div class="calculator-grid" id="calculator-buttons">
+                    <button class="key key-action key-wide" type="button"
+                        data-action="clear">AC</button>
+                    <button class="key key-action" type="button"
+                        data-action="backspace"
+                        aria-label="Delete last character">⌫</button>
+                    <button class="key key-operator" type="button"
+                        data-value="/">÷</button>
+
+                    <button class="key" type="button" data-value="7">7</button>
+                    <button class="key" type="button" data-value="8">8</button>
+                    <button class="key" type="button" data-value="9">9</button>
+                    <button class="key key-operator" type="button"
+                        data-value="*">×</button>
+
+                    <button class="key" type="button" data-value="4">4</button>
+                    <button class="key" type="button" data-value="5">5</button>
+                    <button class="key" type="button" data-value="6">6</button>
+                    <button class="key key-operator" type="button"
+                        data-value="-">−</button>
+
+                    <button class="key" type="button" data-value="1">1</button>
+                    <button class="key" type="button" data-value="2">2</button>
+                    <button class="key" type="button" data-value="3">3</button>
+                    <button class="key key-operator key-plus" type="button"
+                        data-value="+">+</button>
+
+                    <button class="key key-zero" type="button"
+                        data-value="0">0</button>
+                    <button class="key" type="button" data-value=".">.</button>
+                    <button class="key key-equals" type="button"
+                        data-action="equals">=</button>
+                </div>
+                <p class="keyboard-hint">Keyboard supported · Enter to calculate
+                    · Esc to clear</p>
+            </section>
+        </main>
+
+        <script>
+        (() => {
+            const display = document.querySelector('#display');
+            const buttons = document.querySelector('#calculator-buttons');
+            let expression = '';
+            let justCalculated = false;
+
+            const render = (value = expression || '0') => {
+                display.value = value.replaceAll('*', '×').replaceAll('/', '÷').replaceAll('-', '−');
+            };
+
+            const calculate = (source) => {
+                const tokens = source.match(/(?:\d+(?:\.\d*)?|\.\d+)|[+\-*/]/g);
+                if (!tokens || tokens.join('') !== source || !/\d/.test(source)) throw new Error('Invalid expression');
+                const values = [];
+                const operators = [];
+                const precedence = { '+': 1, '-': 1, '*': 2, '/': 2 };
+                const apply = () => {
+                    const operator = operators.pop();
+                    const right = values.pop();
+                    const left = values.pop();
+                    if (operator === '/' && right === 0) throw new Error('Cannot divide by zero');
+                    values.push(operator === '+' ? left + right : operator === '-' ? left - right : operator === '*' ? left * right : left / right);
+                };
+                tokens.forEach((token) => {
+                    if (/\d|\./.test(token)) values.push(Number(token));
+                    else {
+                        while (operators.length && precedence[operators.at(-1)] >= precedence[token]) apply();
+                        operators.push(token);
+                    }
+                });
+                while (operators.length) apply();
+                const result = values[0];
+                if (!Number.isFinite(result)) throw new Error('Invalid result');
+                return Number(result.toFixed(10)).toString();
+            };
+
+            const addValue = (value) => {
+                if (justCalculated && /\d|\./.test(value)) expression = '';
+                justCalculated = false;
+                const lastNumber = expression.split(/[+\-*/]/).at(-1);
+                if (value === '.' && lastNumber.includes('.')) return;
+                if (/[+\-*/]/.test(value) && (!expression || /[+\-*/]$/.test(expression))) {
+                    if (value === '-' && !expression) expression = '-';
+                    else if (expression) expression = expression.slice(0, -1) + value;
+                    render();
+                    return;
+                }
+                expression += value;
+                render();
+            };
+
+            const clear = () => { expression = ''; justCalculated = false; render(); };
+            const equals = () => {
+                try {
+                    expression = calculate(expression);
+                    justCalculated = true;
+                    render();
+                } catch (error) {
+                    expression = '';
+                    display.value = error.message;
+                }
+            };
+
+            buttons.addEventListener('click', (event) => {
+                const button = event.target.closest('button');
+                if (!button) return;
+                if (button.dataset.action === 'clear') clear();
+                else if (button.dataset.action === 'backspace') { expression = expression.slice(0, -1); render(); }
+                else if (button.dataset.action === 'equals') equals();
+                else addValue(button.dataset.value);
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (/\d|[+\-*/.]/.test(event.key)) addValue(event.key);
+                else if (event.key === 'Enter' || event.key === '=') equals();
+                else if (event.key === 'Escape') clear();
+                else if (event.key === 'Backspace') { expression = expression.slice(0, -1); render(); }
+            });
+        })();
+    </script>
+    </body>
 </html>
